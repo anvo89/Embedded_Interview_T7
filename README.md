@@ -50,7 +50,7 @@ gia tri cua dia chi : 10
 **Con trỏ Void** : là một con trỏ tổng quát, nó không trỏ đến các đối tượng của bất kì kiểu dữ liệu nào
 
 *Khai báo* : void *ptr;
-```
+```C
 int n;
 float f;
 double d;
@@ -61,11 +61,11 @@ ptr = &f; // ok
 ptr = &d; // ok
 ```
 *Con trỏ kiểu void cần phải được ép kiểu một cách rõ ràng sang con trỏ có kiểu dữ liệu khác trước khi sử dụng toán tử derefernce ()*
-```
+```C
 printf("test i=%d\n",(int*)ptr); //ép kiểu ptr về int
 ```
 nếu muốn lấy giá trị tại địa chỉ
-```
+```C
 printf("test i=%d\n",*(int*)ptr);  
 ```
 
