@@ -262,7 +262,223 @@ int **ptr_ptr; // pointer to pointer to value of type int
 
 – Sẽ được giải phóng khi gọi hàm free,…
 
+***2. Stack và Heap?***
 
+• Bộ nhớ Heap và bộ nhớ Stack bản chất đều cùng là vùng nhớ được tạo ra và lưu trữ trong 
+RAM khi chương trình được thực thi.
 
+• Bộ nhớ Stack được dùng để lưu trữ các biến cục bộ trong hàm, tham số truyền vào... Truy 
+cập vào bộ nhớ này rất nhanh và được thực thi khi chương trình được biên dịch.
+
+• Bộ nhớ Heap được dùng để lưu trữ vùng nhớ cho những biến con trỏ được cấp phát động 
+bởi các hàm malloc - calloc - realloc (trong C)
+
+  **Kích thước vùng nhớ**
+
+Stack: kích thước của bộ nhớ Stack là cố định, tùy thuộc vào từng hệ điều hành, ví dụ hệ 
+điều hành Windows là 1 MB, hệ điều hành Linux là 8 MB (lưu ý là con số có thể khác tùy 
+thuộc vào kiến trúc hệ điều hành của bạn).
+
+Heap: kích thước của bộ nhớ Heap là không cố định, có thể tăng giảm do đó đáp ứng được 
+nhu cầu lưu trữ dữ liệu của chương trình.
+
+  **Đặc điểm vùng nhớ**
+  
+Stack: vùng nhớ Stack được quản lý bởi hệ điều hành, dữ liệu được lưu trong Stack sẽ tự 
+động hủy khi hàm thực hiện xong công việc của mình.
+
+Heap: Vùng nhớ Heap được quản lý bởi lập trình viên (trong C hoặc C++), dữ liệu trong 
+Heap sẽ không bị hủy khi hàm thực hiện xong, điều đó có nghĩa bạn phải tự tay hủy vùng 
+nhớ bằng câu lệnh free (trong C), và delete hoặc delete [] (trong C++), nếu không sẽ xảy 
+ra hiện tượng rò rỉ bộ nhớ. 
+
+*Lưu ý: việc tự động dọn vùng nhớ còn tùy thuộc vào trình biên dịch trung gian.*
+
+  **Vấn đề lỗi xảy ra đối với vùng nhớ**
+  
+Stack: bởi vì bộ nhớ Stack cố định nên nếu chương trình bạn sử dụng quá nhiều bộ nhớ 
+vượt quá khả năng lưu trữ của Stack chắc chắn sẽ xảy ra tình trạng tràn bộ nhớ Stack 
+(Stack overflow), các trường hợp xảy ra như bạn khởi tạo quá nhiều biến cục bộ, hàm đệ 
+quy vô hạn,...
+
+Ví dụ về tràn bộ nhớ Stack với hàm đệ quy vô hạn:
+```C
+ int foo(int x){
+ printf("De quy khong gioi han\n");
+ return foo(x);
+}
+```
+
+Heap: Nếu bạn liên tục cấp phát vùng nhớ mà không giải phóng thì sẽ bị lỗi tràn vùng 
+nhớ Heap (Heap overflow).
+
+Nếu bạn khởi tạo một vùng nhớ quá lớn mà vùng nhớ Heap không thể lưu trữ một lần 
+được sẽ bị lỗi khởi tạo vùng nhớ Heap thất bại.
+
+Ví dụ trường hợp khởi tạo vùng nhớ Heap quá lớn:
+```C
+int *A = (int *)malloc(18446744073709551615);
+```
+**Cấp phát bộ nhớ động trong C : Malloc vs Calloc**
+
+Để cấp phát bộ nhớ động trong C, chúng ta có 2 cách:
+```C
+void* malloc (size_t size);
+void* calloc (size_t num, size_t size);
+```
+ * Khi sử dụng malloc phải tính toán kích thước vùng nhớ cần cấp phát trước rồi truyền vào cho malloc.
+ * Khi sử dụng calloc chỉ cần truyền vào số phần tử và kích thước 1 phần tử, thì calloc sẽ tự động tính toán và cấp phát vùng nhớ cần thiết.
+   
+ *Ví dụ: Cấp phát mảng 10 phần tử kiểu int:*
+```C
+int *a = (int *) malloc( 10 * sizeof( int ));
+int *b = (int *) calloc( 10, sizeof( int ));
+```
+```C
+uint8_t *ptr=malloc(5)       //5byte
+uint8_t *ptr=(uint8_t*)malloc(5);
+//( tăng bộ nhớ từ 1 byte lên 5byte)
+unit16_t *ptr=(uint16_t*)malloc(sizeof(unit16_t)*5);
+
+```
+*Công thức của hàm realloc() trong C*
+```C
+void *realloc(void *ptr, size_t size)
+ptr=(uint16_t*)realloc(ptr,sizeof(uint16_t)*7);
+```
+free : thu hồi vùng nhớ.
+```C
+void free(void *ptr);
+```
+</details>
+<details>
+	<summary>Memory Allocation </summary>
+<img src="https://i0.wp.com/media.geeksforgeeks.org/wp-content/uploads/memoryLayoutC.jpg?resize=449%2C343&ssl=1">
+**Text :**
+
+– Access is only Read and it does not contain instructions to execute, so avoid modifying the instruction.
+
+– Contains declaration of constants in the program (.rodata)
+
+**Data:**
+
+* Access is read-write.
+
+* Contains a global variable or a static variable with a non-zero initialized value.
+
+* Released at the end of the program.
+
+**Bss:**
+
+* Access is read-write.
+
+* Contains global or static variables with zero or zero initialization.
+
+* Released at the end of the program.
+
+**Stack:**
+
+* Access is read-write.
+
+* Used to allocate for local variables, input parameters of the function, etc.
+
+* Will be released when exiting the code/function block
+
+**Heap:**
+
+– Access is read-write.
+
+– Used to allocate dynamic memory such as: Malloc, Calloc, ...
+
+– Will be released when calling the free…
+
+***2. Stack and Heap?***
+
+• Heap memory and Stack memory are essentially the same memory area created and stored in
+RAM when the program is executed.
+
+• Stack memory is used to store local variables in functions, parameters passed in... Access
+This memory access is very fast and is executed when the program is compiled.
+
+• Heap memory is used to store memory for dynamically allocated pointer variables
+by functions malloc - calloc - realloc (in C)
+
+   **Memory size**
+
+Stack: The size of the Stack memory is fixed, depending on the operating system, for example,
+Windows operating system is 1 MB, Linux operating system is 8 MB (note that the number may vary depending on
+depending on your OS architecture).
+
+Heap: The size of the Heap memory is not fixed, it can be increased or decreased so it is responsive
+program data storage needs.
+
+   **Memory features**
+  
+Stack: Stack memory is managed by the operating system, the data stored in the Stack will automatically
+cancel when the function has done its job.
+
+Heap: The memory area Heap is managed by the programmer (in C or C++), the data in
+The heap will not be destroyed when the function is done, which means you have to manually destroy the area
+remember with the free statement (in C), and delete or delete [] (in C++), otherwise it will happen
+memory leak occurs.
+
+*Note: automatic memory cleanup depends on intermediate compiler.*
+
+   **The problem occurs with the memory area**
+  
+Stack: because Stack memory is fixed, if your program uses too much memory
+If you exceed the storage capacity of the Stack, there will definitely be a Stack overflow
+(Stack overflow), cases happen like you initialize too many local variables, file function
+limitless,...
+
+Example of Stack overflow with infinite recursion:
+```C
+  int foo(int x){
+  printf("Determined without setting\n");
+  return foo(x);
+}
+```
+
+Heap: If you continuously allocate memory without freeing it, you will get an overflow error
+Remember the Heap (Heap overflow).
+
+If you initialize a memory area too large that the heap cannot store once
+will be failed to initialize the Heap memory area.
+
+Example case initialization of Heap memory is too large:
+```C
+int *A = (int *)malloc(18446744073709551615);
+```
+**Dynamic memory allocation in C : Malloc vs Calloc**
+
+To allocate dynamic memory in C, we have 2 ways:
+```C
+void* malloc (size_t size);
+void* calloc(size_t num, size_t size);
+```
+  * When using malloc, you must calculate the size of the memory to be allocated first and then pass it on to malloc.
+  * When using calloc, just pass in the number of elements and the size of 1 element, then calloc will automatically calculate and allocate the necessary memory.
+   
+  *Example: Allocating a 10-element array of type int:*
+```C
+int *a = (int *) malloc( 10 * sizeof( int ));
+int *b = (int *) calloc( 10, sizeof( int ));
+```
+```C
+uint8_t *ptr=malloc(5) //5byte
+uint8_t *ptr=(uint8_t*)malloc(5);
+//(increase memory from 1 byte to 5byte)
+unit16_t *ptr=(uint16_t*)malloc(sizeof(unit16_t)*5);
+
+```
+*Formula of realloc() function in C*
+```C
+void *realloc(void *ptr, size_t size)
+ptr=(uint16_t*)realloc(ptr,sizeof(uint16_t)*7);
+```
+free : free memory.
+```C
+void free(void *ptr);
+```
 
 
