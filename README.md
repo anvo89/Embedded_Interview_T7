@@ -354,6 +354,7 @@ void free(void *ptr);
 <details>
 	<summary>Memory Allocation </summary>
 <img src="https://i0.wp.com/media.geeksforgeeks.org/wp-content/uploads/memoryLayoutC.jpg?resize=449%2C343&ssl=1">
+
 **Text :**
 
 – Access is only Read and it does not contain instructions to execute, so avoid modifying the instruction.
