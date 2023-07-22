@@ -68,6 +68,34 @@ nếu muốn lấy giá trị tại địa chỉ
 ```C
 printf("test i=%d\n",*(int*)ptr);  
 ```
+**Con trỏ hàm** :là một biến lưu trữ địa chỉ của một hàm, thông qua biến đó, có thể gọi hàm mà nó trỏ tới.
+
+**<kiểu trả về> (*<tên con trỏ>)(<danh sách đối số>);**
+
+*Ví dụ về con trỏ hàm nhận vào một biến kiểu int và trả về dữ liệu kiểu void*
+```C
+void (*func)(int);
+```
+```C
+int main(){
+	void (*ptr)(int,int);
+	ptr= &tong;
+	ptr(8,7);
+	ptr=&hieu;
+	ptr(9,4);
+void tinhtoan(void (*func(int,int),int a,int b){
+printf("tinh toan\n");
+func(a,b);
+```
+```C
+int main(){
+	void *ptr[]={&tong,&hieu,&tich};
+	((void(*)(int,int)ptr[2])(7,5)
+return 0;
+}
+```
+**Con trỏ NULL** : khi khai báo 1 con trỏ phải gán địa chỉ cho nó, nếu khai báo chưa sử dụng thì khai báo con trỏ NULL ( dc =0, giá trị =0), không gán trị cho nó thì nó sẽ trỏ đến giá trị rác.
+*Chú ý: Nên khởi tạo con trỏ là null nếu nó chưa trỏ đến một địa chỉ cụ thể nào khác.*
 
 
 
