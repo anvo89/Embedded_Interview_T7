@@ -17,8 +17,11 @@ void *p_v; // con trỏ kiểu void
 ```
 Example: 
 địa chỉ a: Oxc1
+
 giá trị a: 10
+
 int *ptr=Oxc1;
+
 &a= Oxc1;
 output: 
 *Oxc1=10 ( lấy giá trị tại địa chỉ Oxc1)
