@@ -46,6 +46,7 @@ dia chi a 0x100a1400
 gia tri ptr 0x100a1400
 
 gia tri cua dia chi : 10
+
 **Con trỏ Void** : là một con trỏ tổng quát, nó không trỏ đến các đối tượng của bất kì kiểu dữ liệu nào
 
 *Khai báo* : void *ptr;
@@ -67,6 +68,7 @@ nếu muốn lấy giá trị tại địa chỉ
 ```
 printf("test i=%d\n",*(int*)ptr);  
 ```
+
 
 
 
