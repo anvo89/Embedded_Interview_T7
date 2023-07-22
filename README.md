@@ -3,7 +3,7 @@
 <details>
 <summary>Tiếng Việt</summary>
 	<details>
-		<Summary>Con trỏ </Summary>
+		 <Summary>Con trỏ </Summary>
 	
 1. Con trỏ là gì? là những biến lưu trữ địa chỉ bộ nhớ của những biến khác.
 * Giá trị của con trỏ: địa chỉ mà con trỏ trỏ đến.
@@ -246,6 +246,12 @@ free : thu hồi vùng nhớ.
 void free(void *ptr);
 ```
 </details>
+<details>
+<summary>Biến</summary>
+..
+
+
+</details>
 </details>
 <details>
 <summary>English</summary>
@@ -487,4 +493,7 @@ return 0;
 ```C
 int **ptr_ptr; // pointer to pointer to value of type int
 ```
-
+</details>
+<details>
+<summary>Variable</summary>
+..
