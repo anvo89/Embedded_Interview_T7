@@ -16,13 +16,24 @@ char *p_char; // khai báo con trỏ để trỏ tới biến kiểu ký tự
 void *p_v; // con trỏ kiểu void 
 ```
 Example: 
-địa chỉ : Oxc1
-giá trị : 10
-```
+địa chỉ a: Oxc1
+giá trị a: 10
 int *ptr=Oxc1;
-&a= Oxc1
-```
+&a= Oxc1;
 output: 
 *Oxc1=10 ( lấy giá trị tại địa chỉ Oxc1)
-*địa chỉ : lấy giá trị tại địa chỉ này    
+*địa chỉ : lấy giá trị tại địa chỉ này
+```
+#include <stdio.h>
+int main(){
+	int *ptr=&a;
+	printf("dia chi a %p\n",&a);
+	printf("gia tri ptr %p\n",ptr);
+	printf("gia tri cua dia chi :d\n",*ptr);
+return 0;
+}
+```
+output: dia chi a 0x100a1400
+	gia tri ptr 0x100a1400
+	gia tri cua dia chi : 10
 
