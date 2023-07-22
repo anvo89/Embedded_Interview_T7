@@ -15,7 +15,8 @@ float *p_f; // khai báo con trỏ để trỏ tới biến kiểu thực
 char *p_char; // khai báo con trỏ để trỏ tới biến kiểu ký tự
 void *p_v; // con trỏ kiểu void 
 ```
-Example: 
+Example:
+
 địa chỉ a: Oxc1
 
 giá trị a: 10
@@ -23,8 +24,11 @@ giá trị a: 10
 int *ptr=Oxc1;
 
 &a= Oxc1;
-output: 
+
+output:
+
 *Oxc1=10 ( lấy giá trị tại địa chỉ Oxc1)
+
 *địa chỉ : lấy giá trị tại địa chỉ này
 ```
 #include <stdio.h>
