@@ -1,14 +1,20 @@
 # Embedded_Interview_T7
 ## C programming
 <details>
-	<Summary> Con trỏ </Summary> 
+	<Summary> Con trỏ </Summary>
 	
-1. Con trỏ là gì? Con trỏ trong C cũng chỉ là là biến, cũng có thể khai báo, khởi tạo và lưu trữ giá trị và có địa chỉ của riêng nó
-	
+1. Con trỏ là gì? là những biến lưu trữ địa chỉ bộ nhớ của những biến khác.
 * Giá trị của con trỏ: địa chỉ mà con trỏ trỏ đến.
 * Địa chỉ của con trỏ: địa chỉ của bản thân biến con trỏ đó.
 * Giá trị của biến nơi con trỏ đang trỏ tới.
 * Địa chỉ của biến nơi con trỏ đang trỏ tới = giá trị của con trỏ.
+  
+*Kích thước của các biến con trỏ có khác nhau không?*
+
+Con trỏ chỉ lưu địa chỉ nên kích thước của mọi con trỏ là như nhau. Kích thước này phụ thuộc vào môi trường hệ thống máy tính:
+* Môi trường Windows 32 bit: 4 bytes
+* Môi trường Windows 64 bit: 8 bytes
+
 2. Cách khai báo con trỏ
   < kiểu dữ liệu > * <tên biến>
   ```
@@ -115,9 +121,11 @@ int **ptr_ptr; // con trỏ trỏ đến con trỏ trỏ đến giá trị kiể
 * Address of pointer: the address of the pointer variable itself.
 * The value of the variable where the pointer is pointing.
 * The address of the variable where the pointer is pointing = the value of the pointer.
-2. How to declare pointers
+2. How to declare pointers?
+ ``` 
    <data type> * <variable name>
-   ```
+```
+ ```C  
 int *p_i; // declare pointer to point to integer variable
 int *p, val; // declare pointer p of type int, variable val (not pointer) of type int
 float *p_f; // declare pointer to point to real variable
@@ -214,6 +222,46 @@ int **ptr_ptr; // pointer to pointer to value of type int
 </details>
 <details>
 	<summary>Phân vùng bộ nhớ trên RAM </summary>
+<img src="https://i0.wp.com/media.geeksforgeeks.org/wp-content/uploads/memoryLayoutC.jpg?resize=449%2C343&ssl=1">
+	
+**Text :**  
+
+– Quyền truy cập chỉ Read và nó chưa lệnh để thực thi nên tránh sửa đổi instruction.
+
+– Chứa khai báo hằng số trong chương trình (.rodata)
+
+**Data:**
+
+– Quyền truy cập là read-write.
+
+– Chứa biến toàn cục or biến static với giá trị khởi tạo khác không.
+
+– Được giải phóng khi kết thúc chương trình.
+
+**Bss:**
+
+– Quyền truy cập là read-write.
+
+– Chứa biến toàn cục or biến static với giá trị khởi tạo bằng không or không khởi tạo.
+
+– Được giải phóng khi kết thúc chương trình.
+
+**Stack:**
+
+– Quyền truy cập là read-write.
+
+– Được sử dụng cấp phát cho biến local, input parameter của hàm,…
+
+– Sẽ được giải phóng khi ra khỏi block code/hàm
+
+**Heap:**
+
+– Quyền truy cập là read-write.
+
+– Được sử dụng để cấp phát bộ nhớ động như: Malloc, Calloc, …
+
+– Sẽ được giải phóng khi gọi hàm free,…
+
 
 
 
