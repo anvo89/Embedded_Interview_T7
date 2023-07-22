@@ -1,7 +1,9 @@
 # Embedded_Interview_T7
 ## C programming
 <details>
-	<Summary> Con trỏ </Summary>
+<summary>Tiếng Việt</summary>
+	<details>
+		<Summary>Con trỏ </Summary>
 	
 1. Con trỏ là gì? là những biến lưu trữ địa chỉ bộ nhớ của những biến khác.
 * Giá trị của con trỏ: địa chỉ mà con trỏ trỏ đến.
@@ -111,114 +113,7 @@ return 0;
 ```C
 int **ptr_ptr; // con trỏ trỏ đến con trỏ trỏ đến giá trị kiểu int 
 ```
-</details>
-<details>
-	<summary> Pointer</summary>
 
-1. What is a pointer? Pointers in C are also just variables, can also declare, initialize and store values and have their own address.
-
-* Pointer value: the address the pointer points to.
-* Address of pointer: the address of the pointer variable itself.
-* The value of the variable where the pointer is pointing.
-* The address of the variable where the pointer is pointing = the value of the pointer.
-2. How to declare pointers?
- ``` 
-   <data type> * <variable name>
-```
- ```C  
-int *p_i; // declare pointer to point to integer variable
-int *p, val; // declare pointer p of type int, variable val (not pointer) of type int
-float *p_f; // declare pointer to point to real variable
-char *p_char; // declare pointer to point to character variable
-void *p_v; // pointer of type void
-```
-Example:
-
-address a: Oxc1
-
-a value: 10
-
-int *ptr=Oxc1;
-
-&a= Oxc1;
-
-output:
-
-*Oxc1=10 (get value at address Oxc1)
-
-*address : get value at this address
-```C
-#include <stdio.h>
-int main(){
-int *ptr=&a;
-printf("dia to a %p\n",&a);
-printf("value ptr %p\n",ptr);
-printf("value of location :d\n",*ptr);
-return 0;
-}
-```
-output:
-address 0x100a1400
-
-value ptr 0x100a1400
-
-the value of the address : 10
-
-**Pointer Void** : is a general pointer, it does not point to objects of any data type
-
-*Declaration* : void *ptr;
-```C
-int n;
-float f;
-double d;
-
-void *ptr;
-ptr = &n; // ok
-ptr = &f; // ok
-ptr = &d; // ok
-```
-*Pointers of type void need to be explicitly cast to pointers of other data types before using the derefernce()* operator.
-```C
-printf("test i=%d\n",(int*)ptr); // cast ptr to int
-```
-if want to get the value at address
-```C
-printf("test i=%d\n",*(int*)ptr);
-```
-**Function pointer** : is a variable that stores the address of a function, through which it is possible to call the function it points to.
-
-**<return type> (*<pointer name>)(<argument list>);**
-
-*Example of a function pointer that takes a variable of type int and returns void data*
-```C
-void (*func)(int);
-```
-```C
-int main(){
-void (*ptr)(int,int);
-ptr= &tong;
-ptr(8,7);
-ptr=&hieu;
-ptr(9,4);
-void Tinhtoan(void (*func(int,int),int a,int b){
-printf("calculate\n");
-func(a,b);
-```
-```C
-int main(){
-void *ptr[]={&tong,&hieu,&tich};
-((void(*)(int,int)ptr[2])(7,5)
-return 0;
-}
-```
-**NULL pointer** : when declaring a pointer, must assign an address to it, if the declaration is not in use, declare the pointer NULL ( dc =0, value =0), if you don't assign a value to it, it will point to a garbage value.
-
-*Note: The pointer should be initialized to null if it does not already point to another specific address.*
-
-**Pointers to pointers** is a pointer containing the address of another pointer.
-```C
-int **ptr_ptr; // pointer to pointer to value of type int
-```
 </details>
 <details>
 	<summary>Phân vùng bộ nhớ trên RAM </summary>
@@ -351,6 +246,9 @@ free : thu hồi vùng nhớ.
 void free(void *ptr);
 ```
 </details>
+</details>
+<details>
+<summary>English</summary>
 <details>
 	<summary>Memory Allocation </summary>
 <img src="https://i0.wp.com/media.geeksforgeeks.org/wp-content/uploads/memoryLayoutC.jpg?resize=449%2C343&ssl=1">
@@ -481,5 +379,112 @@ free : free memory.
 ```C
 void free(void *ptr);
 ```
+</details>
+<details>
+	<summary> Pointer</summary>
 
+1. What is a pointer? Pointers in C are also just variables, can also declare, initialize and store values and have their own address.
+
+* Pointer value: the address the pointer points to.
+* Address of pointer: the address of the pointer variable itself.
+* The value of the variable where the pointer is pointing.
+* The address of the variable where the pointer is pointing = the value of the pointer.
+2. How to declare pointers?
+ ``` 
+   <data type> * <variable name>
+```
+ ```C  
+int *p_i; // declare pointer to point to integer variable
+int *p, val; // declare pointer p of type int, variable val (not pointer) of type int
+float *p_f; // declare pointer to point to real variable
+char *p_char; // declare pointer to point to character variable
+void *p_v; // pointer of type void
+```
+Example:
+
+address a: Oxc1
+
+a value: 10
+
+int *ptr=Oxc1;
+
+&a= Oxc1;
+
+output:
+
+*Oxc1=10 (get value at address Oxc1)
+
+*address : get value at this address
+```C
+#include <stdio.h>
+int main(){
+int *ptr=&a;
+printf("dia to a %p\n",&a);
+printf("value ptr %p\n",ptr);
+printf("value of location :d\n",*ptr);
+return 0;
+}
+```
+output:
+address 0x100a1400
+
+value ptr 0x100a1400
+
+the value of the address : 10
+
+**Pointer Void** : is a general pointer, it does not point to objects of any data type
+
+*Declaration* : void *ptr;
+```C
+int n;
+float f;
+double d;
+
+void *ptr;
+ptr = &n; // ok
+ptr = &f; // ok
+ptr = &d; // ok
+```
+*Pointers of type void need to be explicitly cast to pointers of other data types before using the derefernce()* operator.
+```C
+printf("test i=%d\n",(int*)ptr); // cast ptr to int
+```
+if want to get the value at address
+```C
+printf("test i=%d\n",*(int*)ptr);
+```
+**Function pointer** : is a variable that stores the address of a function, through which it is possible to call the function it points to.
+
+**<return type> (*<pointer name>)(<argument list>);**
+
+*Example of a function pointer that takes a variable of type int and returns void data*
+```C
+void (*func)(int);
+```
+```C
+int main(){
+void (*ptr)(int,int);
+ptr= &tong;
+ptr(8,7);
+ptr=&hieu;
+ptr(9,4);
+void Tinhtoan(void (*func(int,int),int a,int b){
+printf("calculate\n");
+func(a,b);
+```
+```C
+int main(){
+void *ptr[]={&tong,&hieu,&tich};
+((void(*)(int,int)ptr[2])(7,5)
+return 0;
+}
+```
+**NULL pointer** : when declaring a pointer, must assign an address to it, if the declaration is not in use, declare the pointer NULL ( dc =0, value =0), if you don't assign a value to it, it will point to a garbage value.
+
+*Note: The pointer should be initialized to null if it does not already point to another specific address.*
+
+**Pointers to pointers** is a pointer containing the address of another pointer.
+```C
+int **ptr_ptr; // pointer to pointer to value of type int
+```
 
