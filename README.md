@@ -102,22 +102,6 @@ return 0;
 ```C
 int **ptr_ptr; // con trỏ trỏ đến con trỏ trỏ đến giá trị kiểu int 
 ```
-```C
-int value = 10;
-
-int *ptr = &value;
-cout << *ptr << "\n"; // in giá trị tại địa chỉ ptr trỏ đến (biến value)
-
-int **ptr_ptr = &ptr; // con trỏ "ptr_ptr" trỏ đến con trỏ "ptr" trỏ đến biến "value"
-cout << *ptr_ptr << "\n"; // in giá trị tại địa chỉ ptr_ptr trỏ đến (địa chỉ ptr (&ptr)) 
-cout << **ptr_ptr << "\n"; // dereference 2 lần để in giá trị tại địa chỉ ptr trỏ đến (biến value)
-```
-**Output**
-10
-
-Ox1.....
-
-10
 
 
 
