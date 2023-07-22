@@ -30,7 +30,7 @@ output:
 *Oxc1=10 ( lấy giá trị tại địa chỉ Oxc1)
 
 *địa chỉ : lấy giá trị tại địa chỉ này
-```
+```C
 #include <stdio.h>
 int main(){
 	int *ptr=&a;
