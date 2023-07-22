@@ -95,7 +95,29 @@ return 0;
 }
 ```
 **Con trỏ NULL** : khi khai báo 1 con trỏ phải gán địa chỉ cho nó, nếu khai báo chưa sử dụng thì khai báo con trỏ NULL ( dc =0, giá trị =0), không gán trị cho nó thì nó sẽ trỏ đến giá trị rác.
+
 *Chú ý: Nên khởi tạo con trỏ là null nếu nó chưa trỏ đến một địa chỉ cụ thể nào khác.*
+
+**Con trỏ trỏ đến con trỏ (Pointers to pointers)** là một con trỏ chứa địa chỉ của một con trỏ khác.
+```C
+int **ptr_ptr; // con trỏ trỏ đến con trỏ trỏ đến giá trị kiểu int 
+```
+```C
+int value = 10;
+
+int *ptr = &value;
+cout << *ptr << "\n"; // in giá trị tại địa chỉ ptr trỏ đến (biến value)
+
+int **ptr_ptr = &ptr; // con trỏ "ptr_ptr" trỏ đến con trỏ "ptr" trỏ đến biến "value"
+cout << *ptr_ptr << "\n"; // in giá trị tại địa chỉ ptr_ptr trỏ đến (địa chỉ ptr (&ptr)) 
+cout << **ptr_ptr << "\n"; // dereference 2 lần để in giá trị tại địa chỉ ptr trỏ đến (biến value)
+```
+**Output**
+10
+
+Ox1.....
+
+10
 
 
 
