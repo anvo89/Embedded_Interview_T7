@@ -40,7 +40,10 @@ int main(){
 return 0;
 }
 ```
-output: dia chi a 0x100a1400
-	gia tri ptr 0x100a1400
-	gia tri cua dia chi : 10
+output:
+dia chi a 0x100a1400
+
+gia tri ptr 0x100a1400
+
+gia tri cua dia chi : 10
 
