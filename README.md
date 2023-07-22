@@ -1,7 +1,9 @@
 # Embedded_Interview_T7
 ## C programming
 <details>
-<summary>Tiếng Việt</summary>
+<summary>
+	Tiếng Việt
+</summary>
 	<details>
 		 <Summary>Con trỏ </Summary>
 	
@@ -248,8 +250,64 @@ void free(void *ptr);
 </details>
 <details>
 <summary>Biến</summary>
-..
 
+Biến static được cấp phát bộ nhớ trong data segment
+
+***Biến static cục bộ***
+
+Khi 1 biến cục bộ được khai báo với từ khóa static. Biến sẽ chỉ được khởi tạo 1 lần duy nhất và tồn tại suốt thời gian chạy chương trình. Giá trị của nó không bị mất đi ngay cả khi kết thúc hàm. Tuy nhiên khác với biến toàn cục có thể gọi trong tất cả mọi nơi trong chương trình, thì biến cục bộ static chỉ có thể được gọi trong nội bộ hàm khởi tạo ra nó. Mỗi lần hàm được gọi, giá trị của biến chính bằng giá trị tại lần gần nhất hàm được gọi.
+```C
+Ví dụ:
+
+#include<stdio.h>
+ 
+int in_so_thu_tu(void)
+{
+   static int x = 0;
+   x = x + 1;
+   printf("%d\r\n",x);
+} 
+ 
+int main() {
+   in_so_thu_tu ();         //giá trị của x tăng lên 1 đơn vị từ 0
+   in_so_thu_tu ();         //giá trị của x tăng lên 1 đơn vị từ 1
+   in_so_thu_tu ();         //giá trị của x tăng lên 1 đơn vị từ 2
+   in_so_thu_tu ();         //giá trị của x tăng lên 1 đơn vị từ 3
+   in_so_thu_tu ();         //giá trị của x tăng lên 1 đơn vị từ 4
+   return 0;
+}
+```
+Kết quả:
+1
+2
+3
+4
+5
+
+***Biến static toàn cục***
+Biến toàn cục static sẽ chỉ có thể được truy cập và sử dụng trong File khai báo nó, các File khác không có cách nào truy cập được. 
+```C
+// biến a này chỉ được sử dụng trong file A.c
+static int a;    
+
+// hàm hienthi() này chỉ được sử dụng trong file A.c
+static void hien_thi() {};   
+```
+ Ví dụ trong chương trình dưới đây, giá trị của x được in là 0, trong khi giá trị của y là giá trị rác.
+```C
+#include <stdio.h>
+int main()
+{
+	static int x;
+	int y;
+	printf("%d \n %d", x, y);
+}
+```
+Output
+
+0
+
+[some_garbage_value]
 
 </details>
 </details>
