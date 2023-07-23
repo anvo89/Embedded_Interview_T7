@@ -7,19 +7,24 @@
 	<details>
 		 <Summary>Con trỏ </Summary>
 	
-1. Con trỏ là gì? là những biến lưu trữ địa chỉ bộ nhớ của những biến khác.
-* Giá trị của con trỏ: địa chỉ mà con trỏ trỏ đến.
+**1. Con trỏ là gì?** là những biến lưu trữ địa chỉ bộ nhớ của những biến khác.
+
+ * Giá trị của con trỏ: địa chỉ mà con trỏ trỏ đến.
+
 * Địa chỉ của con trỏ: địa chỉ của bản thân biến con trỏ đó.
+ 
 * Giá trị của biến nơi con trỏ đang trỏ tới.
+ 
 * Địa chỉ của biến nơi con trỏ đang trỏ tới = giá trị của con trỏ.
   
 *Kích thước của các biến con trỏ có khác nhau không?*
 
 Con trỏ chỉ lưu địa chỉ nên kích thước của mọi con trỏ là như nhau. Kích thước này phụ thuộc vào môi trường hệ thống máy tính:
-* Môi trường Windows 32 bit: 4 bytes
-* Môi trường Windows 64 bit: 8 bytes
+- Môi trường Windows 32 bit: 4 bytes
+ 
+- Môi trường Windows 64 bit: 8 bytes
 
-2. Cách khai báo con trỏ
+**2. Cách khai báo con trỏ**
   < kiểu dữ liệu > * <tên biến>
   ```
 int *p_i; // khai báo con trỏ để trỏ tới biến kiểu nguyên
@@ -28,17 +33,15 @@ float *p_f; // khai báo con trỏ để trỏ tới biến kiểu thực
 char *p_char; // khai báo con trỏ để trỏ tới biến kiểu ký tự
 void *p_v; // con trỏ kiểu void 
 ```
-Example:
+***Example:***
 
-địa chỉ a: Oxc1
+	địa chỉ a: Oxc1
 
-giá trị a: 10
+	giá trị a: 10
 
-int *ptr=Oxc1;
+	int *ptr=Oxc1;
 
-&a= Oxc1;
-
-output:
+	&a= Oxc1;
 
 *Oxc1=10 ( lấy giá trị tại địa chỉ Oxc1)
 
@@ -54,11 +57,11 @@ return 0;
 }
 ```
 output:
-dia chi a 0x100a1400
+	dia chi a 0x100a1400
 
-gia tri ptr 0x100a1400
+	gia tri ptr 0x100a1400
 
-gia tri cua dia chi : 10
+	gia tri cua dia chi : 10
 
 **Con trỏ Void** : là một con trỏ tổng quát, nó không trỏ đến các đối tượng của bất kì kiểu dữ liệu nào
 
@@ -123,41 +126,41 @@ int **ptr_ptr; // con trỏ trỏ đến con trỏ trỏ đến giá trị kiể
 	
 **Text :**  
 
-– Quyền truy cập chỉ Read và nó chưa lệnh để thực thi nên tránh sửa đổi instruction.
+- Quyền truy cập chỉ Read và nó chưa lệnh để thực thi nên tránh sửa đổi instruction.
 
-– Chứa khai báo hằng số trong chương trình (.rodata)
+- Chứa khai báo hằng số trong chương trình (.rodata)
 
 **Data:**
 
-– Quyền truy cập là read-write.
+- Quyền truy cập là read-write.
 
-– Chứa biến toàn cục or biến static với giá trị khởi tạo khác không.
+- Chứa biến toàn cục or biến static với giá trị khởi tạo khác không.
 
-– Được giải phóng khi kết thúc chương trình.
+- Được giải phóng khi kết thúc chương trình.
 
 **Bss:**
 
-– Quyền truy cập là read-write.
+- Quyền truy cập là read-write.
 
-– Chứa biến toàn cục or biến static với giá trị khởi tạo bằng không or không khởi tạo.
+- Chứa biến toàn cục or biến static với giá trị khởi tạo bằng không or không khởi tạo.
 
-– Được giải phóng khi kết thúc chương trình.
+- Được giải phóng khi kết thúc chương trình.
 
 **Stack:**
 
-– Quyền truy cập là read-write.
+- Quyền truy cập là read-write.
 
-– Được sử dụng cấp phát cho biến local, input parameter của hàm,…
+- Được sử dụng cấp phát cho biến local, input parameter của hàm,…
 
-– Sẽ được giải phóng khi ra khỏi block code/hàm
+- Sẽ được giải phóng khi ra khỏi block code/hàm
 
 **Heap:**
 
-– Quyền truy cập là read-write.
+- Quyền truy cập là read-write.
 
-– Được sử dụng để cấp phát bộ nhớ động như: Malloc, Calloc, …
+- Được sử dụng để cấp phát bộ nhớ động như: Malloc, Calloc, …
 
-– Sẽ được giải phóng khi gọi hàm free,…
+- Sẽ được giải phóng khi gọi hàm free,…
 
 ***2. Stack và Heap?***
 
@@ -172,19 +175,19 @@ bởi các hàm malloc - calloc - realloc (trong C)
 
   **Kích thước vùng nhớ**
 
-Stack: kích thước của bộ nhớ Stack là cố định, tùy thuộc vào từng hệ điều hành, ví dụ hệ 
+* Stack: kích thước của bộ nhớ Stack là cố định, tùy thuộc vào từng hệ điều hành, ví dụ hệ 
 điều hành Windows là 1 MB, hệ điều hành Linux là 8 MB (lưu ý là con số có thể khác tùy 
 thuộc vào kiến trúc hệ điều hành của bạn).
 
-Heap: kích thước của bộ nhớ Heap là không cố định, có thể tăng giảm do đó đáp ứng được 
+* Heap: kích thước của bộ nhớ Heap là không cố định, có thể tăng giảm do đó đáp ứng được 
 nhu cầu lưu trữ dữ liệu của chương trình.
 
   **Đặc điểm vùng nhớ**
   
-Stack: vùng nhớ Stack được quản lý bởi hệ điều hành, dữ liệu được lưu trong Stack sẽ tự 
+* Stack: vùng nhớ Stack được quản lý bởi hệ điều hành, dữ liệu được lưu trong Stack sẽ tự 
 động hủy khi hàm thực hiện xong công việc của mình.
 
-Heap: Vùng nhớ Heap được quản lý bởi lập trình viên (trong C hoặc C++), dữ liệu trong 
+* Heap: Vùng nhớ Heap được quản lý bởi lập trình viên (trong C hoặc C++), dữ liệu trong 
 Heap sẽ không bị hủy khi hàm thực hiện xong, điều đó có nghĩa bạn phải tự tay hủy vùng 
 nhớ bằng câu lệnh free (trong C), và delete hoặc delete [] (trong C++), nếu không sẽ xảy 
 ra hiện tượng rò rỉ bộ nhớ. 
@@ -193,7 +196,7 @@ ra hiện tượng rò rỉ bộ nhớ.
 
   **Vấn đề lỗi xảy ra đối với vùng nhớ**
   
-Stack: bởi vì bộ nhớ Stack cố định nên nếu chương trình bạn sử dụng quá nhiều bộ nhớ 
+* Stack: bởi vì bộ nhớ Stack cố định nên nếu chương trình bạn sử dụng quá nhiều bộ nhớ 
 vượt quá khả năng lưu trữ của Stack chắc chắn sẽ xảy ra tình trạng tràn bộ nhớ Stack 
 (Stack overflow), các trường hợp xảy ra như bạn khởi tạo quá nhiều biến cục bộ, hàm đệ 
 quy vô hạn,...
@@ -206,10 +209,10 @@ Ví dụ về tràn bộ nhớ Stack với hàm đệ quy vô hạn:
 }
 ```
 
-Heap: Nếu bạn liên tục cấp phát vùng nhớ mà không giải phóng thì sẽ bị lỗi tràn vùng 
+- Heap: Nếu bạn liên tục cấp phát vùng nhớ mà không giải phóng thì sẽ bị lỗi tràn vùng 
 nhớ Heap (Heap overflow).
 
-Nếu bạn khởi tạo một vùng nhớ quá lớn mà vùng nhớ Heap không thể lưu trữ một lần 
+- Nếu bạn khởi tạo một vùng nhớ quá lớn mà vùng nhớ Heap không thể lưu trữ một lần 
 được sẽ bị lỗi khởi tạo vùng nhớ Heap thất bại.
 
 Ví dụ trường hợp khởi tạo vùng nhớ Heap quá lớn:
@@ -251,9 +254,10 @@ void free(void *ptr);
 <details>
 <summary>Biến</summary>
 
+
 Biến static được cấp phát bộ nhớ trong data segment
 
-***Biến static cục bộ***
+***1. Biến static cục bộ***
 
 Khi 1 biến cục bộ được khai báo với từ khóa static. Biến sẽ chỉ được khởi tạo 1 lần duy nhất và tồn tại suốt thời gian chạy chương trình. Giá trị của nó không bị mất đi ngay cả khi kết thúc hàm. Tuy nhiên khác với biến toàn cục có thể gọi trong tất cả mọi nơi trong chương trình, thì biến cục bộ static chỉ có thể được gọi trong nội bộ hàm khởi tạo ra nó. Mỗi lần hàm được gọi, giá trị của biến chính bằng giá trị tại lần gần nhất hàm được gọi.
 ```C
@@ -284,7 +288,7 @@ Kết quả:
 4
 5
 
-***Biến static toàn cục***
+***2. Biến static toàn cục***
 Biến toàn cục static sẽ chỉ có thể được truy cập và sử dụng trong File khai báo nó, các File khác không có cách nào truy cập được. 
 ```C
 // biến a này chỉ được sử dụng trong file A.c
@@ -309,6 +313,82 @@ Output
 
 [some_garbage_value]
 
+***3. Extern***
+Dùng để lấy hàm/biến có sẵn của các file khác cùng 1 Folder để sử dụng (trừ static)
+
+Cú pháp: 
+
+``` extern <kiểu dữ liệu> <Tên Biến>;```
+
+***Volatile***
+
+Một biến cần được khai báo dưới dạng biến volatile khi nào? Khi mà giá trị của nó có thể thay đổi một cách không báo trước. Việc khai báo biến volatile là rất cần thiết để tránh những lỗi sai khó phát hiện do tính năng optimization của compiler.
+
+Cú pháp: ```volatile <kiểu dữliệu> <tên dữ liệu>;```
+
+</details>
+<details>
+	<summary> STRUCT&UNION  </summary>
+	
+1.STRUCT
+
+	
+*Cú pháp định nghĩa struct*
+
+```C
+struct structureName 
+{
+    dataType member1;
+    dataType member2;
+    ...
+};
+```
+* Sử dụng `.` => Toán tử truy xuất tới thành viên khi khai báo biến bình thương.
+* Kích thước của struct là bội kích thước của phần tử có kích thước lớn nhất trong struct.
+```C
+struct number{ 
+char a;
+int b;
+char c;
+}mynum;
+// bộ nhớ là 12 bytes//
+```
+2. UNION
+
+Cấu trúc của Union là tất cả các thành phần của nó dùng chung bộ nhớ, cho phép lưu trữ nhiều kiểu dữ liệu khác nhau trong cùng một vị trí bộ nhớ.
+
+```C
+union UnionName
+{
+	type attribute1;
+	type attribute2;
+	type attribute3;
+	.... ..........;
+};
+```
+
+***So sánh struct và union***
+
+Về mặt ý nghĩa, struct và union cơ bản giống nhau. Tuy nhiên, về mặt lưu trữ trong bộ nhớ, chúng có sự khác biệt rõ rệt như sau:
+
+•	struct: Dữ liệu của các thành viên của struct được lưu trữ ở những vùng nhớ khác nhau. Do đó kích thước của 1 struct tối thiểu bằng kích thước các thành viên cộng lại tại vì còn phụ thuộc vào bộ nhớ đệm (struct padding)
+
+•	Union : Dữ liệu các thành viên sẽ dùng chung 1 vùng nhớ. Kích thước của union được tính là kích thước lớn nhất của kiểu dữ liệu trong union. Việc thay đổi nội dung của 1 thành viên sẽ dẫn đến thay đổi nội dung của các thành viên khác.
+
+</details>
+<details>
+	<summary> Quá trình trình biên dịch </summary>
+<img src="https://tapit.vn/wp-content/uploads/2017/07/GCC_CompilationProcess.png">
+ 
+*Quy trình dịch là quá trình chuyển đổi từ ngôn ngữ bậc cao (NNBC) (C/C++, Pascal, Java, C#…) sang ngôn ngữ đích (ngôn ngữ máy) để máy tính có thể hiểu và thực thi. Ngôn ngữ lập trình C là một ngôn ngữ dạng biên dịch. Chương trình được viết bằng C muốn chạy được trên máy tính phải trải qua một quá trình biên dịch để chuyển đổi từ dạng mã nguồn sang chương trình dạng mã thực thi. Quá trình được chia ra làm 4 giai đoạn chính:*
+
+- Giai đoàn tiền xử lý (Pre-processor)
+  
+- Giai đoạn dịch NNBC sang Asembly (Compiler)
+  
+- Giai đoạn dịch asembly sang ngôn ngữ máy (Asember)
+  
+- Giai đoạn liên kết (Linker)
 </details>
 </details>
 <details>
