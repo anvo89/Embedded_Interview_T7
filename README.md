@@ -389,7 +389,7 @@ Về mặt ý nghĩa, struct và union cơ bản giống nhau. Tuy nhiên, về 
 - Giai đoạn dịch asembly sang ngôn ngữ máy (Asember)
   
 - Giai đoạn liên kết (Linker)
-- 
+  
 **Quá trình trình biên dịch**
   
 ***1. Giai đoạn tiền xử lý – Preprocessor***
@@ -409,7 +409,7 @@ Giai đoạn này sẽ thực hiện:
 - Phân tích cú pháp (syntax) của mã nguồn NNBC
   
 - Chuyển chúng sang dạng mã Assembly là một ngôn ngữ bậc thấp (hợp ngữ) gần với tập lệnh của bộ vi xử lý.
-- 
+  
 ***3. Công đoạn dịch Assembly***
 
 - Dich chương trình => Sang mã máy 0 và 1
