@@ -56,6 +56,7 @@ return 0;
 }
 ```
 output:
+
 	dia chi a 0x100a1400
 
 	gia tri ptr 0x100a1400
@@ -92,24 +93,18 @@ printf("test i=%d\n",*(int*)ptr);
 void (*func)(int);
 ```
 ```C
-int main(){
-	void (*ptr)(int,int);
-	ptr= &tong;
-	ptr(8,7);
-	ptr=&hieu;
-	ptr(9,4);
-void tinhtoan(void (*func(int,int),int a,int b){
-printf("tinh toan\n");
-func(a,b);
-```
-```C
-int main(){
-	void *ptr[]={&tong,&hieu,&tich};
-	((void(*)(int,int)ptr[2])(7,5)
-return 0;
+void tong(int a,int b)
+{
+    printf("tong %d va %d = %d\n",a,b,a+b);
 }
+int main()
+{
+    void (*ptr)(int,int);
+    ptr=&tong;
+    ptr(8,7);
 ```
-**Con trỏ NULL** : khi khai báo 1 con trỏ phải gán địa chỉ cho nó, nếu khai báo chưa sử dụng thì khai báo con trỏ NULL ( dc =0, giá trị =0), không gán trị cho nó thì nó sẽ trỏ đến giá trị rác.
+
+**Con trỏ NULL** : khi khai báo 1 con trỏ phải gán địa chỉ cho nó, nếu khai báo chưa sử dụng thì khai báo con trỏ NULL ( địa chỉ =0, giá trị =0), không gán trị cho nó thì nó sẽ trỏ đến giá trị rác.
 
 *Chú ý: Nên khởi tạo con trỏ là null nếu nó chưa trỏ đến một địa chỉ cụ thể nào khác.*
 
