@@ -320,7 +320,7 @@ Cú pháp:
 
 ``` extern <kiểu dữ liệu> <Tên Biến>;```
 
-***Volatile***
+***4. Volatile***
 
 Một biến cần được khai báo dưới dạng biến volatile khi nào? Khi mà giá trị của nó có thể thay đổi một cách không báo trước. Việc khai báo biến volatile là rất cần thiết để tránh những lỗi sai khó phát hiện do tính năng optimization của compiler.
 
@@ -389,6 +389,41 @@ Về mặt ý nghĩa, struct và union cơ bản giống nhau. Tuy nhiên, về 
 - Giai đoạn dịch asembly sang ngôn ngữ máy (Asember)
   
 - Giai đoạn liên kết (Linker)
+- 
+**Quá trình trình biên dịch**
+  
+***1. Giai đoạn tiền xử lý – Preprocessor***
+     
+Giai đoạn này sẽ thực hiện:
+
+- Nhận mã nguồn
+  
+- Xóa bỏ tất cả chú thích, comments của chương trình
+  
+- Chỉ thị tiền xử lý (bắt đầu bằng #) cũng được xử lý
+  
+*Ví dụ: chỉ thị #include cho phép ghép thêm mã chương trình của một tệp tiêu để vào mã nguồn cần dịch. Các hằng số được định nghĩa bằng #define sẽ được thay thế bằng giá trị cụ thể tại mỗi nơi sử dụng trong chương trình.*
+
+***2. Cộng đoạn dịch Ngôn Ngữ Bậc Cao sang Assembly***
+
+- Phân tích cú pháp (syntax) của mã nguồn NNBC
+  
+- Chuyển chúng sang dạng mã Assembly là một ngôn ngữ bậc thấp (hợp ngữ) gần với tập lệnh của bộ vi xử lý.
+- 
+***3. Công đoạn dịch Assembly***
+
+- Dich chương trình => Sang mã máy 0 và 1
+  
+- Một tệp mã máy (.obj) sinh ra trong hệ thống sau đó
+  
+***4. Giai đoạn Linker***
+
+Trong giai đoạn này mã máy của một chương trình dịch từ nhiều nguồn (file .c hoặc file thư viện .lib) được liên kết lại với nhau để tạo thành chương trình đích duy nhất
+Mã máy của các hàm thư viện gọi trong chương trình cũng được đưa vào chương trình cuối trong giai đoạn này.
+
+Chính vì vậy mà các lỗi liên quan đến việc gọi hàm hay sử dụng biến tổng thể mà không tồn tại sẽ bị phát hiện. Kể cả lỗi viết chương trình chính không có hàm main() cũng được phát hiện trong liên kết.
+
+Kết thúc quá trình tất cả các đối tượng được liên kết lại với nhau thành một chương trình có thể thực thi được (executable hay .exe) thống nhất.
 </details>
 </details>
 <details>
