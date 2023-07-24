@@ -158,14 +158,10 @@ int **ptr_ptr; // con trỏ trỏ đến con trỏ trỏ đến giá trị kiể
 
 ***2. Stack và Heap?***
 
-• Bộ nhớ Heap và bộ nhớ Stack bản chất đều cùng là vùng nhớ được tạo ra và lưu trữ trong 
-RAM khi chương trình được thực thi.
+• Bộ nhớ Heap và bộ nhớ Stack bản chất đều cùng là vùng nhớ được tạo ra và lưu trữ trong RAM khi chương trình được thực thi.
 
-• Bộ nhớ Stack được dùng để lưu trữ các biến cục bộ trong hàm, tham số truyền vào... Truy 
-cập vào bộ nhớ này rất nhanh và được thực thi khi chương trình được biên dịch.
-
-• Bộ nhớ Heap được dùng để lưu trữ vùng nhớ cho những biến con trỏ được cấp phát động 
-bởi các hàm malloc - calloc - realloc (trong C)
+* Bộ nhớ Stack được dùng để lưu trữ các biến cục bộ trong hàm, tham số truyền vào. Truy cập vào bộ nhớ này rất nhanh và được thực thi khi chương trình được biên dịch.
+* Bộ nhớ Heap được dùng để lưu trữ vùng nhớ cho những biến con trỏ được cấp phát động bởi các hàm malloc - calloc - realloc (trong C) 
 
   **Kích thước vùng nhớ**
 
