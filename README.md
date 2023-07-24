@@ -13,13 +13,12 @@
 
 * Địa chỉ của con trỏ: địa chỉ của bản thân biến con trỏ đó.
  
-* Giá trị của biến nơi con trỏ đang trỏ tới.
- 
 * Địa chỉ của biến nơi con trỏ đang trỏ tới = giá trị của con trỏ.
   
 *Kích thước của các biến con trỏ có khác nhau không?*
 
 Con trỏ chỉ lưu địa chỉ nên kích thước của mọi con trỏ là như nhau. Kích thước này phụ thuộc vào môi trường hệ thống máy tính:
+
 - Môi trường Windows 32 bit: 4 bytes
  
 - Môi trường Windows 64 bit: 8 bytes
@@ -76,7 +75,7 @@ ptr = &n; // ok
 ptr = &f; // ok
 ptr = &d; // ok
 ```
-*Con trỏ kiểu void cần phải được ép kiểu một cách rõ ràng sang con trỏ có kiểu dữ liệu khác trước khi sử dụng toán tử derefernce ()*
+*Con trỏ kiểu void cần phải được ép kiểu để có thể đọc được giá trị tại địa chỉ đó*
 ```C
 printf("test i=%d\n",(int*)ptr); //ép kiểu ptr về int
 ```
