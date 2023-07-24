@@ -1,11 +1,9 @@
 # Embedded_Interview_T7
 ## C programming
 <details>
-<summary>
-	Tiếng Việt
-</summary>
+<summary>Tiếng Việt</summary>
 	<details>
-		 <Summary>Con trỏ </Summary>
+	<Summary>Con trỏ </Summary>
 	
 **1. Con trỏ là gì?** là những biến lưu trữ địa chỉ bộ nhớ của những biến khác.
 
@@ -114,6 +112,8 @@ int **ptr_ptr; // con trỏ trỏ đến con trỏ trỏ đến giá trị kiể
 ```
 
 </details>
+
+##
 <details>
 	<summary>Phân vùng bộ nhớ trên RAM </summary>
 <img src="https://i0.wp.com/media.geeksforgeeks.org/wp-content/uploads/memoryLayoutC.jpg?resize=449%2C343&ssl=1">
@@ -245,6 +245,8 @@ free : thu hồi vùng nhớ.
 void free(void *ptr);
 ```
 </details>
+
+##
 <details>
 <summary>Biến</summary>
 
@@ -321,6 +323,8 @@ Một biến cần được khai báo dưới dạng biến volatile khi nào? K
 Cú pháp: ```volatile <kiểu dữliệu> <tên dữ liệu>;```
 
 </details>
+
+##
 <details>
 	<summary> STRUCT&UNION  </summary>
 	
@@ -370,6 +374,8 @@ Về mặt ý nghĩa, struct và union cơ bản giống nhau. Tuy nhiên, về 
 •	Union : Dữ liệu các thành viên sẽ dùng chung 1 vùng nhớ. Kích thước của union được tính là kích thước lớn nhất của kiểu dữ liệu trong union. Việc thay đổi nội dung của 1 thành viên sẽ dẫn đến thay đổi nội dung của các thành viên khác.
 
 </details>
+
+##
 <details>
 	<summary> Quá trình trình biên dịch </summary>
 <img src="https://tapit.vn/wp-content/uploads/2017/07/GCC_CompilationProcess.png">
@@ -420,6 +426,8 @@ Chính vì vậy mà các lỗi liên quan đến việc gọi hàm hay sử d�
 Kết thúc quá trình tất cả các đối tượng được liên kết lại với nhau thành một chương trình có thể thực thi được (executable hay .exe) thống nhất.
 </details>
 </details>
+
+##
 <details>
 <summary>English</summary>
 <details>
@@ -553,6 +561,8 @@ free : free memory.
 void free(void *ptr);
 ```
 </details>
+
+##
 <details>
 	<summary> Pointer</summary>
 
@@ -661,6 +671,8 @@ return 0;
 int **ptr_ptr; // pointer to pointer to value of type int
 ```
 </details>
+
+##
 <details>
 <summary>Variable</summary>
 ..
