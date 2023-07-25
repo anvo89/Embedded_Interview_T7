@@ -341,7 +341,9 @@ int main()
 
 ***4. Volatile***
 
-Một biến cần được khai báo dưới dạng biến volatile khi nào? Khi mà giá trị của nó có thể thay đổi một cách không báo trước. Việc khai báo biến volatile là rất cần thiết để tránh những lỗi sai khó phát hiện do tính năng optimization của compiler.
+*Một biến cần được khai báo dưới dạng biến volatile khi nào?* 
+
+Khi mà giá trị của nó có thể thay đổi một cách không báo trước. Việc khai báo biến volatile là rất cần thiết để tránh những lỗi sai khó phát hiện do tính năng optimization của compiler.
 
 Cú pháp: ```volatile <kiểu dữliệu> <tên dữ liệu>;```
 
