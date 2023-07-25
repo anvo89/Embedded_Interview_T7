@@ -63,10 +63,10 @@ output:
 
 	gia tri cua dia chi : 10
 
-### **Con trỏ Void** : 
-là một con trỏ tổng quát, nó không trỏ đến các đối tượng của bất kì kiểu dữ liệu nào
+### **Con trỏ Void** 
+Là một con trỏ tổng quát, nó không trỏ đến các đối tượng của bất kì kiểu dữ liệu nào
 
-*Khai báo* : void *ptr;
+*Khai báo* : ```C void *ptr;```
 ```C
 int n;
 float f;
@@ -85,10 +85,10 @@ nếu muốn lấy giá trị tại địa chỉ
 ```C
 printf("test i=%d\n",*(int*)ptr);  
 ```
-### **Con trỏ hàm** :
-là một biến lưu trữ địa chỉ của một hàm, thông qua biến đó, có thể gọi hàm mà nó trỏ tới.
+### **Con trỏ hàm** 
+Là một biến lưu trữ địa chỉ của một hàm, thông qua biến đó, có thể gọi hàm mà nó trỏ tới.
 
-**<kiểu trả về> (*<tên con trỏ>)(<danh sách đối số>);**
+```**<kiểu trả về> (*<tên con trỏ>)(<danh sách đối số>);**```
 
 *Ví dụ về con trỏ hàm nhận vào một biến kiểu int và trả về dữ liệu kiểu void*
 ```C
