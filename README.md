@@ -349,9 +349,9 @@ Cú pháp: ```volatile <kiểu dữliệu> <tên dữ liệu>;```
 
 ***5. Biến register***
 
--  Làm tăng hiệu năng(performance) của chương trình.
+Làm tăng hiệu năng(performance) của chương trình.
 
-Với khai báo biến thông thường, để thực hiện một phép tính thì cần có 3 bước:
+*Với khai báo biến thông thường, để thực hiện một phép tính thì cần có 3 bước:*
 
 * Nạp giá trị từ vùng nhớ chứa biến vào register
   
