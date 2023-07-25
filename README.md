@@ -347,13 +347,29 @@ Khi mà giá trị của nó có thể thay đổi một cách không báo trư�
 
 Cú pháp: ```volatile <kiểu dữliệu> <tên dữ liệu>;```
 
+***5. Biến register***
+
+-  Làm tăng hiệu năng(performance) của chương trình.
+
+Với khai báo biến thông thường, để thực hiện một phép tính thì cần có 3 bước:
+
+* Nạp giá trị từ vùng nhớ chứa biến vào register
+  
+* Yêu cầu ALU xử lý register vừa được nạp giá trị
+  
+* Đưa kết quả vừa xử lý của ALU ra ngoài vùng nhớ chứa biến.
+
+<img src="https://khuenguyencreator.com/wp-content/uploads/2021/09/register-.jpg">
+
+
+
 </details>
 
 ##
 <details>
 	<summary> STRUCT&UNION  </summary>
 	
-1.STRUCT
+**1.STRUCT**
 
 	
 *Cú pháp định nghĩa struct*
@@ -376,7 +392,7 @@ char c;
 }mynum;
 // bộ nhớ là 12 bytes//
 ```
-2. UNION
+**2. UNION**
 
 Cấu trúc của Union là tất cả các thành phần của nó dùng chung bộ nhớ, cho phép lưu trữ nhiều kiểu dữ liệu khác nhau trong cùng một vị trí bộ nhớ.
 
