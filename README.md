@@ -5,7 +5,9 @@
 	<details>
 	<Summary>Con trỏ </Summary>
 	
-**1. Con trỏ là gì?** là những biến lưu trữ địa chỉ bộ nhớ của những biến khác.
+### **1. Con trỏ là gì?** 
+
+Là những biến lưu trữ địa chỉ bộ nhớ của những biến khác.
 
  * Giá trị của con trỏ: địa chỉ mà con trỏ trỏ đến.
 
@@ -21,7 +23,7 @@ Con trỏ chỉ lưu địa chỉ nên kích thước của mọi con trỏ là 
  
 - Môi trường Windows 64 bit: 8 bytes
 
-**2. Cách khai báo con trỏ**
+### **2. Cách khai báo con trỏ**
   < kiểu dữ liệu > * <tên biến>
   ```
 int *p_i; // khai báo con trỏ để trỏ tới biến kiểu nguyên
@@ -61,7 +63,7 @@ output:
 
 	gia tri cua dia chi : 10
 
-**Con trỏ Void** : là một con trỏ tổng quát, nó không trỏ đến các đối tượng của bất kì kiểu dữ liệu nào
+### **Con trỏ Void** : là một con trỏ tổng quát, nó không trỏ đến các đối tượng của bất kì kiểu dữ liệu nào
 
 *Khai báo* : void *ptr;
 ```C
@@ -82,7 +84,7 @@ nếu muốn lấy giá trị tại địa chỉ
 ```C
 printf("test i=%d\n",*(int*)ptr);  
 ```
-**Con trỏ hàm** :là một biến lưu trữ địa chỉ của một hàm, thông qua biến đó, có thể gọi hàm mà nó trỏ tới.
+### **Con trỏ hàm** :là một biến lưu trữ địa chỉ của một hàm, thông qua biến đó, có thể gọi hàm mà nó trỏ tới.
 
 **<kiểu trả về> (*<tên con trỏ>)(<danh sách đối số>);**
 
@@ -102,11 +104,12 @@ int main()
     ptr(8,7);
 ```
 
-**Con trỏ NULL** : khi khai báo 1 con trỏ phải gán địa chỉ cho nó, nếu khai báo chưa sử dụng thì khai báo con trỏ NULL ( địa chỉ =0, giá trị =0), không gán trị cho nó thì nó sẽ trỏ đến giá trị rác.
+### **Con trỏ NULL** : khi khai báo 1 con trỏ phải gán địa chỉ cho nó, nếu khai báo chưa sử dụng thì khai báo con trỏ NULL ( địa chỉ =0, giá trị =0), không gán trị cho nó thì nó sẽ trỏ đến giá trị rác.
 
 *Chú ý: Nên khởi tạo con trỏ là null nếu nó chưa trỏ đến một địa chỉ cụ thể nào khác.*
 
-**Con trỏ trỏ đến con trỏ (Pointers to pointers)** là một con trỏ chứa địa chỉ của một con trỏ khác.
+### **Con trỏ trỏ đến con trỏ (Pointers to pointers)** 
+là một con trỏ chứa địa chỉ của một con trỏ khác.
 ```C
 int **ptr_ptr; // con trỏ trỏ đến con trỏ trỏ đến giá trị kiểu int 
 ```
@@ -118,13 +121,13 @@ int **ptr_ptr; // con trỏ trỏ đến con trỏ trỏ đến giá trị kiể
 	<summary>Phân vùng bộ nhớ trên RAM </summary>
 <img src="https://i0.wp.com/media.geeksforgeeks.org/wp-content/uploads/memoryLayoutC.jpg?resize=449%2C343&ssl=1">
 	
-**Text :**  
+### **Text :**  
 
 - Quyền truy cập chỉ Read và nó chưa lệnh để thực thi nên tránh sửa đổi instruction.
 
 - Chứa khai báo hằng số trong chương trình (.rodata)
 
-**Data:**
+### **Data:**
 
 - Quyền truy cập là read-write.
 
@@ -132,7 +135,7 @@ int **ptr_ptr; // con trỏ trỏ đến con trỏ trỏ đến giá trị kiể
 
 - Được giải phóng khi kết thúc chương trình.
 
-**Bss:**
+### **Bss:**
 
 - Quyền truy cập là read-write.
 
@@ -140,7 +143,7 @@ int **ptr_ptr; // con trỏ trỏ đến con trỏ trỏ đến giá trị kiể
 
 - Được giải phóng khi kết thúc chương trình.
 
-**Stack:**
+### **Stack:**
 
 - Quyền truy cập là read-write.
 
@@ -148,7 +151,7 @@ int **ptr_ptr; // con trỏ trỏ đến con trỏ trỏ đến giá trị kiể
 
 - Sẽ được giải phóng khi ra khỏi block code/hàm
 
-**Heap:**
+### **Heap:**
 
 - Quyền truy cập là read-write.
 
@@ -156,7 +159,7 @@ int **ptr_ptr; // con trỏ trỏ đến con trỏ trỏ đến giá trị kiể
 
 - Sẽ được giải phóng khi gọi hàm free,…
 
-***2. Stack và Heap?***
+### ***2. Stack và Heap?***
 
 • Bộ nhớ Heap và bộ nhớ Stack bản chất đều cùng là vùng nhớ được tạo ra và lưu trữ trong RAM khi chương trình được thực thi.
 
@@ -209,7 +212,7 @@ Ví dụ trường hợp khởi tạo vùng nhớ Heap quá lớn:
 ```C
 int *A = (int *)malloc(18446744073709551615);
 ```
-**Cấp phát bộ nhớ động trong C : Malloc vs Calloc**
+### **3. Cấp phát bộ nhớ động trong C : Malloc vs Calloc**
 
 Để cấp phát bộ nhớ động trong C, chúng ta có 2 cách:
 ```C
@@ -246,10 +249,9 @@ void free(void *ptr);
 <details>
 <summary>Biến</summary>
 
-
 Biến static được cấp phát bộ nhớ trong data segment
 
-***1. Biến static cục bộ***
+### ***1. Biến static cục bộ***
 
 Khi 1 biến cục bộ được khai báo với từ khóa static. Biến sẽ chỉ được khởi tạo 1 lần duy nhất và tồn tại suốt thời gian chạy chương trình. Giá trị của nó không bị mất đi ngay cả khi kết thúc hàm. Tuy nhiên khác với biến toàn cục có thể gọi trong tất cả mọi nơi trong chương trình, thì biến cục bộ static chỉ có thể được gọi trong nội bộ hàm khởi tạo ra nó. Mỗi lần hàm được gọi, giá trị của biến chính bằng giá trị tại lần gần nhất hàm được gọi.
 ```C
@@ -280,7 +282,7 @@ Kết quả:
 4
 5
 
-***2. Biến static toàn cục***
+### ***2. Biến static toàn cục***
 Biến toàn cục static sẽ chỉ có thể được truy cập và sử dụng trong File khai báo nó, các File khác không có cách nào truy cập được. 
 ```C
 // biến a này chỉ được sử dụng trong file A.c
@@ -305,8 +307,8 @@ Output
 
 [some_garbage_value]
 
-***3. Extern***
-Dùng để lấy hàm/biến có sẵn của các file khác cùng 1 Folder để sử dụng (trừ static)
+### ***3. Extern***
+dùng để lấy hàm/biến có sẵn của các file khác cùng 1 Folder để sử dụng (trừ static)
 
 Cú pháp: 
 
@@ -339,7 +341,7 @@ int main()
 Để gộp 2 file lại : ```gcc extern.c test.c -o main```
 		    ```./main```
 
-***4. Volatile***
+### ***4. Volatile***
 
 *Một biến cần được khai báo dưới dạng biến volatile khi nào?* 
 
@@ -347,7 +349,7 @@ Khi mà giá trị của nó có thể thay đổi một cách không báo trư�
 
 Cú pháp: ```volatile <kiểu dữliệu> <tên dữ liệu>;```
 
-***5. Biến register***
+### ***5. Biến register***
 
 Làm tăng hiệu năng(performance) của chương trình.
 
@@ -369,7 +371,7 @@ Làm tăng hiệu năng(performance) của chương trình.
 <details>
 	<summary> STRUCT&UNION  </summary>
 	
-**1.STRUCT**
+### **1.STRUCT**
 
 	
 *Cú pháp định nghĩa struct*
@@ -392,7 +394,7 @@ char c;
 }mynum;
 // bộ nhớ là 12 bytes//
 ```
-**2. UNION**
+### **2. UNION**
 
 Cấu trúc của Union là tất cả các thành phần của nó dùng chung bộ nhớ, cho phép lưu trữ nhiều kiểu dữ liệu khác nhau trong cùng một vị trí bộ nhớ.
 
@@ -406,7 +408,7 @@ union UnionName
 };
 ```
 
-***So sánh struct và union***
+### ***So sánh struct và union***
 
 Về mặt ý nghĩa, struct và union cơ bản giống nhau. Tuy nhiên, về mặt lưu trữ trong bộ nhớ, chúng có sự khác biệt rõ rệt như sau:
 
@@ -431,7 +433,7 @@ Về mặt ý nghĩa, struct và union cơ bản giống nhau. Tuy nhiên, về 
   
 - Giai đoạn liên kết (Linker)
   
-**Quá trình trình biên dịch**
+### **Quá trình trình biên dịch**
   
 ***1. Giai đoạn tiền xử lý – Preprocessor***
      
