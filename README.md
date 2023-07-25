@@ -172,7 +172,7 @@ int **ptr_ptr; // con trỏ trỏ đến con trỏ trỏ đến giá trị kiể
 
 - Sẽ được giải phóng khi gọi hàm free,…
 
-### ***2. Stack và Heap?***
+### **2. Stack và Heap?**
 
 • Bộ nhớ Heap và bộ nhớ Stack bản chất đều cùng là vùng nhớ được tạo ra và lưu trữ trong RAM khi chương trình được thực thi.
 
