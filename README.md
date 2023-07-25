@@ -234,7 +234,7 @@ unit16_t *ptr=(uint16_t*)malloc(sizeof(unit16_t)*5);
 *Công thức của hàm realloc() trong C*
 ```C
 void *realloc(void *ptr, size_t size)
-ptr=(uint16_t*)realloc(ptr,sizeof(uint16_t)*7);
+ptr=(uint16_t*)realloc(ptr,sizeof(uint16_t)*c7);
 ```
 free : thu hồi vùng nhớ.
 ```C
@@ -311,6 +311,33 @@ Dùng để lấy hàm/biến có sẵn của các file khác cùng 1 Folder đ�
 Cú pháp: 
 
 ``` extern <kiểu dữ liệu> <Tên Biến>;```
+*Ví dụ*
+```C
+#include<stdio.h>  //file test.c
+
+int count=10;
+
+void test()
+{
+    printf("count=%d\n",count);
+    count++;
+}
+```
+```C
+#include <stdio.h>  //file extern.c
+extern void test();
+
+int main()
+{
+
+    test();
+    return 0;
+
+}
+```
+
+Để gộp 2 file lại : ```gcc extern.c test.c -o main```
+		    ```./main```
 
 ***4. Volatile***
 
