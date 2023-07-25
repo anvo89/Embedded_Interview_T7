@@ -158,14 +158,10 @@ int **ptr_ptr; // con trỏ trỏ đến con trỏ trỏ đến giá trị kiể
 
 ***2. Stack và Heap?***
 
-• Bộ nhớ Heap và bộ nhớ Stack bản chất đều cùng là vùng nhớ được tạo ra và lưu trữ trong 
-RAM khi chương trình được thực thi.
+• Bộ nhớ Heap và bộ nhớ Stack bản chất đều cùng là vùng nhớ được tạo ra và lưu trữ trong RAM khi chương trình được thực thi.
 
-• Bộ nhớ Stack được dùng để lưu trữ các biến cục bộ trong hàm, tham số truyền vào... Truy 
-cập vào bộ nhớ này rất nhanh và được thực thi khi chương trình được biên dịch.
-
-• Bộ nhớ Heap được dùng để lưu trữ vùng nhớ cho những biến con trỏ được cấp phát động 
-bởi các hàm malloc - calloc - realloc (trong C)
+* Bộ nhớ Stack được dùng để lưu trữ các biến cục bộ trong hàm, tham số truyền vào. Truy cập vào bộ nhớ này rất nhanh và được thực thi khi chương trình được biên dịch.
+* Bộ nhớ Heap được dùng để lưu trữ vùng nhớ cho những biến con trỏ được cấp phát động bởi các hàm malloc - calloc - realloc (trong C) 
 
   **Kích thước vùng nhớ**
 
@@ -238,7 +234,7 @@ unit16_t *ptr=(uint16_t*)malloc(sizeof(unit16_t)*5);
 *Công thức của hàm realloc() trong C*
 ```C
 void *realloc(void *ptr, size_t size)
-ptr=(uint16_t*)realloc(ptr,sizeof(uint16_t)*7);
+ptr=(uint16_t*)realloc(ptr,sizeof(uint16_t)*c7);
 ```
 free : thu hồi vùng nhớ.
 ```C
@@ -315,12 +311,57 @@ Dùng để lấy hàm/biến có sẵn của các file khác cùng 1 Folder đ�
 Cú pháp: 
 
 ``` extern <kiểu dữ liệu> <Tên Biến>;```
+*Ví dụ*
+```C
+#include<stdio.h>  //file test.c
+
+int count=10;
+
+void test()
+{
+    printf("count=%d\n",count);
+    count++;
+}
+```
+```C
+#include <stdio.h>  //file extern.c
+extern void test();
+
+int main()
+{
+
+    test();
+    return 0;
+
+}
+```
+
+Để gộp 2 file lại : ```gcc extern.c test.c -o main```
+		    ```./main```
 
 ***4. Volatile***
 
-Một biến cần được khai báo dưới dạng biến volatile khi nào? Khi mà giá trị của nó có thể thay đổi một cách không báo trước. Việc khai báo biến volatile là rất cần thiết để tránh những lỗi sai khó phát hiện do tính năng optimization của compiler.
+*Một biến cần được khai báo dưới dạng biến volatile khi nào?* 
+
+Khi mà giá trị của nó có thể thay đổi một cách không báo trước. Việc khai báo biến volatile là rất cần thiết để tránh những lỗi sai khó phát hiện do tính năng optimization của compiler.
 
 Cú pháp: ```volatile <kiểu dữliệu> <tên dữ liệu>;```
+
+***5. Biến register***
+
+Làm tăng hiệu năng(performance) của chương trình.
+
+*Với khai báo biến thông thường, để thực hiện một phép tính thì cần có 3 bước:*
+
+* Nạp giá trị từ vùng nhớ chứa biến vào register
+  
+* Yêu cầu ALU xử lý register vừa được nạp giá trị
+  
+* Đưa kết quả vừa xử lý của ALU ra ngoài vùng nhớ chứa biến.
+
+<img src="https://khuenguyencreator.com/wp-content/uploads/2021/09/register-.jpg">
+
+
 
 </details>
 
@@ -328,7 +369,7 @@ Cú pháp: ```volatile <kiểu dữliệu> <tên dữ liệu>;```
 <details>
 	<summary> STRUCT&UNION  </summary>
 	
-1.STRUCT
+**1.STRUCT**
 
 	
 *Cú pháp định nghĩa struct*
@@ -351,7 +392,7 @@ char c;
 }mynum;
 // bộ nhớ là 12 bytes//
 ```
-2. UNION
+**2. UNION**
 
 Cấu trúc của Union là tất cả các thành phần của nó dùng chung bộ nhớ, cho phép lưu trữ nhiều kiểu dữ liệu khác nhau trong cùng một vị trí bộ nhớ.
 
