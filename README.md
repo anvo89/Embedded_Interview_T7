@@ -2,8 +2,11 @@
 ## C programming
 <details>
 <summary>Tiếng Việt</summary>
-	<details>
+
+##
+ <details>
 	<Summary>Con trỏ </Summary>
+		
 	
 ### **1. Con trỏ là gì?** 
 
@@ -122,7 +125,14 @@ int **ptr_ptr; // con trỏ trỏ đến con trỏ trỏ đến giá trị kiể
 ##
 <details>
 	<summary>Phân vùng bộ nhớ trên RAM </summary>
+
+##
+ 
 <img src="https://i0.wp.com/media.geeksforgeeks.org/wp-content/uploads/memoryLayoutC.jpg?resize=449%2C343&ssl=1">
+
+##
+
+### **1. Phân vùng bộ nhớ trên RAM**
 	
 ### **Text :**  
 
