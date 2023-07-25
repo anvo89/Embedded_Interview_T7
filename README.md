@@ -128,7 +128,7 @@ int **ptr_ptr; // con trỏ trỏ đến con trỏ trỏ đến giá trị kiể
 
 ##
  
-<img src="https://i0.wp.com/media.geeksforgeeks.org/wp-content/uploads/memoryLayoutC.jpg?resize=449%2C343&ssl=1">
+<img src="https://2.bp.blogspot.com/-X1QjAlJ3fq4/VX7vg7FcrjI/AAAAAAAAAJs/U79uRx0Af_o/s1600/memory_layout.png">
 
 ##
 
