@@ -472,13 +472,11 @@ Giai đoạn này sẽ thực hiện:
 
 ***Note***
 
-```#include <file_name>```
+Sự khác nhau giữa #include <filename> and #include “filename” nằm ở khâu tìm kiếm file header của tiền xử lý trước quá trình biên dịch.
 
-Với cú pháp 1, bộ tiền xử lý sẽ tìm file_name có sẵn trong IDE(như Visual Studio) của bạn và chèn vào file mà chúng ta đang viết, nếu tìm không thấy file_name thì trình biên dịch sẽ báo lỗi. Các file có sẵn trong IDE như stdio.h, math.h, conio.h,.. ```#include <stdio.h>```
+**#include <filename>**: tiền xử lý (pre-processor) sẽ chỉ tìm kiếm file header (.h) trong thư mục chứa file header của thư viện ngôn ngữ C (thường là thư mục trong bộ cài IDE).
 
-```#include “file_name”```
-
-Khi sử dụng cú pháp 2, bộ tiền xử lý sẽ tìm file_name trong các thư mục trên máy tính của chúng ta, khi tìm không thấy thì tiếp tục tìm trong các file có sẵn trong IDE. Nếu tìm được file_name thì chèn file_name vào file đang thao tác, còn vẫn không tìm thấy file_name thì trình biên dịch sẽ báo lỗi.
+**#include “filename”**: Trước tiên, tiền xử lý (pre-processor) tìm kiếm file header(.h) trong thư mục đặt project C/C++. Nếu không tìm thấy, tiền xử lý tìm kiếm file header (.h) trong thư mục chứa file header của thư viện ngôn ngữ C (thường là thư mục trong bộ cài IDE).
       
 
 ***2. Cộng đoạn dịch Ngôn Ngữ Bậc Cao sang Assembly***
