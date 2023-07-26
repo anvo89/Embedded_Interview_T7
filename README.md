@@ -283,8 +283,6 @@ int main() {
    in_so_thu_tu ();         //giá trị của x tăng lên 1 đơn vị từ 0
    in_so_thu_tu ();         //giá trị của x tăng lên 1 đơn vị từ 1
    in_so_thu_tu ();         //giá trị của x tăng lên 1 đơn vị từ 2
-   in_so_thu_tu ();         //giá trị của x tăng lên 1 đơn vị từ 3
-   in_so_thu_tu ();         //giá trị của x tăng lên 1 đơn vị từ 4
    return 0;
 }
 ```
