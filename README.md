@@ -66,8 +66,33 @@ output:
 
 	gia tri cua dia chi : 10
 
+### Hằng con trỏ
+
+```<Kiểu dữ liệu> * const <Tên con trỏ> = <Địa chỉ khởi tạo> ;```
+
+*Đặc điểm:*
+– Cần gán ngay giá trị địa chỉ khởi tạo cho hằng con trỏ tại câu lệnh khai báo ban đầu.
+
+– Không thể thay đổi địa chỉ đã được khởi gán cho hằng con trỏ ( sẽ gây ra lỗi).
+
+– Có thể thay đổi giá trị tại địa chỉ đã khởi gián ban đầu.
+
+
+### Con trỏ hằng
+
+```const <Kiểu dữ liệu> * <Tên con trỏ>;```
+
+*Đặc điểm:*
+
+– Không được phép dùng trực tiếp con trỏ hằng để thay đổi giá trị tại vùng nhớ mà con trỏ hằng đang trỏ đến.
+
+– Con trỏ hằng có thể thể thay đổi địa chỉ trỏ tới (hay nói cách khác: nó có thể trỏ đến các ô nhớ khác nhau).
+
+[Link tham khảo](https://deviot.vn/tutorials/c-co-ban.78025672/con-tro-hang-va-hang-con-tro.06982839)
+
 ### **Con trỏ Void** 
-Là một con trỏ tổng quát, nó không trỏ đến các đối tượng của bất kì kiểu dữ liệu nào
+
+Nó có thể lưu trữ địa chỉ của mọi kiểu biến dữ liệu
 
 *Khai báo* : ```C void *ptr;```
 ```C
@@ -581,6 +606,7 @@ Các constant-expression là biểu thức mà các toán hạng trong đó đ�
 
 •	Hàm bình thường sẽ phải gọi function call nên tốn thời gian hơn inline function nhưng code ngắn gọn hơn.
 
+[Các câu hỏi phỏng vấn tham khảo](https://deviot.vn/blog/tuyen-tap-cac-cau-hoi-phong-van-c-phan-1.17500622)
 
 </details>
 </details>
