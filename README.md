@@ -509,6 +509,20 @@ Kết thúc quá trình tất cả các đối tượng được liên kết l�
 <details>
 	<summary> Macro - Function </summary>
 
+### Chỉ thị #indef ( if not define )
+
+#ifndef identifier
+
+     //Đoạn chương trình 1
+
+#else
+
+     //Đoạn chương trình 2
+
+#endif
+
+ Các chỉ thị điều kiện ở trên, thường được sử dụng cho việc xử lý xung đột thư viện khi chúng ta #include nhiều thư viện. 
+
 ## Sự khác nhau giữa Macro, Inline và Function
 ### 1. Macro:
 •	Được xử lý bởi preprocessor
