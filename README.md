@@ -2,10 +2,15 @@
 ## C programming
 <details>
 <summary>Tiếng Việt</summary>
-	<details>
+
+##
+ <details>
 	<Summary>Con trỏ </Summary>
+		
 	
-**1. Con trỏ là gì?** là những biến lưu trữ địa chỉ bộ nhớ của những biến khác.
+### **1. Con trỏ là gì?** 
+
+Là những biến lưu trữ địa chỉ bộ nhớ của những biến khác.
 
  * Giá trị của con trỏ: địa chỉ mà con trỏ trỏ đến.
 
@@ -21,7 +26,7 @@ Con trỏ chỉ lưu địa chỉ nên kích thước của mọi con trỏ là 
  
 - Môi trường Windows 64 bit: 8 bytes
 
-**2. Cách khai báo con trỏ**
+### **2. Cách khai báo con trỏ**
   < kiểu dữ liệu > * <tên biến>
   ```
 int *p_i; // khai báo con trỏ để trỏ tới biến kiểu nguyên
@@ -61,9 +66,10 @@ output:
 
 	gia tri cua dia chi : 10
 
-**Con trỏ Void** : là một con trỏ tổng quát, nó không trỏ đến các đối tượng của bất kì kiểu dữ liệu nào
+### **Con trỏ Void** 
+Là một con trỏ tổng quát, nó không trỏ đến các đối tượng của bất kì kiểu dữ liệu nào
 
-*Khai báo* : void *ptr;
+*Khai báo* : ```C void *ptr;```
 ```C
 int n;
 float f;
@@ -82,9 +88,10 @@ nếu muốn lấy giá trị tại địa chỉ
 ```C
 printf("test i=%d\n",*(int*)ptr);  
 ```
-**Con trỏ hàm** :là một biến lưu trữ địa chỉ của một hàm, thông qua biến đó, có thể gọi hàm mà nó trỏ tới.
+### **Con trỏ hàm** 
+Là một biến lưu trữ địa chỉ của một hàm, thông qua biến đó, có thể gọi hàm mà nó trỏ tới.
 
-**<kiểu trả về> (*<tên con trỏ>)(<danh sách đối số>);**
+```**<kiểu trả về> (*<tên con trỏ>)(<danh sách đối số>);**```
 
 *Ví dụ về con trỏ hàm nhận vào một biến kiểu int và trả về dữ liệu kiểu void*
 ```C
@@ -102,11 +109,13 @@ int main()
     ptr(8,7);
 ```
 
-**Con trỏ NULL** : khi khai báo 1 con trỏ phải gán địa chỉ cho nó, nếu khai báo chưa sử dụng thì khai báo con trỏ NULL ( địa chỉ =0, giá trị =0), không gán trị cho nó thì nó sẽ trỏ đến giá trị rác.
+### **Con trỏ NULL** 
+Khi khai báo 1 con trỏ phải gán địa chỉ cho nó, nếu khai báo chưa sử dụng thì khai báo con trỏ NULL ( địa chỉ =0, giá trị =0), không gán trị cho nó thì nó sẽ trỏ đến giá trị rác.
 
 *Chú ý: Nên khởi tạo con trỏ là null nếu nó chưa trỏ đến một địa chỉ cụ thể nào khác.*
 
-**Con trỏ trỏ đến con trỏ (Pointers to pointers)** là một con trỏ chứa địa chỉ của một con trỏ khác.
+### **Con trỏ trỏ đến con trỏ (Pointers to pointers)** 
+là một con trỏ chứa địa chỉ của một con trỏ khác.
 ```C
 int **ptr_ptr; // con trỏ trỏ đến con trỏ trỏ đến giá trị kiểu int 
 ```
@@ -116,15 +125,22 @@ int **ptr_ptr; // con trỏ trỏ đến con trỏ trỏ đến giá trị kiể
 ##
 <details>
 	<summary>Phân vùng bộ nhớ trên RAM </summary>
-<img src="https://i0.wp.com/media.geeksforgeeks.org/wp-content/uploads/memoryLayoutC.jpg?resize=449%2C343&ssl=1">
+
+##
+ 
+<img src="https://2.bp.blogspot.com/-X1QjAlJ3fq4/VX7vg7FcrjI/AAAAAAAAAJs/U79uRx0Af_o/s1600/memory_layout.png">
+
+##
+
+### **1. Phân vùng bộ nhớ trên RAM**
 	
-**Text :**  
+### **Text :**  
 
 - Quyền truy cập chỉ Read và nó chưa lệnh để thực thi nên tránh sửa đổi instruction.
 
 - Chứa khai báo hằng số trong chương trình (.rodata)
 
-**Data:**
+### **Data:**
 
 - Quyền truy cập là read-write.
 
@@ -132,7 +148,7 @@ int **ptr_ptr; // con trỏ trỏ đến con trỏ trỏ đến giá trị kiể
 
 - Được giải phóng khi kết thúc chương trình.
 
-**Bss:**
+### **Bss:**
 
 - Quyền truy cập là read-write.
 
@@ -140,7 +156,7 @@ int **ptr_ptr; // con trỏ trỏ đến con trỏ trỏ đến giá trị kiể
 
 - Được giải phóng khi kết thúc chương trình.
 
-**Stack:**
+### **Stack:**
 
 - Quyền truy cập là read-write.
 
@@ -148,7 +164,7 @@ int **ptr_ptr; // con trỏ trỏ đến con trỏ trỏ đến giá trị kiể
 
 - Sẽ được giải phóng khi ra khỏi block code/hàm
 
-**Heap:**
+### **Heap:**
 
 - Quyền truy cập là read-write.
 
@@ -156,7 +172,7 @@ int **ptr_ptr; // con trỏ trỏ đến con trỏ trỏ đến giá trị kiể
 
 - Sẽ được giải phóng khi gọi hàm free,…
 
-***2. Stack và Heap?***
+### **2. Stack và Heap?**
 
 • Bộ nhớ Heap và bộ nhớ Stack bản chất đều cùng là vùng nhớ được tạo ra và lưu trữ trong RAM khi chương trình được thực thi.
 
@@ -209,7 +225,7 @@ Ví dụ trường hợp khởi tạo vùng nhớ Heap quá lớn:
 ```C
 int *A = (int *)malloc(18446744073709551615);
 ```
-**Cấp phát bộ nhớ động trong C : Malloc vs Calloc**
+### **3. Cấp phát bộ nhớ động trong C : Malloc vs Calloc**
 
 Để cấp phát bộ nhớ động trong C, chúng ta có 2 cách:
 ```C
@@ -246,10 +262,9 @@ void free(void *ptr);
 <details>
 <summary>Biến</summary>
 
-
 Biến static được cấp phát bộ nhớ trong data segment
 
-***1. Biến static cục bộ***
+### ***1. Biến static cục bộ***
 
 Khi 1 biến cục bộ được khai báo với từ khóa static. Biến sẽ chỉ được khởi tạo 1 lần duy nhất và tồn tại suốt thời gian chạy chương trình. Giá trị của nó không bị mất đi ngay cả khi kết thúc hàm. Tuy nhiên khác với biến toàn cục có thể gọi trong tất cả mọi nơi trong chương trình, thì biến cục bộ static chỉ có thể được gọi trong nội bộ hàm khởi tạo ra nó. Mỗi lần hàm được gọi, giá trị của biến chính bằng giá trị tại lần gần nhất hàm được gọi.
 ```C
@@ -280,7 +295,7 @@ Kết quả:
 4
 5
 
-***2. Biến static toàn cục***
+### ***2. Biến static toàn cục***
 Biến toàn cục static sẽ chỉ có thể được truy cập và sử dụng trong File khai báo nó, các File khác không có cách nào truy cập được. 
 ```C
 // biến a này chỉ được sử dụng trong file A.c
@@ -305,8 +320,8 @@ Output
 
 [some_garbage_value]
 
-***3. Extern***
-Dùng để lấy hàm/biến có sẵn của các file khác cùng 1 Folder để sử dụng (trừ static)
+### ***3. Extern***
+dùng để lấy hàm/biến có sẵn của các file khác cùng 1 Folder để sử dụng (trừ static)
 
 Cú pháp: 
 
@@ -339,7 +354,7 @@ int main()
 Để gộp 2 file lại : ```gcc extern.c test.c -o main```
 		    ```./main```
 
-***4. Volatile***
+### ***4. Volatile***
 
 *Một biến cần được khai báo dưới dạng biến volatile khi nào?* 
 
@@ -347,7 +362,7 @@ Khi mà giá trị của nó có thể thay đổi một cách không báo trư�
 
 Cú pháp: ```volatile <kiểu dữliệu> <tên dữ liệu>;```
 
-***5. Biến register***
+### ***5. Biến register***
 
 Làm tăng hiệu năng(performance) của chương trình.
 
@@ -369,7 +384,7 @@ Làm tăng hiệu năng(performance) của chương trình.
 <details>
 	<summary> STRUCT&UNION  </summary>
 	
-**1.STRUCT**
+### **1.STRUCT**
 
 	
 *Cú pháp định nghĩa struct*
@@ -383,18 +398,18 @@ struct structureName
 };
 ```
 * Sử dụng `.` => Toán tử truy xuất tới thành viên khi khai báo biến bình thương.
-* Kích thước của struct là bội kích thước của phần tử có kích thước lớn nhất trong struct.
+* Kích thước của struct phụ thuộc vào data alignment và data padding.
 ```C
 struct number{ 
-char a;
-int b;
-char c;
+char a; //4byte
+int b;  //4byte
+char c;  /4byte
 }mynum;
 // bộ nhớ là 12 bytes//
 ```
-**2. UNION**
+### **2. UNION**
 
-Cấu trúc của Union là tất cả các thành phần của nó dùng chung bộ nhớ, cho phép lưu trữ nhiều kiểu dữ liệu khác nhau trong cùng một vị trí bộ nhớ.
+Cấu trúc của Union là tất cả các thành phần của nó dùng chung bộ nhớ, cho phép lưu trữ nhiều kiểu dữ liệu khác nhau trong cùng một vị trí bộ nhớ. Size của Union bằng size của thành phần lớn nhất trong Union
 
 ```C
 union UnionName
@@ -405,14 +420,20 @@ union UnionName
 	.... ..........;
 };
 ```
-
-***So sánh struct và union***
+```C
+typedef union{
+    uint8_t x;  //
+    uint16_t y;//
+    uint64_t k;   //  
+}toaDo; 	//sizeof toaDo 8byte
+```
+### ***So sánh struct và union***
 
 Về mặt ý nghĩa, struct và union cơ bản giống nhau. Tuy nhiên, về mặt lưu trữ trong bộ nhớ, chúng có sự khác biệt rõ rệt như sau:
 
-•	struct: Dữ liệu của các thành viên của struct được lưu trữ ở những vùng nhớ khác nhau. Do đó kích thước của 1 struct tối thiểu bằng kích thước các thành viên cộng lại tại vì còn phụ thuộc vào bộ nhớ đệm (struct padding)
+•	**Struct**: Dữ liệu của các thành viên của struct được lưu trữ ở những vùng nhớ khác nhau. Do đó kích thước của 1 struct tối thiểu bằng kích thước các thành viên cộng lại tại vì còn phụ thuộc vào bộ nhớ đệm (struct padding). Tại 1 thời điểm run time có thể truy cập các thành phần của struct.
 
-•	Union : Dữ liệu các thành viên sẽ dùng chung 1 vùng nhớ. Kích thước của union được tính là kích thước lớn nhất của kiểu dữ liệu trong union. Việc thay đổi nội dung của 1 thành viên sẽ dẫn đến thay đổi nội dung của các thành viên khác.
+•	**Union**: Dữ liệu các thành viên sẽ dùng chung 1 vùng nhớ. Kích thước của union được tính là kích thước lớn nhất của kiểu dữ liệu trong union. Việc thay đổi nội dung của 1 thành viên sẽ dẫn đến thay đổi nội dung của các thành viên khác. Tại 1 thời điểm run time chỉ có thể truy cập 1 thành phần.
 
 </details>
 
@@ -431,7 +452,7 @@ Về mặt ý nghĩa, struct và union cơ bản giống nhau. Tuy nhiên, về 
   
 - Giai đoạn liên kết (Linker)
   
-**Quá trình trình biên dịch**
+### **Quá trình trình biên dịch**
   
 ***1. Giai đoạn tiền xử lý – Preprocessor***
      
@@ -442,8 +463,25 @@ Giai đoạn này sẽ thực hiện:
 - Xóa bỏ tất cả chú thích, comments của chương trình
   
 - Chỉ thị tiền xử lý (bắt đầu bằng #) cũng được xử lý
+
+	+ Chỉ thị bao hàm tệp (#include).
+
+	+ Chỉ thị định nghĩa cho tên (#define macro).
+
+	+ Chỉ thị biên dịch có điều kiện (#if, #else, #elif, #endif, …).
   
 *Ví dụ: chỉ thị #include cho phép ghép thêm mã chương trình của một tệp tiêu để vào mã nguồn cần dịch. Các hằng số được định nghĩa bằng #define sẽ được thay thế bằng giá trị cụ thể tại mỗi nơi sử dụng trong chương trình.*
+
+***Note***
+
+```#include <file_name>```
+
+Với cú pháp 1, bộ tiền xử lý sẽ tìm file_name có sẵn trong IDE(như Visual Studio) của bạn và chèn vào file mà chúng ta đang viết, nếu tìm không thấy file_name thì trình biên dịch sẽ báo lỗi. Các file có sẵn trong IDE như stdio.h, math.h, conio.h,.. ```#include <stdio.h>```
+
+```#include “file_name”```
+
+Khi sử dụng cú pháp 2, bộ tiền xử lý sẽ tìm file_name trong các thư mục trên máy tính của chúng ta, khi tìm không thấy thì tiếp tục tìm trong các file có sẵn trong IDE. Nếu tìm được file_name thì chèn file_name vào file đang thao tác, còn vẫn không tìm thấy file_name thì trình biên dịch sẽ báo lỗi.
+      
 
 ***2. Cộng đoạn dịch Ngôn Ngữ Bậc Cao sang Assembly***
 
@@ -466,7 +504,65 @@ Chính vì vậy mà các lỗi liên quan đến việc gọi hàm hay sử d�
 
 Kết thúc quá trình tất cả các đối tượng được liên kết lại với nhau thành một chương trình có thể thực thi được (executable hay .exe) thống nhất.
 </details>
+
+##
+<details>
+	<summary> Macro - Function </summary>
+
+### Chỉ thị #indef ( if not define )
+
+#ifndef identifier
+
+     //Đoạn chương trình 1
+
+#else
+
+     //Đoạn chương trình 2
+
+#endif
+
+ Các chỉ thị điều kiện ở trên, thường được sử dụng cho việc xử lý xung đột thư viện khi chúng ta #include nhiều thư viện. 
+
+## Sự khác nhau giữa Macro, Inline và Function
+### 1. Macro:
+•	Được xử lý bởi preprocessor
+
+•	Thay thế đoạn code được khai báo macro vào bất cứ chỗ nào xuất hiện macro đó
+
+•	VD: #define SUM(a,b)     (a+b)
+
+•	Preprocessor khi gặp bất kỳ lời gọi SUM(first+last) nào thì thay ngay bằng (first+last)
+
+### 2. Inline
+•	Được xử lý bởi compiler
+
+•	Được khai báo với từ khóa inline
+
+•	Khi compiler thấy bất kỳ chỗ nào xuất hiện inline function, nó sẽ thay thế chỗ đó bởi định nghĩa của hàm đã được compile tương ứng. –> Phần được thay thế không phải code mà là đoạn code đã được compile.
+	
+### 3. Hàm bình thường
+•	Khi thấy hàm được gọi, compiler sẽ phải lưu con trỏ chương trình PC hiện tại vào stack; chuyển PC tới hàm được gọi, thực hiện hàm đó xong và lấy kết quả trả về; sau đó quay lại vị trí ban đầu trong stack trước khi gọi hàm và tiếp tục thực hiện chương trình.
+
+•	Như có thể thấy, các này khiến chương trình tốn thời gian hơn là chỉ cần thay thế đoạn code đã được compile (cách của inline function).
+
+### 4. So sánh
+•	Macro đơn giản là chỉ thay thế đoạn code macro vào chỗ được gọi trước khi được biên dịch.
+
+•	Inline thay thế đoạn mã code đã được biên dịch vào chỗ được gọi
+
+•	Hàm bình thường phải tạo một function call, lưu địa chỉ trước khi gọi hàm vào stack sau đó mới thực hiện hàm và sau cùng là quay trở về địa chỉ trên stack trước khi gọi hàm và thực hiện tiếp chương trình
+
+•	Macro khiến code trở nên dài hơn rất nhiều so với bình thường nhưng thời gian chạy nhanh.
+
+•	Hàm inline cũng khiến code dài hơn, tuy nhiên nó làm giảm thời gian chạy chương trình
+
+•	Hàm bình thường sẽ phải gọi function call nên tốn thời gian hơn inline function nhưng code ngắn gọn hơn.
+
+
 </details>
+</details>
+
+
 
 ##
 <details>
