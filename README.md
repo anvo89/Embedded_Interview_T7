@@ -14,10 +14,10 @@ Là những biến lưu trữ địa chỉ bộ nhớ của những biến khác
 
  * Giá trị của con trỏ: địa chỉ mà con trỏ trỏ đến.
 
-* Địa chỉ của con trỏ: địa chỉ của bản thân biến con trỏ đó.
- 
-* Địa chỉ của biến nơi con trỏ đang trỏ tới = giá trị của con trỏ.
-  
+ * Địa chỉ của con trỏ: địa chỉ của bản thân biến con trỏ đó.
+
+ * Giá trị của địa chỉ  = giá trị của biến
+   
 *Kích thước của các biến con trỏ có khác nhau không?*
 
 Con trỏ chỉ lưu địa chỉ nên kích thước của mọi con trỏ là như nhau. Kích thước này phụ thuộc vào môi trường hệ thống máy tính:
