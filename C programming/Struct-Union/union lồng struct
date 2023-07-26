@@ -1,0 +1,19 @@
+#include <stdio.h>
+
+typedef Union{
+    struct{
+        uint8_t id[1];
+        uint8_t data[3];
+        uint8_t checkSum[1];
+    }object;
+    uint8_array[5];  // dia chi array = dia chi struct
+}dataFrame;
+int main ()
+{
+test.object.id[0]=0x01;
+test.object.id[1]=0x02;
+test.object.data[0]=0xC1;
+test.object.data[1]=0xF8;
+// kỹ thuật truyền data trong nhúng
+return 0;
+}
