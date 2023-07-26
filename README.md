@@ -463,8 +463,25 @@ Giai đoạn này sẽ thực hiện:
 - Xóa bỏ tất cả chú thích, comments của chương trình
   
 - Chỉ thị tiền xử lý (bắt đầu bằng #) cũng được xử lý
+
+	+ Chỉ thị bao hàm tệp (#include).
+
+	+ Chỉ thị định nghĩa cho tên (#define macro).
+
+	+ Chỉ thị biên dịch có điều kiện (#if, #else, #elif, #endif, …).
   
 *Ví dụ: chỉ thị #include cho phép ghép thêm mã chương trình của một tệp tiêu để vào mã nguồn cần dịch. Các hằng số được định nghĩa bằng #define sẽ được thay thế bằng giá trị cụ thể tại mỗi nơi sử dụng trong chương trình.*
+
+***Note***
+
+```#include <file_name>```
+
+Với cú pháp 1, bộ tiền xử lý sẽ tìm file_name có sẵn trong IDE(như Visual Studio) của bạn và chèn vào file mà chúng ta đang viết, nếu tìm không thấy file_name thì trình biên dịch sẽ báo lỗi. Các file có sẵn trong IDE như stdio.h, math.h, conio.h,.. ```#include <stdio.h>```
+
+```#include “file_name”```
+
+Khi sử dụng cú pháp 2, bộ tiền xử lý sẽ tìm file_name trong các thư mục trên máy tính của chúng ta, khi tìm không thấy thì tiếp tục tìm trong các file có sẵn trong IDE. Nếu tìm được file_name thì chèn file_name vào file đang thao tác, còn vẫn không tìm thấy file_name thì trình biên dịch sẽ báo lỗi.
+      
 
 ***2. Cộng đoạn dịch Ngôn Ngữ Bậc Cao sang Assembly***
 
@@ -491,6 +508,43 @@ Kết thúc quá trình tất cả các đối tượng được liên kết l�
 ##
 <details>
 	<summary> Macro - Function </summary>
+
+## Sự khác nhau giữa Macro, Inline và Function
+### 1. Macro:
+•	Được xử lý bởi preprocessor
+
+•	Thay thế đoạn code được khai báo macro vào bất cứ chỗ nào xuất hiện macro đó
+
+•	VD: #define SUM(a,b)     (a+b)
+
+•	Preprocessor khi gặp bất kỳ lời gọi SUM(first+last) nào thì thay ngay bằng (first+last)
+
+### 2. Inline
+•	Được xử lý bởi compiler
+
+•	Được khai báo với từ khóa inline
+
+•	Khi compiler thấy bất kỳ chỗ nào xuất hiện inline function, nó sẽ thay thế chỗ đó bởi định nghĩa của hàm đã được compile tương ứng. –> Phần được thay thế không phải code mà là đoạn code đã được compile.
+	
+### 3. Hàm bình thường
+•	Khi thấy hàm được gọi, compiler sẽ phải lưu con trỏ chương trình PC hiện tại vào stack; chuyển PC tới hàm được gọi, thực hiện hàm đó xong và lấy kết quả trả về; sau đó quay lại vị trí ban đầu trong stack trước khi gọi hàm và tiếp tục thực hiện chương trình.
+
+•	Như có thể thấy, các này khiến chương trình tốn thời gian hơn là chỉ cần thay thế đoạn code đã được compile (cách của inline function).
+
+### 4. So sánh
+•	Macro đơn giản là chỉ thay thế đoạn code macro vào chỗ được gọi trước khi được biên dịch.
+
+•	Inline thay thế đoạn mã code đã được biên dịch vào chỗ được gọi
+
+•	Hàm bình thường phải tạo một function call, lưu địa chỉ trước khi gọi hàm vào stack sau đó mới thực hiện hàm và sau cùng là quay trở về địa chỉ trên stack trước khi gọi hàm và thực hiện tiếp chương trình
+
+•	Macro khiến code trở nên dài hơn rất nhiều so với bình thường nhưng thời gian chạy nhanh.
+
+•	Hàm inline cũng khiến code dài hơn, tuy nhiên nó làm giảm thời gian chạy chương trình
+
+•	Hàm bình thường sẽ phải gọi function call nên tốn thời gian hơn inline function nhưng code ngắn gọn hơn.
+
+
 </details>
 </details>
 
