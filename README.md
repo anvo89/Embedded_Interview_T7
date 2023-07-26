@@ -509,7 +509,9 @@ Kết thúc quá trình tất cả các đối tượng được liên kết l�
 <details>
 	<summary> Macro - Function </summary>
 
-### Chỉ thị #indef ( if not define )
+### Chỉ thị biên dịch có điều kiện
+
+**ifndef ( if not define )**
 
 #ifndef identifier
 
@@ -522,6 +524,31 @@ Kết thúc quá trình tất cả các đối tượng được liên kết l�
 #endif
 
  Các chỉ thị điều kiện ở trên, thường được sử dụng cho việc xử lý xung đột thư viện khi chúng ta #include nhiều thư viện. 
+
+ **#if, #elif, #else**
+
+Cú pháp:
+
+```C
+
+#if constant-expression_1
+
+// Đoạn chương trình 1
+
+#elif  constant-expression_2
+
+// Đoạn chương trình 2
+
+#else
+
+//Đoạn chương trình 3
+
+#endif
+```
+
+Nếu constant-expression_1 true thì chỉ có đoạn chương trình 1 sẽ được biên dịch, trái lại nếu constant-expression_1 false thì sẽ tiếp tục kiểm ta đến constan-expression_2. Nếu vẫn chưa đúng thì đoạn chương trình trong chỉ thị #else được biên dịch .
+
+Các constant-expression là biểu thức mà các toán hạng trong đó đều là hằng, các tên đã được định nghĩa bởi các #define cũng được xem là các hằng.
 
 ## Sự khác nhau giữa Macro, Inline và Function
 ### 1. Macro:
