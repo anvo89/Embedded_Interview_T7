@@ -487,7 +487,14 @@ Chính vì vậy mà các lỗi liên quan đến việc gọi hàm hay sử d�
 
 Kết thúc quá trình tất cả các đối tượng được liên kết lại với nhau thành một chương trình có thể thực thi được (executable hay .exe) thống nhất.
 </details>
+
+##
+<details>
+	<summary> Macro - Function </summary>
 </details>
+</details>
+
+
 
 ##
 <details>
