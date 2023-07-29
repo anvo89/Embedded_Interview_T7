@@ -14,10 +14,10 @@ Là những biến lưu trữ địa chỉ bộ nhớ của những biến khác
 
  * Giá trị của con trỏ: địa chỉ mà con trỏ trỏ đến.
 
-* Địa chỉ của con trỏ: địa chỉ của bản thân biến con trỏ đó.
- 
-* Địa chỉ của biến nơi con trỏ đang trỏ tới = giá trị của con trỏ.
-  
+ * Địa chỉ của con trỏ: địa chỉ của bản thân biến con trỏ đó.
+
+ * Giá trị của địa chỉ  = giá trị của biến
+   
 *Kích thước của các biến con trỏ có khác nhau không?*
 
 Con trỏ chỉ lưu địa chỉ nên kích thước của mọi con trỏ là như nhau. Kích thước này phụ thuộc vào môi trường hệ thống máy tính:
@@ -66,8 +66,33 @@ output:
 
 	gia tri cua dia chi : 10
 
+### Hằng con trỏ
+
+```<Kiểu dữ liệu> * const <Tên con trỏ> = <Địa chỉ khởi tạo> ;```
+
+*Đặc điểm:*
+– Cần gán ngay giá trị địa chỉ khởi tạo cho hằng con trỏ tại câu lệnh khai báo ban đầu.
+
+– Không thể thay đổi địa chỉ đã được khởi gán cho hằng con trỏ ( sẽ gây ra lỗi).
+
+– Có thể thay đổi giá trị tại địa chỉ đã khởi gián ban đầu.
+
+
+### Con trỏ hằng
+
+```const <Kiểu dữ liệu> * <Tên con trỏ>;```
+
+*Đặc điểm:*
+
+– Không được phép dùng trực tiếp con trỏ hằng để thay đổi giá trị tại vùng nhớ mà con trỏ hằng đang trỏ đến.
+
+– Con trỏ hằng có thể thể thay đổi địa chỉ trỏ tới (hay nói cách khác: nó có thể trỏ đến các ô nhớ khác nhau).
+
+[Link tham khảo](https://deviot.vn/tutorials/c-co-ban.78025672/con-tro-hang-va-hang-con-tro.06982839)
+
 ### **Con trỏ Void** 
-Là một con trỏ tổng quát, nó không trỏ đến các đối tượng của bất kì kiểu dữ liệu nào
+
+Nó có thể lưu trữ địa chỉ của mọi kiểu biến dữ liệu
 
 *Khai báo* : ```C void *ptr;```
 ```C
@@ -264,6 +289,14 @@ void free(void *ptr);
 
 Biến static được cấp phát bộ nhớ trong data segment
 
+### Biến cục bộ là gì?
+
+Các biến được khai báo trong 1 khối code thuộc lớp lưu trữ tự động (automatic or local variable) – hay chính là các biến cục bộ. Các biến cục bộ này chỉ tồn tại và chỉ có thể sử dụng bên trong khối code đó trong khi khối code đó đang thực thi.
+
+### Biến toàn cục là gì?
+
+Các biến được khai báo ở bên ngoài tất cả các hàm thì được gọi là biến toàn cục (external  or global variable). Các biến toàn cục có thể truy xuất và sử dụng ở mọi hàm trong chương trình. Biến toàn cục cũng tồn tại cho tới khi chương trình kết thúc.
+
 ### ***1. Biến static cục bộ***
 
 Khi 1 biến cục bộ được khai báo với từ khóa static. Biến sẽ chỉ được khởi tạo 1 lần duy nhất và tồn tại suốt thời gian chạy chương trình. Giá trị của nó không bị mất đi ngay cả khi kết thúc hàm. Tuy nhiên khác với biến toàn cục có thể gọi trong tất cả mọi nơi trong chương trình, thì biến cục bộ static chỉ có thể được gọi trong nội bộ hàm khởi tạo ra nó. Mỗi lần hàm được gọi, giá trị của biến chính bằng giá trị tại lần gần nhất hàm được gọi.
@@ -283,8 +316,6 @@ int main() {
    in_so_thu_tu ();         //giá trị của x tăng lên 1 đơn vị từ 0
    in_so_thu_tu ();         //giá trị của x tăng lên 1 đơn vị từ 1
    in_so_thu_tu ();         //giá trị của x tăng lên 1 đơn vị từ 2
-   in_so_thu_tu ();         //giá trị của x tăng lên 1 đơn vị từ 3
-   in_so_thu_tu ();         //giá trị của x tăng lên 1 đơn vị từ 4
    return 0;
 }
 ```
@@ -474,13 +505,11 @@ Giai đoạn này sẽ thực hiện:
 
 ***Note***
 
-```#include <file_name>```
+Sự khác nhau giữa #include <filename> and #include “filename” nằm ở khâu tìm kiếm file header của tiền xử lý trước quá trình biên dịch.
 
-Với cú pháp 1, bộ tiền xử lý sẽ tìm file_name có sẵn trong IDE(như Visual Studio) của bạn và chèn vào file mà chúng ta đang viết, nếu tìm không thấy file_name thì trình biên dịch sẽ báo lỗi. Các file có sẵn trong IDE như stdio.h, math.h, conio.h,.. ```#include <stdio.h>```
+**#include <filename>**: tiền xử lý (pre-processor) sẽ chỉ tìm kiếm file header (.h) trong thư mục chứa file header của thư viện ngôn ngữ C (thường là thư mục trong bộ cài IDE).
 
-```#include “file_name”```
-
-Khi sử dụng cú pháp 2, bộ tiền xử lý sẽ tìm file_name trong các thư mục trên máy tính của chúng ta, khi tìm không thấy thì tiếp tục tìm trong các file có sẵn trong IDE. Nếu tìm được file_name thì chèn file_name vào file đang thao tác, còn vẫn không tìm thấy file_name thì trình biên dịch sẽ báo lỗi.
+**#include “filename”**: Trước tiên, tiền xử lý (pre-processor) tìm kiếm file header(.h) trong thư mục đặt project C/C++. Nếu không tìm thấy, tiền xử lý tìm kiếm file header (.h) trong thư mục chứa file header của thư viện ngôn ngữ C (thường là thư mục trong bộ cài IDE).
       
 
 ***2. Cộng đoạn dịch Ngôn Ngữ Bậc Cao sang Assembly***
@@ -509,7 +538,9 @@ Kết thúc quá trình tất cả các đối tượng được liên kết l�
 <details>
 	<summary> Macro - Function </summary>
 
-### Chỉ thị #indef ( if not define )
+### Chỉ thị biên dịch có điều kiện
+
+**ifndef ( if not define )**
 
 #ifndef identifier
 
@@ -522,6 +553,31 @@ Kết thúc quá trình tất cả các đối tượng được liên kết l�
 #endif
 
  Các chỉ thị điều kiện ở trên, thường được sử dụng cho việc xử lý xung đột thư viện khi chúng ta #include nhiều thư viện. 
+
+ **#if, #elif, #else**
+
+Cú pháp:
+
+```C
+
+#if constant-expression_1
+
+// Đoạn chương trình 1
+
+#elif  constant-expression_2
+
+// Đoạn chương trình 2
+
+#else
+
+//Đoạn chương trình 3
+
+#endif
+```
+
+Nếu constant-expression_1 true thì chỉ có đoạn chương trình 1 sẽ được biên dịch, trái lại nếu constant-expression_1 false thì sẽ tiếp tục kiểm ta đến constan-expression_2. Nếu vẫn chưa đúng thì đoạn chương trình trong chỉ thị #else được biên dịch .
+
+Các constant-expression là biểu thức mà các toán hạng trong đó đều là hằng, các tên đã được định nghĩa bởi các #define cũng được xem là các hằng.
 
 ## Sự khác nhau giữa Macro, Inline và Function
 ### 1. Macro:
@@ -558,6 +614,7 @@ Kết thúc quá trình tất cả các đối tượng được liên kết l�
 
 •	Hàm bình thường sẽ phải gọi function call nên tốn thời gian hơn inline function nhưng code ngắn gọn hơn.
 
+[Các câu hỏi phỏng vấn tham khảo](https://deviot.vn/blog/tuyen-tap-cac-cau-hoi-phong-van-c-phan-1.17500622)
 
 </details>
 </details>
