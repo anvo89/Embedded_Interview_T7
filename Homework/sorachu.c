@@ -1,21 +1,19 @@
 #include <stdio.h>
 
-char *number[] = {"", "một", "hai", "ba", "bốn", "năm", "sáu", "bảy", "tám", "chín"};
+char *number[] = {"không", "một", "hai", "ba", "bốn", "năm", "sáu", "bảy", "tám", "chín"};
 char *unit[] = {"", "mươi", "trăm", "nghìn", "triệu", "tỷ"};
 
 void print_hundreds(int digit) {
-    if (digit != 0) {
-        printf("%s ", number[digit]);
-        printf("%s ", unit[2]);
-    }
+    printf("%s ", number[digit]);
+    printf("%s ", unit[2]);
 }
 
 void print_tens(int digit) {
-    if (digit == 0) {
-        printf("linh ");
-    } else {
+    if (digit > 0) {
         printf("%s ", number[digit]);
         printf("%s ", unit[1]);
+    } else {
+        printf("linh ");
     }
 }
 
@@ -39,29 +37,53 @@ void convert_to_word(int num) {
         num_digits++;
     }
 
-    // In cách đọc số theo yêu cầu
-    int unitIndex = (num_digits - 1) / 3;
-    for (int j = num_digits - 1; j >= 0; j--) {
-        int position = num_digits - j - 1;
+    int continuous_zeros = 0; // Số lượng số 0 liên tục
 
-        if ((position == 1 || position == 4 || position == 7) && digits[j] != 0) {
-            if (digits[j] == 1) {
-                printf("mười ");
-            } else {
+    // In cách đọc số theo yêu cầu
+    for (int j = num_digits - 1; j >= 0; j--) {
+        if (digits[j] == 0) {
+            continuous_zeros++;
+        } else {
+            if (continuous_zeros > 0) {
+                // Xử lý trường hợp số 0 liên tục
+                for (int k = 0; k < continuous_zeros; k++) {
+                    if (k == continuous_zeros - 1 && (j == 3 || j == 6 || j == 9)) {
+                        printf("%s ", unit[(j / 3) + 1]);
+                    } 
+                }
+                continuous_zeros = 0;
+            }
+            
+            if (j == 4 && digits[3] == 0) {
+                printf("%s ", number[digits[j]]);
+                printf("mươi nghìn ");
+            } 
+            else if (j==4&&digits[4]==1 &&digits[3]==0){
+                printf("mười nghìn");
+        }
+            else if ((j == 1 || j == 4 || j == 7 || j == 10)) {
                 print_tens(digits[j]);
             }
-            printf("%s ", unit[position / 3]);
-        } else if ((position == 2 || position == 5 || position == 8) && digits[j] != 0) {
-            printf("%s ", number[digits[j]]);
-            printf("%s ", unit[position / 3]);
-        } else if ((position == 0 || position == 3 || position == 6 || position == 9) && digits[j] != 0) {
-            print_hundreds(digits[j]);
-            if (position == 3) {
+            else if ((j == 2 || j == 5 || j == 8 || j == 11)) {
+                print_hundreds(digits[j]);
+            }
+            else if (j == 3 && digits[3] >0) {
+                printf("%s ", number[digits[j]]);
                 printf("%s ", unit[3]);
-            } else if (position == 6) {
+            }
+            else if (j == 3 && digits[3] ==0) {
+                printf("%s ",unit[0] );
+            }
+            else if (j == 6) {
+                printf("%s ", number[digits[j]]);
                 printf("%s ", unit[4]);
-            } else if (position == 9) {
+            }
+            else if (j == 9) {
+                printf("%s ", number[digits[j]]);
                 printf("%s ", unit[5]);
+            }
+            else {
+                printf("%s ", number[digits[j]]);
             }
         }
     }
