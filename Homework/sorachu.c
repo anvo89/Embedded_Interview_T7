@@ -50,33 +50,39 @@ void convert_to_word(int num) {
                     if (k == continuous_zeros - 1 && (j == 3 || j == 6 || j == 9)) {
                         printf("%s ", unit[(j / 3) + 1]);
                     } 
+        else if (digits[1]==0){
+                        printf("linh ");
+                        }
+                    
                 }
                 continuous_zeros = 0;
             }
             
-            if (j == 4 && digits[3] == 0) {
+            if (j == 4 && digits[3] == 0&& digits[4]!=1) {
                 printf("%s ", number[digits[j]]);
                 printf("mươi nghìn ");
             } 
-            else if (j==4&&digits[4]==1 &&digits[3]==0){
-                printf("mười nghìn");
+                else if (digits[4]==1 &&digits[3]==0){
+                printf("mười nghìn ");
         }
+
             else if ((j == 1 || j == 4 || j == 7 || j == 10)) {
-                if (j==1 && digits[1]==1){
+                if (j == 1 && digits[1] == 1) {
                     printf("mười ");
+                } else {
+                    print_tens(digits[j]);
                 }
-                else 
-                print_tens(digits[j]);
             }
+            
             else if ((j == 2 || j == 5 || j == 8 || j == 11)) {
                 print_hundreds(digits[j]);
             }
-            else if (j == 3 && digits[3] >0) {
+            else if (j == 3 && digits[3] > 0) {
                 printf("%s ", number[digits[j]]);
                 printf("%s ", unit[3]);
             }
-            else if (j == 3 && digits[3] ==0) {
-                printf("%s ",unit[0] );
+            else if (j == 3 && digits[3] == 0) {
+                printf("%s ", unit[0]);
             }
             else if (j == 6) {
                 printf("%s ", number[digits[j]]);
@@ -85,6 +91,9 @@ void convert_to_word(int num) {
             else if (j == 9) {
                 printf("%s ", number[digits[j]]);
                 printf("%s ", unit[5]);
+            }
+            else if (digits[0] == 5) {
+                printf("lăm");
             }
             else {
                 printf("%s ", number[digits[j]]);
