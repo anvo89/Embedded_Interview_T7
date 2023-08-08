@@ -51,18 +51,16 @@ void convert_to_word(int num) {
                         printf("%s ", unit[(j / 3) + 1]);
                     }
                 
-        
-                else if(continuous_zeros>0 &&digits[0]!=0){
-                    if (digits[2]==0||digits[5]==0||digits[8]){
-                        printf("không trăm ");
+        else if ((k == continuous_zeros - 1 && digits[1]==0) ){
+                       
+                    printf("linh ");
+                    }
+                    else {
+                    printf("khong trăm ");
                     }
                 }
-                 if(continuous_zeros>0 &&digits[0]!=0){
-                    if (digits[1]==0){
-                        printf("linh ");
-                    }
                 continuous_zeros = 0;
-            }}
+            
             }
             if (j == 4 && digits[3] == 0&& digits[4]!=1) {
                 printf("%s ", number[digits[j]]);
