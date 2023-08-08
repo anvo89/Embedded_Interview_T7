@@ -73,7 +73,7 @@ void convert_to_word(int num) {
         }
 
             else if ((j == 1 || j == 4 || j == 7 || j == 10)) {
-                if (j == 1 && digits[1] == 1) {
+                if (j == 1 && digits[1] == 1||j==4&&digits[4]==1) {
                     printf("mười ");
                 } else {
                     print_tens(digits[j]);
