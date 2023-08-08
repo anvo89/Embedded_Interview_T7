@@ -47,17 +47,23 @@ void convert_to_word(int num) {
             if (continuous_zeros > 0) {
                 // Xử lý trường hợp số 0 liên tục
                 for (int k = 0; k < continuous_zeros; k++) {
-                    if (k == continuous_zeros - 1 && (j == 3 || j == 6 || j == 9)) {
+                    if (k == continuous_zeros - 1 && (j == 3 || j == 6 || j == 9)&&digits[3]!=0) {
                         printf("%s ", unit[(j / 3) + 1]);
-                    } 
-        else if (digits[1]==0){
-                        printf("linh ");
-                        }
-                    
+                    }
+                
+        
+                else if(continuous_zeros>0 &&digits[0]!=0){
+                    if (digits[2]==0||digits[5]==0||digits[8]){
+                        printf("không trăm ");
+                    }
                 }
+                 if(continuous_zeros>0 &&digits[0]!=0){
+                    if (digits[1]==0){
+                        printf("linh ");
+                    }
                 continuous_zeros = 0;
+            }}
             }
-            
             if (j == 4 && digits[3] == 0&& digits[4]!=1) {
                 printf("%s ", number[digits[j]]);
                 printf("mươi nghìn ");
@@ -75,8 +81,12 @@ void convert_to_word(int num) {
             }
             
             else if ((j == 2 || j == 5 || j == 8 || j == 11)) {
+                if (j==2&&digits[2]==0){
+                    printf("không trăm");
+                }
+                else{
                 print_hundreds(digits[j]);
-            }
+            }}
             else if (j == 3 && digits[3] > 0) {
                 printf("%s ", number[digits[j]]);
                 printf("%s ", unit[3]);
