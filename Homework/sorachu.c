@@ -62,6 +62,10 @@ void convert_to_word(int num) {
                 printf("mười nghìn");
         }
             else if ((j == 1 || j == 4 || j == 7 || j == 10)) {
+                if (j==1 && digits[1]==1){
+                    printf("mười ");
+                }
+                else 
                 print_tens(digits[j]);
             }
             else if ((j == 2 || j == 5 || j == 8 || j == 11)) {
