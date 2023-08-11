@@ -38,5 +38,5 @@ typedef struct {
 
 bool isValidDate(int day, int month, int year);
 int isLeapYear(uint16_t year);
-
+int getDayOfWeek(int day, int month, int year);
 #endif

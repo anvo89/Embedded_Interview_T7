@@ -1,5 +1,4 @@
 #include "date.h"
-#include <stdio.h>
 
 const char *days[] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
 

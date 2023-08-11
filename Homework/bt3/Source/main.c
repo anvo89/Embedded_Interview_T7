@@ -1,5 +1,7 @@
-#include <stdio.h>
 #include "date.h"
+#include <stdio.h>
+
+extern const char *days[];
 
 int main() {
     int day, month, year;
