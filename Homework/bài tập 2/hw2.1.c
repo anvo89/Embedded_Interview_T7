@@ -100,7 +100,7 @@ void convert_to_word(int num) {
                 printf("%s ", number[digits[j]]);
                 printf("%s ", unit[5]);
             }
-            else if (digits[0] == 5) {
+            else if (digits[0] == 5 &&digits[1]!=0) {
                 printf("lăm");
             }
             else {
