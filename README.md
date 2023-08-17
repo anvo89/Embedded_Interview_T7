@@ -870,3 +870,11 @@ int **ptr_ptr; // pointer to pointer to value of type int
 <details>
 <summary>Variable</summary>
 ..
+</details>
+</details>
+</details>
+	
+</details>
+
+##
+## C++ programming
