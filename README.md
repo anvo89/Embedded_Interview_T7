@@ -624,5 +624,63 @@ Các constant-expression là biểu thức mà các toán hạng trong đó đ�
 ##
 <details>
 <summary>C++ programming</summary>	
+
+ ##
+ <details>
+	<Summary>Count,Cin,Endl  </Summary>
+
+ ### I/O Library Header
+ 
+ **iostream** : Nó được sử dụng để định nghĩa các đối tượng cout, cin và cerr tương ứng với luồng đầu ra tiêu chuẩn, luồng đầu vào tiêu chuẩn và luồng lỗi tiêu chuẩn tương ứng.
+
+ ### Cout
+
+**Cout** là một đối tượng được xác định trước của lớp ostream. Nó được kết nối với thiết bị đầu ra tiêu chuẩn, thường là màn hình hiển thị. Cout được sử dụng kết hợp với toán tử (<<) để hiển thị đầu ra trên console.
+
+```C++
+#include <iostream>
+ 
+using namespace std;
+ 
+int main() {
+    char charArr[] = "Welcome to C++ tut!";  
+    cout << "Value of charArr is: " << charArr << endl;  
+}
+```
+### Cin
+
+**cin** là một đối tượng được xác định trước của lớp istream. Nó được kết nối với thiết bị đầu vào tiêu chuẩn, mà thường là một bàn phím. Cin được sử dụng cùng với toán tử (>>) để đọc đầu vào từ console.
+```C++
+#include <iostream>
+ 
+using namespace std;
+ 
+int main() {
+    int age; 
+    cout << "Enter your age: ";
+    cin >> age;
+    cout << "Your age is: " << age << endl;
+}
+```
+### Endl
+
+**endl** là một đối tượng được xác định trước của lớp ostream. Nó được sử dụng để chèn một ký tự xuống dòng.
+```C
+#include <iostream>
+ 
+using namespace std;
+ 
+int main() {
+    cout << "Learn";
+    cout << " C++"<< endl;
+    cout << "New line" << endl;
+}
+```
+
+
+
+
+
+		
 </details>
 
