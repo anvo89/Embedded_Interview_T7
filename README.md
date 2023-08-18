@@ -627,7 +627,7 @@ Các constant-expression là biểu thức mà các toán hạng trong đó đ�
 
  ##
  <details>
-	<Summary>Count,Cin,Endl  </Summary>
+	<Summary>Cout,Cin,Endl  </Summary>
 
  ### I/O Library Header
  
@@ -675,12 +675,38 @@ int main() {
     cout << " C++"<< endl;
     cout << "New line" << endl;
 }
-```
-
-
-
-
-
-		
+```		
 </details>
 
+ ##
+ <details>
+	<Summary> Class  </Summary>
+
+## Class là gì?
+
+**Class** hay lớp là một mô tả trừu tượng (abstract) của nhóm các đối tượng (object) có cùng bản chất, ngược lại mỗi một đối tượng là một thể hiện cụ thể (instance) cho 
+những mô tả trừu tượng đó. Một class trong C++ sẽ có các đặc điểm sau:
+
+	* Một class bao gồm các thành phần dữ liệu (thuộc tính hay property) và các phương thức (hàm thành phần hay method).
+
+	* Class thực chất là một kiểu dữ liệu do người lập trình định nghĩa.
+ 
+	* Trong C++, từ khóa class sẽ chỉ điểm bắt đầu của một class sẽ được cài đặt. 
+
+Ví dụ về một class đơn giản, class Car. Một chiếc xe hơi vậy thì sẽ có chung những đặc điểm là đều có vô lăng, có bánh xe nhiều hơn 3, có động cơ… Đó là một class, 
+một cái model hay mẫu mà người ta đã quy định là nếu đúng như vậy thì nó là xe hơi. Nhưng mà xe thì có thể có nhiều hãng khác nhau, BMW, Vinfast, Toyota… Thì 
+mỗi hãng xe lại có những model xe khác nhau nhưng chúng đều là xe hơi. Vậy thì trong lập trình cũng vậy, class là quy định ra một mẫu, một cái model mà các thể 
+hiện của nó (instance) hay đối tượng (object) phải tuân theo.
+
+### Khai báo class và sử dụng class
+```C
+class Person {
+ public:
+ string firstName; // property
+ string lastName; // property
+ int age; // property
+ void fullname() { // method
+ cout << firstName << ' ' << lastName;
+ }
+}
+```
