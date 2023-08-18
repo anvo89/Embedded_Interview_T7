@@ -770,7 +770,14 @@ Class là 1 reference type. Do đó, nếu không cẩn thận khi truyền bi�
   
 * Cần sử dụng reference type (Thay vì việc tạo ra các bản sao, thì 1 instance kiểu reference type sẽ tự truyền đi 1 tham chiếu tới chính nó khi được gán cho các insstance khác hoặc khi được truyền vào hàm.)
 
+[Link tham khảo](https://magz.techover.io/2020/03/01/su-khac-biet-giua-struct-va-class/)
 
+## Phạm vi truy cập ( Access modifiers )
+
+Access modifier là phạm vi truy cập của các thuộc tính và phương thức sẽ được khai báo bên dưới nó. Có 3 phạm vi truy cập trong C++ là public, private và protected.
+* Các thuộc tính và phương thức khai báo public thì có thể được truy cập trực tiếp thông qua instance của class đó. Các thuộc tính nên khai báo là public nếu bạn không có ràng buộc điều kiện trước khi gán (người dùng có thể thoải mái gán giá trị) hoặc bạn không cần xử lý trước khi trả về giá trị thuộc tính;
+* Các thuộc tính private thường được sử dụng khi bạn không mong muốn người khác có thể tùy ý gán giá trị hoặc là bạn muốn xử lý trước khi trả về giá trị.
+* Đối với protected, các phương thức và thuộc tính chỉ có thể truy cập qua các class kế thừa nó hoặc chính nó.
 
 
 
