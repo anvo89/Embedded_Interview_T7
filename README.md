@@ -755,8 +755,20 @@ struct Car {
 
 let car1 = Car(color: .red, price: 5000)
 ```
+Class có thể kế thừa, còn struct thì không. Class hỗ trợ kế thừa, có thể tạo ra các class con kế thừa từ class cha để mang những thuộc tính, phương thức của class cha. Có thể thấy class hỗ trợ lập trình OOP tốt hơn struct.
 
+### Khi nào nên sử dụng struct / class?
 
+***Recommend sử dụng struct bởi:***
+
+Struct nhanh hơn class bởi struct sử dụng method dispatch là static dispatch, class sử dụng dynamic dispatch. Ngoài ra, struct lưu dữ liệu trong stack, còn class sử dụng stack + heap -> Xử lí trong class sẽ lâu hơn.
+Class là 1 reference type. Do đó, nếu không cẩn thận khi truyền biến sẽ dễ gây ra lỗi ngoài ý muốn ( Xem phần value type vs reference type ở trên). -> Sử dụng struct sẽ an toàn hơn.
+
+***Nên sử dụng class khi:***
+
+* Cần sử dụng kế thừa.
+  
+* Cần sử dụng reference type (Thay vì việc tạo ra các bản sao, thì 1 instance kiểu reference type sẽ tự truyền đi 1 tham chiếu tới chính nó khi được gán cho các insstance khác hoặc khi được truyền vào hàm.)
 
 
 
