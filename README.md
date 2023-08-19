@@ -710,6 +710,14 @@ class Person {
  }
 }
 ```
+### Cú pháp tạo object của một class và sử dụng các thuộc tính và phương thức:
+
+```C++
+Person person;
+person.firstName = "Khiem";
+person.lastName = "Le";
+person.fullname(); // sẽ in ra màn hình là "Khiem Le"
+```
 ## So sánh giữa Struct và Class
 
 ### Giống nhau:
@@ -771,6 +779,99 @@ Class là 1 reference type. Do đó, nếu không cẩn thận khi truyền bi�
 * Cần sử dụng reference type (Thay vì việc tạo ra các bản sao, thì 1 instance kiểu reference type sẽ tự truyền đi 1 tham chiếu tới chính nó khi được gán cho các insstance khác hoặc khi được truyền vào hàm.)
 
 [Link tham khảo](https://magz.techover.io/2020/03/01/su-khac-biet-giua-struct-va-class/)
+
+## Hàm tạo, Hàm hủy (Constructor,Destructor)
+
+**Constructor** hay hàm dựng là một hàm đặc biệt, nó sẽ được gọi ngay khi chúng ta khởi tạo một object.
+
+
+Constructor trong C++ có thể được chia thành 2 loại:
+
+* Constructor mặc định.
+* Constructor có tham số.
+
+### Constructor mặc định
+
+Một constructor không có đối số được gọi là constructor mặc định
+```C++
+#include <iostream>
+ 
+using namespace std;
+ 
+class Employee {
+public:
+    Employee() {
+        cout << "Constructor mac dinh duoc goi..." << endl;
+    }
+};
+ 
+int main(void) {
+    Employee e1; //tao doi tuong Employee
+    Employee e2;
+    return 0;
+}
+```
+### Constructor có tham số
+
+Một constructor có tham số được gọi là constructor tham số hóa. Nó được sử dụng để cung cấp các giá trị khác nhau cho các đối tượng riêng biệt.
+
+```C++
+#include <iostream>
+ 
+using namespace std;
+ 
+class Employee {
+public:
+    int id; // data member (bien instance)
+    string name; // data member(bien instance)
+    float salary;
+    Employee(int i, string n, float s)
+    {
+        id = i;
+        name = n;
+        salary = s;
+    }
+    void display() { cout << id << "  " << name << "  " << salary << endl; }
+};
+ 
+int main(void) {
+    Employee e1 = Employee(101, "Phan Van Vinh", 500); // tao doi tuong Employee
+    Employee e2 = Employee(102, "Dao Van Hoa", 1000);
+    e1.display();
+    e2.display();
+    return 0;
+}
+```
+### Destructor
+
+Trong khi các hàm constructors (hàm khởi tạo) được thiết kế để khởi tạo một class, thì các hàm destructors (hàm hủy) được thiết kế để hỗ trợ việc dọn dẹp bộ nhớ.
+
+Hàm hủy (Destructor) trong C++ được gọi tự động lúc đối tượng đi ra khỏi phạm vi:
+
+* Kết thúc hàm
+* Kết thúc chương trình
+* Kết thúc 1 block
+* Toán tử delete được gọi
+
+Hàm hủy trong c++ có 3 tính chất như sau:
+
+* Tên hàm hủy giống tên của class nhưng phải đặt kèm toán tử ~ đằng trước thành ~classname.
+* Hàm hủy không mang kiểu dữ liệu trong nó, cũng như không sử dụng void khi khai báo nó.
+* Hàm hủy không có tham số, cũng không trả về giá trị từ nó.
+
+```C++
+
+class MyClass {
+public:
+    MyClass();   // Hàm khởi tạo
+    ~MyClass();  // Hàm hủy
+};
+```
+
+
+
+
+
 
 ## Phạm vi truy cập ( Access modifiers )
 
