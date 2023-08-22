@@ -1,7 +1,7 @@
 # Embedded_Interview_T7
-## C programming
+
 <details>
-<summary>Tiếng Việt</summary>
+<summary> C programming </summary>
 
 ##
  <details>
@@ -618,255 +618,273 @@ Các constant-expression là biểu thức mà các toán hạng trong đó đ�
 
 </details>
 </details>
-
-
-
-##
-<details>
-<summary>English</summary>
-<details>
-	<summary>Memory Allocation </summary>
-<img src="https://i0.wp.com/media.geeksforgeeks.org/wp-content/uploads/memoryLayoutC.jpg?resize=449%2C343&ssl=1">
-
-**Text :**
-
-– Access is only Read and it does not contain instructions to execute, so avoid modifying the instruction.
-
-– Contains declaration of constants in the program (.rodata)
-
-**Data:**
-
-* Access is read-write.
-
-* Contains a global variable or a static variable with a non-zero initialized value.
-
-* Released at the end of the program.
-
-**Bss:**
-
-* Access is read-write.
-
-* Contains global or static variables with zero or zero initialization.
-
-* Released at the end of the program.
-
-**Stack:**
-
-* Access is read-write.
-
-* Used to allocate for local variables, input parameters of the function, etc.
-
-* Will be released when exiting the code/function block
-
-**Heap:**
-
-– Access is read-write.
-
-– Used to allocate dynamic memory such as: Malloc, Calloc, ...
-
-– Will be released when calling the free…
-
-***2. Stack and Heap?***
-
-• Heap memory and Stack memory are essentially the same memory area created and stored in
-RAM when the program is executed.
-
-• Stack memory is used to store local variables in functions, parameters passed in... Access
-This memory access is very fast and is executed when the program is compiled.
-
-• Heap memory is used to store memory for dynamically allocated pointer variables
-by functions malloc - calloc - realloc (in C)
-
-   **Memory size**
-
-Stack: The size of the Stack memory is fixed, depending on the operating system, for example,
-Windows operating system is 1 MB, Linux operating system is 8 MB (note that the number may vary depending on
-depending on your OS architecture).
-
-Heap: The size of the Heap memory is not fixed, it can be increased or decreased so it is responsive
-program data storage needs.
-
-   **Memory features**
-  
-Stack: Stack memory is managed by the operating system, the data stored in the Stack will automatically
-cancel when the function has done its job.
-
-Heap: The memory area Heap is managed by the programmer (in C or C++), the data in
-The heap will not be destroyed when the function is done, which means you have to manually destroy the area
-remember with the free statement (in C), and delete or delete [] (in C++), otherwise it will happen
-memory leak occurs.
-
-*Note: automatic memory cleanup depends on intermediate compiler.*
-
-   **The problem occurs with the memory area**
-  
-Stack: because Stack memory is fixed, if your program uses too much memory
-If you exceed the storage capacity of the Stack, there will definitely be a Stack overflow
-(Stack overflow), cases happen like you initialize too many local variables, file function
-limitless,...
-
-Example of Stack overflow with infinite recursion:
-```C
-  int foo(int x){
-  printf("Determined without setting\n");
-  return foo(x);
-}
-```
-
-Heap: If you continuously allocate memory without freeing it, you will get an overflow error
-Remember the Heap (Heap overflow).
-
-If you initialize a memory area too large that the heap cannot store once
-will be failed to initialize the Heap memory area.
-
-Example case initialization of Heap memory is too large:
-```C
-int *A = (int *)malloc(18446744073709551615);
-```
-**Dynamic memory allocation in C : Malloc vs Calloc**
-
-To allocate dynamic memory in C, we have 2 ways:
-```C
-void* malloc (size_t size);
-void* calloc(size_t num, size_t size);
-```
-  * When using malloc, you must calculate the size of the memory to be allocated first and then pass it on to malloc.
-  * When using calloc, just pass in the number of elements and the size of 1 element, then calloc will automatically calculate and allocate the necessary memory.
-   
-  *Example: Allocating a 10-element array of type int:*
-```C
-int *a = (int *) malloc( 10 * sizeof( int ));
-int *b = (int *) calloc( 10, sizeof( int ));
-```
-```C
-uint8_t *ptr=malloc(5) //5byte
-uint8_t *ptr=(uint8_t*)malloc(5);
-//(increase memory from 1 byte to 5byte)
-unit16_t *ptr=(uint16_t*)malloc(sizeof(unit16_t)*5);
-
-```
-*Formula of realloc() function in C*
-```C
-void *realloc(void *ptr, size_t size)
-ptr=(uint16_t*)realloc(ptr,sizeof(uint16_t)*7);
-```
-free : free memory.
-```C
-void free(void *ptr);
-```
+	
 </details>
 
 ##
 <details>
-	<summary> Pointer</summary>
+<summary>C++ programming</summary>	
 
-1. What is a pointer? Pointers in C are also just variables, can also declare, initialize and store values and have their own address.
+ ##
+ <details>
+	<Summary>Cout,Cin,Endl  </Summary>
 
-* Pointer value: the address the pointer points to.
-* Address of pointer: the address of the pointer variable itself.
-* The value of the variable where the pointer is pointing.
-* The address of the variable where the pointer is pointing = the value of the pointer.
-2. How to declare pointers?
- ``` 
-   <data type> * <variable name>
-```
- ```C  
-int *p_i; // declare pointer to point to integer variable
-int *p, val; // declare pointer p of type int, variable val (not pointer) of type int
-float *p_f; // declare pointer to point to real variable
-char *p_char; // declare pointer to point to character variable
-void *p_v; // pointer of type void
-```
-Example:
+ ### I/O Library Header
+ 
+ **iostream** : Nó được sử dụng để định nghĩa các đối tượng cout, cin và cerr tương ứng với luồng đầu ra tiêu chuẩn, luồng đầu vào tiêu chuẩn và luồng lỗi tiêu chuẩn tương ứng.
 
-address a: Oxc1
+ ### Cout
 
-a value: 10
+**Cout** là một đối tượng được xác định trước của lớp ostream. Nó được kết nối với thiết bị đầu ra tiêu chuẩn, thường là màn hình hiển thị. Cout được sử dụng kết hợp với toán tử (<<) để hiển thị đầu ra trên console.
 
-int *ptr=Oxc1;
-
-&a= Oxc1;
-
-output:
-
-*Oxc1=10 (get value at address Oxc1)
-
-*address : get value at this address
-```C
-#include <stdio.h>
-int main(){
-int *ptr=&a;
-printf("dia to a %p\n",&a);
-printf("value ptr %p\n",ptr);
-printf("value of location :d\n",*ptr);
-return 0;
+```C++
+#include <iostream>
+ 
+using namespace std;
+ 
+int main() {
+    char charArr[] = "Welcome to C++ tut!";  
+    cout << "Value of charArr is: " << charArr << endl;  
 }
 ```
-output:
-address 0x100a1400
+### Cin
 
-value ptr 0x100a1400
-
-the value of the address : 10
-
-**Pointer Void** : is a general pointer, it does not point to objects of any data type
-
-*Declaration* : void *ptr;
-```C
-int n;
-float f;
-double d;
-
-void *ptr;
-ptr = &n; // ok
-ptr = &f; // ok
-ptr = &d; // ok
-```
-*Pointers of type void need to be explicitly cast to pointers of other data types before using the derefernce()* operator.
-```C
-printf("test i=%d\n",(int*)ptr); // cast ptr to int
-```
-if want to get the value at address
-```C
-printf("test i=%d\n",*(int*)ptr);
-```
-**Function pointer** : is a variable that stores the address of a function, through which it is possible to call the function it points to.
-
-**<return type> (*<pointer name>)(<argument list>);**
-
-*Example of a function pointer that takes a variable of type int and returns void data*
-```C
-void (*func)(int);
-```
-```C
-int main(){
-void (*ptr)(int,int);
-ptr= &tong;
-ptr(8,7);
-ptr=&hieu;
-ptr(9,4);
-void Tinhtoan(void (*func(int,int),int a,int b){
-printf("calculate\n");
-func(a,b);
-```
-```C
-int main(){
-void *ptr[]={&tong,&hieu,&tich};
-((void(*)(int,int)ptr[2])(7,5)
-return 0;
+**cin** là một đối tượng được xác định trước của lớp istream. Nó được kết nối với thiết bị đầu vào tiêu chuẩn, mà thường là một bàn phím. Cin được sử dụng cùng với toán tử (>>) để đọc đầu vào từ console.
+```C++
+#include <iostream>
+ 
+using namespace std;
+ 
+int main() {
+    int age; 
+    cout << "Enter your age: ";
+    cin >> age;
+    cout << "Your age is: " << age << endl;
 }
 ```
-**NULL pointer** : when declaring a pointer, must assign an address to it, if the declaration is not in use, declare the pointer NULL ( dc =0, value =0), if you don't assign a value to it, it will point to a garbage value.
+### Endl
 
-*Note: The pointer should be initialized to null if it does not already point to another specific address.*
-
-**Pointers to pointers** is a pointer containing the address of another pointer.
+**endl** là một đối tượng được xác định trước của lớp ostream. Nó được sử dụng để chèn một ký tự xuống dòng.
 ```C
-int **ptr_ptr; // pointer to pointer to value of type int
-```
+#include <iostream>
+ 
+using namespace std;
+ 
+int main() {
+    cout << "Learn";
+    cout << " C++"<< endl;
+    cout << "New line" << endl;
+}
+```		
 </details>
 
-##
-<details>
-<summary>Variable</summary>
-..
+ ##
+ <details>
+	<Summary> Class  </Summary>
+
+## Class là gì?
+
+**Class** hay lớp là một mô tả trừu tượng (abstract) của nhóm các đối tượng (object) có cùng bản chất, ngược lại mỗi một đối tượng là một thể hiện cụ thể (instance) cho 
+những mô tả trừu tượng đó. Một class trong C++ sẽ có các đặc điểm sau:
+
+	* Một class bao gồm các thành phần dữ liệu (thuộc tính hay property) và các phương thức (hàm thành phần hay method).
+
+	* Class thực chất là một kiểu dữ liệu do người lập trình định nghĩa.
+ 
+	* Trong C++, từ khóa class sẽ chỉ điểm bắt đầu của một class sẽ được cài đặt. 
+
+Ví dụ về một class đơn giản, class Car. Một chiếc xe hơi vậy thì sẽ có chung những đặc điểm là đều có vô lăng, có bánh xe nhiều hơn 3, có động cơ… Đó là một class, 
+một cái model hay mẫu mà người ta đã quy định là nếu đúng như vậy thì nó là xe hơi. Nhưng mà xe thì có thể có nhiều hãng khác nhau, BMW, Vinfast, Toyota… Thì 
+mỗi hãng xe lại có những model xe khác nhau nhưng chúng đều là xe hơi. Vậy thì trong lập trình cũng vậy, class là quy định ra một mẫu, một cái model mà các thể 
+hiện của nó (instance) hay đối tượng (object) phải tuân theo.
+
+### Khai báo class và sử dụng class
+```C
+class Person {
+ public:
+ string firstName; // property
+ string lastName; // property
+ int age; // property
+ void fullname() { // method
+ cout << firstName << ' ' << lastName;
+ }
+}
+```
+### Cú pháp tạo object của một class và sử dụng các thuộc tính và phương thức:
+
+```C++
+Person person;
+person.firstName = "Khiem";
+person.lastName = "Le";
+person.fullname(); // sẽ in ra màn hình là "Khiem Le"
+```
+## So sánh giữa Struct và Class
+
+### Giống nhau:
+
+Struct và Class đều có thể:
+
+* Định nghĩa, khai báo các thuộc tính và hàm.
+  
+* Khai báo subscripts.
+
+* Khai báo các initializers để khởi tạo.
+  
+* Có thể mở rộng bằng extension.
+  
+* Có thể implement các protocol để cung cấp các chức năng tiêu chuẩn.
+
+### Khác nhau:
+
+Initialize:
+
+Khi định nghĩa 1 class, bạn bắt buộc phải khởi tạo 1 hàm init cho các thuộc tính không phải optional hoặc chưa có giá trị default.
+
+```C
+class Car {
+    let id: Int = 1
+    var color: UIColor?
+    var price: Double
+    
+    init(price: Double) {
+        self.price = price
+    }
+}
+
+let car1 = Car(price: 5000)
+```
+Còn khi định nghĩa 1 struct, bạn không cần phải khởi tạo 1 hàm init bởi khi đó Struct đã tự định nghĩa 1 hàm init default cho bạn.
+```C
+struct Car {
+    let id: Int = 1
+    var color: UIColor
+    var price: Double
+}
+
+let car1 = Car(color: .red, price: 5000)
+```
+Class có thể kế thừa, còn struct thì không. Class hỗ trợ kế thừa, có thể tạo ra các class con kế thừa từ class cha để mang những thuộc tính, phương thức của class cha. Có thể thấy class hỗ trợ lập trình OOP tốt hơn struct.
+
+### Khi nào nên sử dụng struct / class?
+
+***Recommend sử dụng struct bởi:***
+
+Struct nhanh hơn class bởi struct sử dụng method dispatch là static dispatch, class sử dụng dynamic dispatch. Ngoài ra, struct lưu dữ liệu trong stack, còn class sử dụng stack + heap -> Xử lí trong class sẽ lâu hơn.
+Class là 1 reference type. Do đó, nếu không cẩn thận khi truyền biến sẽ dễ gây ra lỗi ngoài ý muốn ( Xem phần value type vs reference type ở trên). -> Sử dụng struct sẽ an toàn hơn.
+
+***Nên sử dụng class khi:***
+
+* Cần sử dụng kế thừa.
+  
+* Cần sử dụng reference type (Thay vì việc tạo ra các bản sao, thì 1 instance kiểu reference type sẽ tự truyền đi 1 tham chiếu tới chính nó khi được gán cho các insstance khác hoặc khi được truyền vào hàm.)
+
+[Link tham khảo](https://magz.techover.io/2020/03/01/su-khac-biet-giua-struct-va-class/)
+
+## Hàm tạo, Hàm hủy (Constructor,Destructor)
+
+**Constructor** hay hàm dựng là một hàm đặc biệt, nó sẽ được gọi ngay khi chúng ta khởi tạo một object.
+
+
+Constructor trong C++ có thể được chia thành 2 loại:
+
+* Constructor mặc định.
+* Constructor có tham số.
+
+### Constructor mặc định
+
+Một constructor không có đối số được gọi là constructor mặc định
+```C++
+#include <iostream>
+ 
+using namespace std;
+ 
+class Employee {
+public:
+    Employee() {
+        cout << "Constructor mac dinh duoc goi..." << endl;
+    }
+};
+ 
+int main(void) {
+    Employee e1; //tao doi tuong Employee
+    Employee e2;
+    return 0;
+}
+```
+### Constructor có tham số
+
+Một constructor có tham số được gọi là constructor tham số hóa. Nó được sử dụng để cung cấp các giá trị khác nhau cho các đối tượng riêng biệt.
+
+```C++
+#include <iostream>
+ 
+using namespace std;
+ 
+class Employee {
+public:
+    int id; // data member (bien instance)
+    string name; // data member(bien instance)
+    float salary;
+    Employee(int i, string n, float s)
+    {
+        id = i;
+        name = n;
+        salary = s;
+    }
+    void display() { cout << id << "  " << name << "  " << salary << endl; }
+};
+ 
+int main(void) {
+    Employee e1 = Employee(101, "Phan Van Vinh", 500); // tao doi tuong Employee
+    Employee e2 = Employee(102, "Dao Van Hoa", 1000);
+    e1.display();
+    e2.display();
+    return 0;
+}
+```
+### Destructor
+
+Trong khi các hàm constructors (hàm khởi tạo) được thiết kế để khởi tạo một class, thì các hàm destructors (hàm hủy) được thiết kế để hỗ trợ việc dọn dẹp bộ nhớ.
+
+Hàm hủy (Destructor) trong C++ được gọi tự động lúc đối tượng đi ra khỏi phạm vi:
+
+* Kết thúc hàm
+* Kết thúc chương trình
+* Kết thúc 1 block
+* Toán tử delete được gọi
+
+Hàm hủy trong c++ có 3 tính chất như sau:
+
+* Tên hàm hủy giống tên của class nhưng phải đặt kèm toán tử ~ đằng trước thành ~classname.
+* Hàm hủy không mang kiểu dữ liệu trong nó, cũng như không sử dụng void khi khai báo nó.
+* Hàm hủy không có tham số, cũng không trả về giá trị từ nó.
+
+```C++
+
+class MyClass {
+public:
+    MyClass();   // Hàm khởi tạo
+    ~MyClass();  // Hàm hủy
+};
+```
+
+
+
+
+
+
+## Phạm vi truy cập ( Access modifiers )
+
+Access modifier là phạm vi truy cập của các thuộc tính và phương thức sẽ được khai báo bên dưới nó. Có 3 phạm vi truy cập trong C++ là public, private và protected.
+* Các thuộc tính và phương thức khai báo public thì có thể được truy cập trực tiếp thông qua instance của class đó. Các thuộc tính nên khai báo là public nếu bạn không có ràng buộc điều kiện trước khi gán (người dùng có thể thoải mái gán giá trị) hoặc bạn không cần xử lý trước khi trả về giá trị thuộc tính;
+* Các thuộc tính private thường được sử dụng khi bạn không mong muốn người khác có thể tùy ý gán giá trị hoặc là bạn muốn xử lý trước khi trả về giá trị.
+* Đối với protected, các phương thức và thuộc tính chỉ có thể truy cập qua các class kế thừa nó hoặc chính nó.
+
+
+
+
+
+
+
+
+
