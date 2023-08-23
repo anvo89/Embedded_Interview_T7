@@ -880,6 +880,77 @@ Access modifier là phạm vi truy cập của các thuộc tính và phương t
 * Các thuộc tính private thường được sử dụng khi bạn không mong muốn người khác có thể tùy ý gán giá trị hoặc là bạn muốn xử lý trước khi trả về giá trị.
 * Đối với protected, các phương thức và thuộc tính chỉ có thể truy cập qua các class kế thừa nó hoặc chính nó.
 
+### Static member
+
+Static member hay thành viên tĩnh trong class C++ cũng tương tự như với static variable (biến tĩnh) trong function. Đối với function, sau khi thực hiện xong khối lệnh và thoát thì biến tĩnh vẫn sẽ không mất đi. Đối với class, thành viên tĩnh sẽ là thuộc tính dùng chung cho tất cả các đối tượng của class đó, cho dù là không có đối tượng nào tồn tại. Tức là bạn có thể khai báo nhiều object, mỗi object các thuộc tính của nó đều khác nhau nhưng riêng static thì chỉ có một và static member tồn tại trong 
+suốt chương trình cho dù có hay không có object nào của nó hay nói ngắn gọn là dùng chung một biến static.
+
+</details>
+
+##
+<details>
+	<summary> OOP </summary>
+
+ ## Đặc tính của lập trình hướng đối tượng
+
+ 
+Có 4 đặc tính quan trọng của lập trình hướng đối tượng trong C++ mà chúng ta cần nắm vững sau đây:
+
+### Inheritance (Tính kế thừa )
+
+Trong lập trình hướng đối tượng có ý nghĩa, một class có thể kế thừa các thuộc tính của một class khác đã tồn tại trước đó.Khi một class con được tạo ra bởi việc kế thừa thuộc tính của class cha thì chúng ta sẽ gọi class con đó là subclass trong C++, và class cha chính là superclass trong C++.
+
+***Cú pháp***
+``C++
+class <tên_class_con> : <phạm_vi_truy_cập> <tên_class_cha>
+{
+    // code goes here
+};
+```
+Giả sử mình có một class A với các thuộc tính, phương thức bên trong. Mình muốn khai báo một class B kế thừa từ class A, mình sẽ có cú pháp như sau:
+```C++
+class B : public/private/protected A
+{
+    // code goes here
+};
+```
+**public:**
+
+* Các thuộc tính public của A sẽ trở thành thuộc tính public của B
+* Các thuộc tính protected của A sẽ trở thành protected của B
+  
+**private:**
+
+* Các thuộc tính public của A sẽ trở thành thuộc tính private của B
+* Các thuộc tính protected của A sẽ trở thành private của B
+  
+**protected:**
+
+* Các thuộc tính public của A sẽ trở thành thuộc tính protected của B
+* Các thuộc tính protected của A sẽ trở thành thuộc tính protected của B
+
+
+### Abstraction (Tính trừu tượng) 
+Trong lập trình hướng đối tượng là một khả năng mà chương trình có thể bỏ qua sự phức tạp bằng cách tập trung vào cốt lõi của thông tin cần xử lý. Điều đó có nghĩa, bạn có thể xử lý một đối tượng bằng cách gọi tên một phương thức và thu về kết quả xử lý, mà không cần biết làm cách nào đối tượng đó được các thao tác trong class.
+
+Ví dụ đơn giản, bạn có thể nấu cơm bằng nồi cơm điện bằng cách rất đơn giản là ấn công tắc nấu, mà không cần biết là bên trong cái nồi cơm điện đó đã làm thế nào mà 
+gạo có thể nấu thành cơm
+
+### Polymorphism (Tính đa hình)
+
+Trong lập trình hướng đối tượng là một khả năng mà một phương thức trong class có thể đưa ra các kết quả hoàn toàn khác nhau, tùy thuộc vào dữ liệu được xử lý.Ví dụ đơn giản, cùng là một class quản lý dữ liệu là các con vật, thì hành động sủa hay kêu của chúng được định nghĩa trong class sẽ cho ra kết quả khác nhau, ví dụ nếu là con mèo thì kêu meo meo, còn con chó thì sủa gâu gâu chẳng hạn.
+
+### Encapsulation (Tính đóng gói) 
+
+Trong lập trình hướng đối tượng có ý nghĩa không cho phép người sử dụng các đối tượng thay đổi trạng thái nội tại của một đối tượng, mà chỉ có phương thức nội tại của đối tượng có thể thay đổi chính nó.Điều đó có nghĩa, dữ liệu và thông tin sẽ được đóng gói lại, giúp các tác động bên ngoài một đối tượng không thể làm thay đổi đối tượng đó, nên sẽ đảm bảo tính toàn vẹn của đối tượng, cũng như giúp dấu đi các dữ liệu thông tin cần được che giấu.Ví dụ đơn giản, khi bạn dùng một cái iphone, bạn không thể thay đổi các cấu trúc bên trong của hệ điều hành iOS, mà chỉ có Apple mới có thể làm được điều này thôi
+
+
+
+
+
+
+
+
 
 
 
