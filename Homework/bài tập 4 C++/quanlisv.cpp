@@ -135,8 +135,7 @@ typeHocLuc SinhVien::getHocLuc() {
 void addSinhVien(vector<SinhVien>& databaseSV) {
     cout << "\nNhập tên: ";
     string ten;
-    cin.ignore(); // Để xóa ký tự xuống dòng còn lại trong bộ đệm
-    getline(cin, ten);
+    cin >> ten;
 
     int tuoi;
     while (1) {
@@ -264,22 +263,7 @@ void sapXepTheoDiemTB(vector<SinhVien>& databaseSV) {
         databaseSV[i].hienThi(); // Sử dụng hàm hienThi() để hiển thị thông tin và điểm trung bình, học lực
     }
 }
-void sapXepTheoTen(vector<SinhVien>& databaseSV) {
-    for (int i = 0; i < databaseSV.size() - 1; i++) {
-        for (int j = i + 1; j < databaseSV.size(); j++) {
-            if (databaseSV[i].getTen() > databaseSV[j].getTen()) {
-                swap(databaseSV[i], databaseSV[j]);
-            }
-        }
-    }
 
-    // Hiển thị danh sách sinh viên sau khi sắp xếp
-    cout << "Danh sách sinh viên sau khi sắp xếp theo tên:\n";
-    for (int i = 0; i < databaseSV.size(); i++) {
-        cout << "Sinh viên thứ " << i + 1 << ":\n";
-        databaseSV[i].hienThi(); // Hiển thị thông tin sinh viên theo tên
-    }
-}
 int main() {
     vector<SinhVien> databaseSV;
 
@@ -291,7 +275,6 @@ int main() {
         cout << "4. Tìm kiếm sinh viên theo tên \n";
         cout << "5. Hiển thị thông tin sv\n";
         cout << "6. Sắp xếp sinh viên theo điểm trung bình\n";
-        cout <<"7.Sắp xếp sinh viên theo tên\n";
         cout << "Nhập lựa chọn của bạn: ";
         cin >> key;
         string an;
@@ -328,10 +311,6 @@ int main() {
             cout << "Sắp xếp thành công!\n";
             break;
         case 7:
-            sapXepTheoTen(databaseSV);
-             cout << "Sắp xếp thành công!\n";
-            break;
-        case 8:
             cout << "Thoát khỏi chương trình.\n";
             return 0;
         default:
