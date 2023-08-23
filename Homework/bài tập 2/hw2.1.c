@@ -240,12 +240,18 @@ void xoaSinhVien(vector<SinhVien>& databaseSV, int Id){
         }
     }
 }
-void findSinhvien(vector<SinhVien>& databaseSV, string ten){
-    for (auto i=databaseSV.begin();i!=databaseSV.end(); ++i) {
+void findSinhvien(vector<SinhVien>& databaseSV, string ten) {
+    bool found = false;
+
+    for (auto i = databaseSV.begin(); i != databaseSV.end(); ++i) {
         if (i->getTen() == ten) {
             i->hienThi();
-            
-}
+            found = true;
+        }
+    }
+
+    if (!found) {
+        cout << "Không tìm thấy sinh viên có tên " << ten << endl;
     }
 }
 void sapXepTheoDiemTB(vector<SinhVien>& databaseSV) {
@@ -291,7 +297,7 @@ int main() {
         cout << "4. Tìm kiếm sinh viên theo tên \n";
         cout << "5. Hiển thị thông tin sv\n";
         cout << "6. Sắp xếp sinh viên theo điểm trung bình\n";
-        cout <<"7.Sắp xếp sinh viên theo tên\n";
+        cout << "7. Sắp xếp sinh viên theo tên\n";
         cout << "Nhập lựa chọn của bạn: ";
         cin >> key;
         string an;

@@ -135,7 +135,8 @@ typeHocLuc SinhVien::getHocLuc() {
 void addSinhVien(vector<SinhVien>& databaseSV) {
     cout << "\nNhập tên: ";
     string ten;
-    cin >> ten;
+    cin.ignore(); // Để xóa ký tự xuống dòng còn lại trong bộ đệm
+    getline(cin, ten);
 
     int tuoi;
     while (1) {
@@ -239,14 +240,24 @@ void xoaSinhVien(vector<SinhVien>& databaseSV, int Id){
         }
     }
 }
-void findSinhvien(vector<SinhVien>& databaseSV, string ten){
-    for (auto i=databaseSV.begin();i!=databaseSV.end(); ++i) {
-        if (i->getTen() == ten) {
+void findSinhvien(vector<SinhVien>& databaseSV, string ten) {
+    bool found = false;
+
+    for (auto i = databaseSV.begin(); i != databaseSV.end(); ++i) {
+        string tenSinhVien = i->getTen();
+        string tenCuoiSinhVien = tenSinhVien.substr(tenSinhVien.find_last_of(" ") + 1);
+
+        if (tenCuoiSinhVien == ten) {
             i->hienThi();
-            
-}
+            found = true;
+        }
+    }
+
+    if (!found) {
+        cout << "Không tìm thấy sinh viên có phần cuối tên giống: " << ten << endl;
     }
 }
+
 void sapXepTheoDiemTB(vector<SinhVien>& databaseSV) {
     for (int i = 0; i < databaseSV.size() - 1; i++) {
         for (int j = i + 1; j < databaseSV.size(); j++) {
@@ -263,6 +274,32 @@ void sapXepTheoDiemTB(vector<SinhVien>& databaseSV) {
         databaseSV[i].hienThi(); // Sử dụng hàm hienThi() để hiển thị thông tin và điểm trung bình, học lực
     }
 }
+void sapXepTheoTen(vector<SinhVien>& databaseSV) {
+    int n = databaseSV.size();
+
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = i + 1; j < n; j++) {
+            string tenCuoiSV1 = databaseSV[i].getTen().substr(databaseSV[i].getTen().find_last_of(" ") + 1);
+            string tenCuoiSV2 = databaseSV[j].getTen().substr(databaseSV[j].getTen().find_last_of(" ") + 1);
+
+            // Sử dụng hàm compare để so sánh phần cuối của tên
+            if (tenCuoiSV1.compare(tenCuoiSV2) > 0) {
+                // Hoán đổi vị trí của hai sinh viên
+                swap(databaseSV[i], databaseSV[j]);
+            }
+        }
+    }
+
+    // Hiển thị danh sách sau khi sắp xếp
+    cout << "Danh sách sinh viên sau khi sắp xếp theo tên cuối:\n";
+    for (SinhVien& sv : databaseSV) {
+        sv.hienThi(); 
+    }
+}
+
+
+
+
 
 int main() {
     vector<SinhVien> databaseSV;
@@ -273,8 +310,9 @@ int main() {
         cout << "2. Cập nhật Thông Tin Sinh Viên\n";
         cout << "3. Xóa Sinh Viên\n";
         cout << "4. Tìm kiếm sinh viên theo tên \n";
-        cout << "5. Hiển thị thông tin sv\n";
-        cout << "6. Sắp xếp sinh viên theo điểm trung bình\n";
+        cout << "5. Sắp xếp sinh viên theo điểm trung bình\n";
+        cout << "6 Sắp xếp sinh viên theo tên\n";
+        cout << "7. Hiển thị danh sách sinh viên\n";
         cout << "Nhập lựa chọn của bạn: ";
         cin >> key;
         string an;
@@ -299,18 +337,22 @@ int main() {
             cout<<"Nhập tên của sinh viên cần tìm: ";
             cin>>an;
             findSinhvien(databaseSV,an);
-            break;        
-        case 5:
-            for (int i = 0; i < databaseSV.size(); i++) {
-                cout << "Sinh viên thứ " << i + 1 << ":\n";
-                databaseSV[i].hienThi();
-            }
-            break;
-         case 6:
+            break;       
+         case 5:
             sapXepTheoDiemTB(databaseSV);
             cout << "Sắp xếp thành công!\n";
             break;
-        case 7:
+        case 6:
+            sapXepTheoTen(databaseSV);
+            cout << "Sắp xếp thành công!\n";
+            break;
+         case 7:
+            cout << "Danh sách sinh viên:\n";
+            for (SinhVien& sv : databaseSV) {
+                sv.hienThi();
+            }
+            break;
+        case 8:
             cout << "Thoát khỏi chương trình.\n";
             return 0;
         default:
