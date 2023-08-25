@@ -975,7 +975,33 @@ ten-vector.assign(int size, int value);
    
 4. insert(): Hàm này chèn các phần tử mới vào trước phần tử trước vị trí được trỏ bởi vòng lặp. Chúng ta cũng có thể chuyển một số đối số thứ ba, đếm số lần phần tử được chèn vào trước vị trí được trỏ.
 
+5. erase(): Hàm được sử dụng để xóa các phần tử tùy theo vị trí vùng chứa
    
+6. emplace(): Nó mở rộng vùng chứa bằng cách chèn phần tử mới vào
+   
+7. emplace_back(): Nó được sử dụng để chèn một phần tử mới vào vùng chứa vector, phần tử mới sẽ được thêm vào cuối vector
+    
+8. swap(): Hàm được sử dụng để hoán đổi nội dung của một vector này với một vector khác cùng kiểu. Kích thước có thể khác nhau.
+    
+9. clear(): Hàm được sử dụng để loại bỏ tất cả các phần tử của vùng chứa vector
+
+## THAM CHIẾU , THAM TRỊ
+
+### Tham chiếu (pass by reference)
+
+Truyền tham chiếu chính là cách chúng ta truyền cho nó một bản gốc thông qua địa chỉ '&'. Ví dụ với hàm changeValue(int &x); thì đối số x ở đây lúc này là một tham chiếu.
+
+Với cách truyền này dữ liệu của lời gọi có thể được sửa đổi bởi hàm được gọi.
+
+### Tham trị (pass by value)
+
+Truyền tham trị là truyền cho đối số một bản sao.
+
+Khi dùng tham trị thì x ở hàm changeValue và ở main 2 biến là độc lập với nhau.
+
+Khi dùng tham chiếu thì x ở hàm changeValue và ở main 2 biến là một.
+
+[Link tham khảo](https://codelearn.io/sharing/tham-chieu-va-tham-tri-trong-cpp)
 	
 </details>
 
