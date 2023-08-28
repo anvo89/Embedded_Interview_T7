@@ -945,8 +945,65 @@ Trong lập trình hướng đối tượng là một khả năng mà một phư
 Trong lập trình hướng đối tượng có ý nghĩa không cho phép người sử dụng các đối tượng thay đổi trạng thái nội tại của một đối tượng, mà chỉ có phương thức nội tại của đối tượng có thể thay đổi chính nó.Điều đó có nghĩa, dữ liệu và thông tin sẽ được đóng gói lại, giúp các tác động bên ngoài một đối tượng không thể làm thay đổi đối tượng đó, nên sẽ đảm bảo tính toàn vẹn của đối tượng, cũng như giúp dấu đi các dữ liệu thông tin cần được che giấu.Ví dụ đơn giản, khi bạn dùng một cái iphone, bạn không thể thay đổi các cấu trúc bên trong của hệ điều hành iOS, mà chỉ có Apple mới có thể làm được điều này thôi
 
 
+</details>
 
+##
 
+<details>
+	<summary>VECTOR,THAM TRỊ, THAM CHIẾU</summary>
+
+ ## VECTOR
+
+Giống như là mảng (array), vector trong C++ là một đối tượng dùng để chứa các đối tượng khác, và các đối tượng được chứa này cũng được lưu trữ một cách liên tiếp trong vector.Tuy nhiên, nếu như số lượng phần tử (size) của một mảng là cố định, thì ở vector, nó hoàn toàn có thể thay đổi trong suốt quá trình làm việc của chương trình.
+```C++
+#include <vector>
+//...
+vector<object_type> variable_name;
+```
+
+**Modifiers**
+
+1. push_back(): Hàm đẩy một phần tử vào vị trí sau cùng của vector. Nếu kiểu của đối tượng được truyền dưới dạng tham số trong push_back() không giống với kiểu của vector thì sẽ bị ném ra.
+   
+ten-vector.push_back(ten-cua-phan-tu);
+
+2. assign(): Nó gán một giá trị mới cho các phần tử vector bằng cách thay thế các giá trị cũ.
+   
+ten-vector.assign(int size, int value);
+
+3. pop_back(): Hàm pop_back () được sử dụng để xóa đi phần tử cuối cùng một vector.
+   
+4. insert(): Hàm này chèn các phần tử mới vào trước phần tử trước vị trí được trỏ bởi vòng lặp. Chúng ta cũng có thể chuyển một số đối số thứ ba, đếm số lần phần tử được chèn vào trước vị trí được trỏ.
+
+5. erase(): Hàm được sử dụng để xóa các phần tử tùy theo vị trí vùng chứa
+   
+6. emplace(): Nó mở rộng vùng chứa bằng cách chèn phần tử mới vào
+   
+7. emplace_back(): Nó được sử dụng để chèn một phần tử mới vào vùng chứa vector, phần tử mới sẽ được thêm vào cuối vector
+    
+8. swap(): Hàm được sử dụng để hoán đổi nội dung của một vector này với một vector khác cùng kiểu. Kích thước có thể khác nhau.
+    
+9. clear(): Hàm được sử dụng để loại bỏ tất cả các phần tử của vùng chứa vector
+
+## THAM CHIẾU , THAM TRỊ
+
+### Tham chiếu (pass by reference)
+
+Truyền tham chiếu chính là cách chúng ta truyền cho nó một bản gốc thông qua địa chỉ '&'. Ví dụ với hàm changeValue(int &x); thì đối số x ở đây lúc này là một tham chiếu.
+
+Với cách truyền này dữ liệu của lời gọi có thể được sửa đổi bởi hàm được gọi.
+
+### Tham trị (pass by value)
+
+Truyền tham trị là truyền cho đối số một bản sao.
+
+Khi dùng tham trị thì x ở hàm changeValue và ở main 2 biến là độc lập với nhau.
+
+Khi dùng tham chiếu thì x ở hàm changeValue và ở main 2 biến là một.
+
+[Link tham khảo](https://codelearn.io/sharing/tham-chieu-va-tham-tri-trong-cpp)
+	
+</details>
 
 
 
