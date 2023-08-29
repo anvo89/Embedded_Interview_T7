@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <iomanip>
 
 using namespace std;
 
@@ -217,6 +218,9 @@ void displayTableStatus(vector<Table>& tables) {
     cout << "Status    ";
     for (Table& table : tables) {
         cout << (table.status ? "x" : "0") << "     ";
+        if (table.status) {
+            table.setStatus(false); // Set the status back to '0' after displaying as 'x'
+        }
     }
     cout << endl;
 }
@@ -230,6 +234,7 @@ void displayFoodMenu(vector<Food>& databaseFood) {
         cout << "_______________" << endl;
     }
 }
+
 // Function prototypes
 void addFood(vector<Food> &databaseFood);
 void updateFood(vector<Food> &databaseFood, int id);
@@ -237,6 +242,8 @@ void eraseFood(vector<Food> &databaseFood, int id);
 void displayTableStatus(const vector<Table> &tables);
 void displayFoodMenu(vector<Food> &databaseFood);
 void staffProgram(vector<Food> &databaseFood, vector<Table> &tables, int numberOfTables);
+
+
 
 int main() {
     vector<Food> databaseFood;
@@ -251,27 +258,29 @@ int main() {
         tables.push_back(table);
     }
 
-    int role;
-    cout << "Chọn vai trò (1: Manager, 2: Staff): ";
-    cin >> role;
+    int role = 0;
 
-    if (role == 1) { // Manager
-        int key = 0;
-        while (1) {
-            cout << "_______________" << endl;
-            cout << "1: Set số bàn" << endl;
-            cout << "2: Thêm món vào menu" << endl;
-            cout << "3: Sửa món" << endl;
-            cout << "4: Xóa món" << endl;
-            cout << "5: Danh sách món" << endl;
-            cout << "6: Tạo hóa đơn cho bàn" << endl;
-            cout << "0: Quay lại" << endl;
-            cout << "_______________" << endl;
-            cout << "Nhập lựa chọn: ";
-            cin >> key;
+    while (role != -1) {
+        if (role == 0) {
+            cout << "Chọn vai trò (1: Manager, 2: Staff, -1: Thoát): ";
+            cin >> role;
+        } else if (role == 1) { // Manager
+            int key = 0;
+            while (key != -1) {
+                cout << "_______________" << endl;
+                cout << "1: Set số bàn" << endl;
+                cout << "2: Thêm món vào menu" << endl;
+                cout << "3: Sửa món" << endl;
+                cout << "4: Xóa món" << endl;
+                cout << "5: Danh sách món" << endl;
+                cout << "6: Tạo hóa đơn cho bàn" << endl;
+                cout << "0: Quay lại" << endl;
+                cout << "_______________" << endl;
+                cout << "Nhập lựa chọn: ";
+                cin >> key;
 
-            switch (key) {
-                case 1:
+                switch (key) {
+                   case 1:
                     int newNumberOfTables;
                     cout << "Nhập số lượng bàn mới: ";
                     cin >> newNumberOfTables;
@@ -333,49 +342,60 @@ int main() {
                         cout << "Số bàn không hợp lệ." << endl;
                     }
                     break;
-                case 0:
-                    cout << "Chọn vai trò (1: Manager, 2: Staff): ";
-                    return 0;
-                default:
-                    cout << "Lựa chọn không hợp lệ!" << endl;
+                    case 0:
+                        break; // Return to the role selection menu
+                    default:
+                        cout << "Lựa chọn không hợp lệ!" << endl;
+                }
+
+                if (key == 0) {
+                    role = 0; // Return to the role selection menu
+                    break;
+                }
             }
-        }
-    } else if (role == 2) { // Staff
+        } else if (role == 2) { // Staff
             staffProgram(databaseFood, tables, numberOfTables);
+            role = 0; // Return to the role selection menu
         } else {
             cout << "Lựa chọn không hợp lệ!" << endl;
-        }}
+            role = 0; // Return to the role selection menu
+        }
+    }
+
+    return 0;
+}
 
 void staffProgram(vector<Food> &databaseFood, vector<Table> &tables, int numberOfTables) {
-    displayTableStatus(tables);
-    int tableNumber;
-    cout << "Nhập số bàn: ";
-    cin >> tableNumber;
-    if (tableNumber >= 1 && tableNumber <= numberOfTables) {
-        Table &selectedTable = tables[tableNumber - 1];
-        if (selectedTable.status) {
-            cout << "Bàn này đang được sử dụng." << endl;
-        } else {
-            selectedTable.setStatus(true);
-            cout << "Đã chọn bàn số " << tableNumber << " và đánh dấu là đã có khách." << endl;
+    while (1) {
+        displayTableStatus(tables);
+        int tableNumber;
+        cout << "Nhập số bàn: ";
+        cin >> tableNumber;
 
-            Invoice invoice;
-            while (1) {
-                cout << "_______________" << endl;
-                cout << "Bàn " << tableNumber << endl;
-                cout << "1: Thêm món" << endl;
-                cout << "2: Sửa món" << endl;
-                cout << "3: Xóa món" << endl;
-                cout << "4: Danh sách món" << endl;
-                cout << "5: Thanh toán" << endl;
-                cout << "0: Quay lại" << endl;
-                cout << "Nhập lựa chọn: ";
-                int Key;
-                cin >> Key;
+        if (tableNumber >= 1 && tableNumber <= numberOfTables) {
+            Table &selectedTable = tables[tableNumber - 1];
+            if (selectedTable.status) {
+                cout << "Bàn này đang được sử dụng." << endl;
+            } else {
+                selectedTable.setStatus(true);
+                cout << "Đã chọn bàn số " << tableNumber << " và đánh dấu là đã có khách." << endl;
 
+                Invoice invoice;
+                while (1) {
+                    cout << "_______________" << endl;
+                    cout << "Bàn " << tableNumber << endl;
+                    cout << "1: Thêm món" << endl;
+                    cout << "2: Sửa món" << endl;
+                    cout << "3: Xóa món" << endl;
+                    cout << "4: Danh sách món" << endl;
+                    cout << "5: Thanh toán" << endl;
+                    cout << "0: Quay lại" << endl;
+                    cout << "Nhập lựa chọn: ";
+                    int Key;
+                    cin >> Key;
 
                     switch (Key) {
-                        case 1:
+                       case 1:
                             if (selectedTable.invoice.getTotalAmount() == 0) {
                                 addFood(databaseFood);
                             } else {
@@ -397,21 +417,29 @@ void staffProgram(vector<Food> &databaseFood, vector<Table> &tables, int numberO
                         case 4:
                             displayFoodMenu(databaseFood);
                             break;
-                        case 5:
-                            if (selectedTable.invoice.getTotalAmount() > 0) {
-                                selectedTable.invoice = invoice;
-                                selectedTable.status = false;
-                                cout << "Đã thanh toán cho bàn số " << tableNumber << endl;
-                            } else {
-                                cout << "Hóa đơn trống hoặc đã thanh toán." << endl;
-                            }
-                            break;
+                     case 5:
+    if (selectedTable.invoice.getTotalAmount() > 0) {
+        selectedTable.invoice.display(); // Use the display method to show the invoice
+    } else {
+        cout << "Hóa đơn trống hoặc đã thanh toán." << endl;
+    }
+    break;
+                        case 0:
+                            break; // Return to the staff menu
                         default:
                             cout << "Lựa chọn không hợp lệ!" << endl;
                     }
+
+                    if (Key == 0) {
+                       
+                        break; // Return to the staff menu
+                    }
                 }
             }
+        } else if (tableNumber == 0) {
+            break; // Return to the staff menu
         } else {
-            cout << "Số bàn không hợp lệ." << endl;
+            cout << "Số bàn không hợp lệ!" << endl;
         }
+    }
 }
