@@ -36,9 +36,9 @@ private:
 
 public:
     InvoiceItem(Food& _food, int _quantity);
-    Food& getFood();
-    int getQuantity();
-    double getTotalPrice();
+    const Food& getFood()const;
+    int getQuantity()const;
+    double getTotalPrice()const;
 };
 
 class Invoice {
@@ -49,6 +49,9 @@ public:
     void addItem(Food& food, int quantity);
     double getTotalAmount();
     void display();
+    const vector<InvoiceItem>& getItems() const {
+        return items;
+    }
 };
 
 class Table {
@@ -97,15 +100,15 @@ void Food::display() {
 
 InvoiceItem::InvoiceItem(Food& _food, int _quantity) : food(_food), quantity(_quantity) {}
 
-Food& InvoiceItem::getFood() {
+const Food& InvoiceItem::getFood()const {
     return food;
 }
 
-int InvoiceItem::getQuantity() {
+int InvoiceItem::getQuantity() const{
     return quantity;
 }
 
-double InvoiceItem::getTotalPrice() {
+double InvoiceItem::getTotalPrice() const{
     return food.getPrice() * quantity;
 }
 
@@ -394,12 +397,20 @@ void staffProgram(vector<Food> &databaseFood, vector<Table> &tables, int numberO
                     int Key;
                     cin >> Key;
 
-                    switch (Key) {
-                       case 1:
-                            if (selectedTable.invoice.getTotalAmount() == 0) {
-                                addFood(databaseFood);
-                            } else {
-                                cout << "Bạn không thể thêm món vào hóa đơn đã thanh toán hoặc có món ăn trong hóa đơn." << endl;
+                     switch (Key) {
+                        case 1:
+                            int foodId;
+                            int quantity;
+                            cout << "Nhập ID món ăn: ";
+                            cin >> foodId;
+                            cout << "Nhập số lượng: ";
+                            cin >> quantity;
+                            for (Food &food : databaseFood) {
+                                if (food.getId() == foodId) {
+                                    invoice.addItem(food, quantity);
+                                    cout << "Đã thêm " << quantity << " " << food.getName() << " vào hóa đơn." << endl;
+                                    break;
+                                }
                             }
                             break;
                         case 2:
@@ -417,13 +428,26 @@ void staffProgram(vector<Food> &databaseFood, vector<Table> &tables, int numberO
                         case 4:
                             displayFoodMenu(databaseFood);
                             break;
-                     case 5:
+
+                        case 5:
     if (selectedTable.invoice.getTotalAmount() > 0) {
-        selectedTable.invoice.display(); // Use the display method to show the invoice
+        cout << "      _____Hóa đơn cho bàn " << tableNumber << "_____ " << endl;
+        const vector<InvoiceItem>& items = selectedTable.invoice.getItems();
+        for (const InvoiceItem& item : items) {
+            Food& food = item.getFood();
+            cout << "Name: " << food.getName() << endl;
+            cout << "Quantity: " << item.getQuantity() << endl;
+            cout << "Price per unit: " << food.getPrice() << endl;
+            cout << "Total price: " << item.getTotalPrice() << endl;
+            cout << "_______________" << endl;
+        }
+        cout << "Total amount: " << selectedTable.invoice.getTotalAmount() << endl;
     } else {
         cout << "Hóa đơn trống hoặc đã thanh toán." << endl;
     }
     break;
+
+
                         case 0:
                             break; // Return to the staff menu
                         default:
@@ -431,7 +455,7 @@ void staffProgram(vector<Food> &databaseFood, vector<Table> &tables, int numberO
                     }
 
                     if (Key == 0) {
-                       
+
                         break; // Return to the staff menu
                     }
                 }
