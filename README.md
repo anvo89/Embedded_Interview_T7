@@ -1005,6 +1005,32 @@ Khi dùng tham chiếu thì x ở hàm changeValue và ở main 2 biến là m�
 	
 </details>
 
+<details>
+	<summary>Template,namespace,vitural function </summary>
+
+ ##
+
+## TEMPLATE
+
+Trong C++, template là một tính năng mạnh mẽ cho phép bạn viết mã một lần và sử dụng nó cho nhiều kiểu dữ liệu khác nhau mà không cần viết lại mã cho mỗi kiểu dữ liệu đó. 
+
+
+##
+
+## NAMESPACE
+
+Namespace trong C++ giống như một hộp lưu trữ cho các biến và hàm. Có thể đặt tất cả các biến và hàm có liên quan vào trong hộp lưu trữ này, và có thể có nhiều hộp lưu trữ khác nhau cho các phần khác nhau của chương trình của mình. Như vậy, không phải lo lắng về việc xung đột tên giữa các phần khác nhau của chương trình.
+
+##
+
+
+
+
+
+
+ 
+</details>
+
 
 
 
