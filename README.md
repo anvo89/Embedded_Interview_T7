@@ -1005,10 +1005,12 @@ Khi dùng tham chiếu thì x ở hàm changeValue và ở main 2 biến là m�
 	
 </details>
 
+##
+
 <details>
 	<summary>Template,namespace,vitural function </summary>
 
- ##
+##
 
 ## TEMPLATE
 
