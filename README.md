@@ -1005,6 +1005,71 @@ Khi dùng tham chiếu thì x ở hàm changeValue và ở main 2 biến là m�
 	
 </details>
 
+##
+
+<details>
+	<summary>Template,namespace,vitural function </summary>
+
+##
+
+## TEMPLATE
+
+Trong C++, template là một tính năng mạnh mẽ cho phép bạn viết mã một lần và sử dụng nó cho nhiều kiểu dữ liệu khác nhau mà không cần viết lại mã cho mỗi kiểu dữ liệu đó. 
+
+Ví dụ 1:
+```C++
+#include <iostream>
+
+template <typename var>
+
+var tong(var a,var b){
+    return var(a+b);
+}
+
+int main(){
+    printf("tong a va b:%d\n",tong(4,5));
+    
+    printf("tong a va b: %f\n",tong(4.3,5.2));
+    return 0;
+}
+```
+Ví dụ 2:
+```C++
+#include <iostream>
+
+template <typename var1,typename var2>
+
+var1 tong(var1 a,var2 b){
+    return var1(a+b);
+}
+
+int main(){
+    printf("tong a va b:%d\n",tong(4,5));
+// 4 là int=> var 1 là int , 5 là int => var2 là int
+    printf("tong a va b: %f\n",tong(4.3,5));
+
+//4.3 var 1 là double, var 2 là int . ép kiểu cho var 1 theo double
+
+    return 0;
+}
+```
+
+##
+
+## NAMESPACE
+
+Namespace trong C++ giống như một hộp lưu trữ cho các biến và hàm. Có thể đặt tất cả các biến và hàm có liên quan vào trong hộp lưu trữ này, và có thể có nhiều hộp lưu trữ khác nhau cho các phần khác nhau của chương trình của mình. Như vậy, không phải lo lắng về việc xung đột tên giữa các phần khác nhau của chương trình.
+
+##
+
+
+
+
+
+
+ 
+</details>
+
 
 
 
