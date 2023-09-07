@@ -1060,6 +1060,60 @@ int main(){
 
 Namespace trong C++ giống như một hộp lưu trữ cho các biến và hàm. Có thể đặt tất cả các biến và hàm có liên quan vào trong hộp lưu trữ này, và có thể có nhiều hộp lưu trữ khác nhau cho các phần khác nhau của chương trình của mình. Như vậy, không phải lo lắng về việc xung đột tên giữa các phần khác nhau của chương trình.
 
+**Cú pháp**
+```C
+namespace ten_namespace{
+    //code
+}
+```
+Khi đang lập trình trong một file A bạn include 2 file B và C, nhưng 2 file này có cùng định nghĩa một hàm function() giống nhau về tên và tham số truyền vào, nhưng xử lý của mỗi hàm ở mỗi file là khác nhau, vấn đề đặt ra là code làm sao để trình biên dịch hiểu được khi nào bạn muốn gọi function của file B, khi nào bạn muốn gọi function của file C. Khi gọi hàm function() ở file A, trình biên dịch sẽ không biết được hàm function() bạn muốn gọi là hàm được định nghĩa ở file B hay file C. Vì vậy trình biên dịch chương trình sẽ báo lỗi.
+
+***fileB***
+
+```C++
+#include <iostream>
+
+using namespace std;
+
+void function() { cout << “function in fileB running.” << endl; }
+```
+***fileC***
+```C++
+#include <iostream>
+
+using namespace std;
+
+void function(() { cout << “function in fileC running.” << endl; }
+```
+***FileA***
+```C++
+#include <iostream>
+#incldue “fileB.hpp”
+#include “fileC.hpp”
+
+using namespace std;
+
+int main() {
+    fileB::function();
+    fileC::function();
+    
+    return 0;
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ##
 
 
