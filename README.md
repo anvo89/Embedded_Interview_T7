@@ -979,7 +979,30 @@ int main(void)
 
 ### Encapsulation (Tính đóng gói) 
 
-Trong lập trình hướng đối tượng có ý nghĩa không cho phép người sử dụng các đối tượng thay đổi trạng thái nội tại của một đối tượng, mà chỉ có phương thức nội tại của đối tượng có thể thay đổi chính nó.Điều đó có nghĩa, dữ liệu và thông tin sẽ được đóng gói lại, giúp các tác động bên ngoài một đối tượng không thể làm thay đổi đối tượng đó, nên sẽ đảm bảo tính toàn vẹn của đối tượng, cũng như giúp dấu đi các dữ liệu thông tin cần được che giấu.Ví dụ đơn giản, khi bạn dùng một cái iphone, bạn không thể thay đổi các cấu trúc bên trong của hệ điều hành iOS, mà chỉ có Apple mới có thể làm được điều này thôi
+Có thể nói tính đóng gói (Encapsulation) là cơ chế của che giấu dữ liệu (Data Hiding) bởi chúng được lớp (class) che giấu đi (ở dạng private) một số dữ liệu, hàm và phương thức để đảm bảo rằng các dữ liệu đó sẽ được truy cập và sử dụng đúng mục đích, đúng cách thông qua các hàm và phương thức ở dạng public mà class cung cấp. Đó là lý do bạn không thể truy cập đến các thuộc tính private hoặc gọi đến phương thức private của class từ bên ngoài class đó.
+
+Tính đóng gói được thể hiện khi mỗi đối tượng mang trạng thái là *private* ở bên trong một class và những đối tượng khác không thể truy cập trực tiếp vào phạm vi này. Thay vào đó họ chỉ có thể gọi các hàm mang phạm vi public được gọi là phương thức.
+
+**Ví dụ**
+```C++
+class Box
+{
+   public:
+      double tinhTheTich(void)
+      {
+         return chieudai * chieurong * chieucao;
+      }
+   private:
+      double chieudai;      // Chieu dai cua mot box
+      double chieurong;     // Chieu rong cua mot box
+      double chieucao;      // Chieu cao cua mot box
+};
+```
+Các biến chieudai, chieurong, và chieucao là private. Nghĩa là chúng chỉ có thể được truy cập bởi các thành viên khác của lớp Box, và không thể bởi bất kỳ phần khác trong chương trình của bạn. Đây là một cách thực hiện tính đóng gói trong C++.
+
+
+
+
 
 
 </details>
