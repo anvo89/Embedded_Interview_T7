@@ -718,58 +718,13 @@ person.firstName = "Khiem";
 person.lastName = "Le";
 person.fullname(); // sẽ in ra màn hình là "Khiem Le"
 ```
-## So sánh giữa Struct và Class
-
-### Giống nhau:
-
-Struct và Class đều có thể:
-
-* Định nghĩa, khai báo các thuộc tính và hàm.
-  
-* Khai báo subscripts.
-
-* Khai báo các initializers để khởi tạo.
-  
-* Có thể mở rộng bằng extension.
-  
-* Có thể implement các protocol để cung cấp các chức năng tiêu chuẩn.
-
-### Khác nhau:
-
-Initialize:
-
-Khi định nghĩa 1 class, bạn bắt buộc phải khởi tạo 1 hàm init cho các thuộc tính không phải optional hoặc chưa có giá trị default.
-
-```C
-class Car {
-    let id: Int = 1
-    var color: UIColor?
-    var price: Double
-    
-    init(price: Double) {
-        self.price = price
-    }
-}
-
-let car1 = Car(price: 5000)
-```
-Còn khi định nghĩa 1 struct, bạn không cần phải khởi tạo 1 hàm init bởi khi đó Struct đã tự định nghĩa 1 hàm init default cho bạn.
-```C
-struct Car {
-    let id: Int = 1
-    var color: UIColor
-    var price: Double
-}
-
-let car1 = Car(color: .red, price: 5000)
-```
-Class có thể kế thừa, còn struct thì không. Class hỗ trợ kế thừa, có thể tạo ra các class con kế thừa từ class cha để mang những thuộc tính, phương thức của class cha. Có thể thấy class hỗ trợ lập trình OOP tốt hơn struct.
 
 ### Khi nào nên sử dụng struct / class?
 
 ***Recommend sử dụng struct bởi:***
 
 Struct nhanh hơn class bởi struct sử dụng method dispatch là static dispatch, class sử dụng dynamic dispatch. Ngoài ra, struct lưu dữ liệu trong stack, còn class sử dụng stack + heap -> Xử lí trong class sẽ lâu hơn.
+
 Class là 1 reference type. Do đó, nếu không cẩn thận khi truyền biến sẽ dễ gây ra lỗi ngoài ý muốn ( Xem phần value type vs reference type ở trên). -> Sử dụng struct sẽ an toàn hơn.
 
 ***Nên sử dụng class khi:***
