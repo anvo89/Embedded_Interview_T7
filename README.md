@@ -938,7 +938,44 @@ gạo có thể nấu thành cơm
 
 ### Polymorphism (Tính đa hình)
 
-Trong lập trình hướng đối tượng là một khả năng mà một phương thức trong class có thể đưa ra các kết quả hoàn toàn khác nhau, tùy thuộc vào dữ liệu được xử lý.Ví dụ đơn giản, cùng là một class quản lý dữ liệu là các con vật, thì hành động sủa hay kêu của chúng được định nghĩa trong class sẽ cho ra kết quả khác nhau, ví dụ nếu là con mèo thì kêu meo meo, còn con chó thì sủa gâu gâu chẳng hạn.
+Trong lập trình hướng đối tượng là một khả năng mà một phương thức trong class có thể đưa ra các kết quả hoàn toàn khác nhau, tùy thuộc vào dữ liệu được xử lý.
+
+trong lập trình thuật ngữ này dùng để ám chỉ đến việc một biến, một hàm hoặc một phương thức có thể tồn tại ở nhiều dạng khác nhau. Tức là **nhiều hàm** hoặc **phương thức** có thể **cùng một tên** nhưng chức năng thực sự của chúng lại **khác nhau**.
+
+```C++
+#include <iostream>
+using namespace std;
+ 
+class inDuLieu 
+{
+   public:
+      void hamIn(int i) {
+        cout << "In so nguyen: " << i << endl;
+      }
+
+      void hamIn(double  f) {
+        cout << "In so thuc: " << f << endl;
+      }
+
+      void hamIn(string s) {
+        cout << "In chuoi: " << s << endl;
+      }
+};
+
+int main(void)
+{
+   inDuLieu idl;
+ 
+   // Goi ham hamIn de in so nguyen
+   idl.hamIn(1235);
+   // Goi ham hamIn de in so thuc
+   idl.hamIn(67.02);
+   // Goi ham hamIn de in chuoi
+   idl.hamIn("Codelearn.io");
+ 
+   return 0;
+}
+```
 
 ### Encapsulation (Tính đóng gói) 
 
@@ -1008,7 +1045,7 @@ Khi dùng tham chiếu thì x ở hàm changeValue và ở main 2 biến là m�
 ##
 
 <details>
-	<summary>Template,namespace,vitural function </summary>
+	<summary>Template, namespace, vitural function </summary>
 
 ##
 
