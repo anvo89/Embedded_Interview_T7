@@ -93,5 +93,13 @@ void applyBrakes(){
 
 
 int main(){
-    
+    Car myCar;
+    ABS absSystem(myCar);
+    myCar.getWheel().setSpeed(15.0);
+
+    myCar.addPassengerWeight(70.0);
+    myCar.getWheel().setSpeed(9.0);
+
+    absSystem.applyBrakes();
+    return 0;
 }
