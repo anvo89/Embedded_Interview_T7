@@ -1187,23 +1187,15 @@ Sự khác nhau lớn nhất giữa ArrayList và LinkedList nằm ở chỗ có
 * Ứng dụng không cần truy cập ngẫu nhiên trong mảng. Vì nếu cần chúng ta sẽ phải duyệt qua mảng để tìm kiếm phần tử phù hợp, độ phức tạp là O(n)
 2)Ứng dụng thao tác thêm mới, xóa nhiều hơn truy cập dữ liệu. Khi đó thêm mới và xóa không phải thay đổi kích thước mảng nên nhanh hơn ArrayList.
 
-
-
-
-
-
-
-
-
+ 
+</details>
 
 ##
 
+<details>
+	<summary> LIST, MAP ,LAMDA </summary>
 
 
-
-
-
- 
 </details>
 
 
