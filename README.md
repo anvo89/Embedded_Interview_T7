@@ -1023,7 +1023,7 @@ Khi dùng tham chiếu thì x ở hàm changeValue và ở main 2 biến là m�
 ##
 
 <details>
-	<summary>Template, namespace, vitural function </summary>
+	<summary>Template, namespace, virtual function </summary>
 
 ##
 
@@ -1115,7 +1115,43 @@ int main() {
     return 0;
 }
 ```
+### VIRTUAL FUNCTION  ( HÀM ẢO )
 
+Hàm ảo (virtual function) là một hàm thành viên trong lớp cơ sở mà lớp dẫn xuất khi kế thừa cần phải định nghĩa lại.
+
+Hàm ảo được sử dụng trong lớp cơ sở khi cần đảm bảo hàm ảo đó sẽ được định nghĩa lại trong lớp dẫn xuất. Việc này rất cần thiết trong trường hợp con trỏ có kiểu là lớp cơ sở trỏ đến đối tượng của lớp dẫn xuất.
+
+**Vi du**
+
+```C++
+#include<iostream>
+#include"test.cpp"
+
+class DoiTuong{
+    public:
+    virtual char *cmd(){
+        return (char*)"DoiTuong\n";
+    }
+    void display(){
+        printf("%s",cmd());
+    }
+};
+class SinhVien:public DoiTuong{
+    char *cmd(){        //load lai : overload
+        return (char*)"SinhVien\n";
+    }
+};
+
+int main(){
+    DoiTuong dt;
+    dt.display();
+    SinhVien sv;
+    sv.display();
+
+    return 0;
+}
+```
+Trong trường hợp này ,*nếu không thêm virtual* phía trước **cmd**  thì khi gọi sv.display() output sẽ hiển thị *DoiTuong* vì nó đang kế thừa lớp DoiTuong. *Khi thêm virtual* vào trước **cmd** , khi nó chạy cmd nó sẽ là overload thì nó sẽ load cái mới nhất (cmd định nghĩa sau cùng). 
 
 
 
