@@ -1023,7 +1023,7 @@ Khi dùng tham chiếu thì x ở hàm changeValue và ở main 2 biến là m�
 ##
 
 <details>
-	<summary>Template, namespace, virtual function </summary>
+	<summary>Template, namespace, virtual function, linked list </summary>
 
 ##
 
@@ -1153,8 +1153,39 @@ int main(){
 ```
 Trong trường hợp này ,*nếu không thêm virtual* phía trước **cmd**  thì khi gọi sv.display() output sẽ hiển thị *DoiTuong* vì nó đang kế thừa lớp DoiTuong. *Khi thêm virtual* vào trước **cmd** , khi nó chạy cmd nó sẽ là overload thì nó sẽ load cái mới nhất (cmd định nghĩa sau cùng). 
 
+##
 
+### LINKED LIST
 
+Một Danh sách liên kết (Linked List) là 1 dãy các cấu trúc dữ liệu được kết nối với nhau thông qua các liên kết (link). Hiểu một cách đơn thuần thì Danh sách liên kết là một cấu trúc dữ liệu bao gồm 1 nhóm những nút (node) tạo thành 1 chuỗi. Mỗi nút gồm dữ liệu ở nút ấy và tham chiếu đến nút kế tiếp trong chuỗi.
+
+<img src="https://techacademy.edu.vn/wp-content/uploads/2021/10/Linked-List-C-La-Gi.png">
+
+Do danh sách liên kết đơn là một cấu trúc dữ liệu động, được tạo nên nhờ việc cấp phát động nên nó mang một số đặc điểm sau đây:
+
+* Được cấp phát bộ nhớ khi chạy chương trình
+* Có thể đổi thay kích thước qua việc thêm, xóa phần tử
+* Kích thước tối đa phụ thuộc vào bộ nhớ khả dụng của RAM
+* Các phần tử được lưu trữ tự nhiên (không liên tiếp) trong RAM
+
+### Sự khác nhau giữa LinkedList và ArrayList
+
+Sự khác nhau lớn nhất giữa ArrayList và LinkedList nằm ở chỗ có cấu trúc dữ liệu khác, nếu bạn hiểu được cấu trúc của 2 ArrayList và LinkedList thì những khác biệt dưới đây sẽ rất dễ hiểu:
+
+* Array là cấu trúc dữ liệu có chỉ mục(index) nên tìm kiếm trên Array nhanh hơn, độ phức tạp khi tìm kiếm một phần tử trong Array là O(1). Trái lại, với LinkedList chúng ta không thể truy cập phần tử theo chỉ mục hoặc ngẫu nhiên mà phải duyệt qua các phần tử nên độ phức tạp là O(n)
+
+* Chèn phần tử mới vào LinkedList dễ dàng và nhanh hơn so với ArrayList vì LinkedList không có rủi ro về thay đổi kích thước và sao chép dữ liệu sang mảng mới nếu mảng đầy chỉ với độ phức tạo O(1), nhưng với ArrayList thì rất hạn chế để thực hiện thêm mới và sao chép dữ liệu khi đầy thì độ phức tạp là O(n). Bên cạnh đó, ArrayList cần cập nhật lại chỉ mục nếu thêm một phần tử vào giữa mảng.
+
+* Xóa phần tử trong mảng giống như thêm mới thì LinkdedList có hiệu suất tốt hơn ArrayList.
+
+* LinkedList chiếm nhiều bộ nhớ hơn ArrayList vì trong ArrayList mỗi phần tử chỉ chứa một đối tượng dữ liệu còn LinkedList thì mỗi phần tử(node) lại chứa dữ liệu và địa chỉ của phần tử trước và phần tử sau.
+
+### Khi nào dùng LinkedList và ArrayList
+
+* LinkedList không được dùng nhiều như ArrayList nhưng có một số trường hợp LinkedList là sự lựa chọn hợp lí hơn ArrayList. Chúng ta nên dùng LinkedList nếu:
+
+* Ứng dụng không cần truy cập ngẫu nhiên trong mảng. Vì nếu cần chúng ta sẽ phải duyệt qua mảng để tìm kiếm phần tử phù hợp, độ phức tạp là O(n)
+2)Ứng dụng thao tác thêm mới, xóa nhiều hơn truy cập dữ liệu. Khi đó thêm mới và xóa không phải thay đổi kích thước mảng nên nhanh hơn ArrayList.
 
 
 
