@@ -1,7 +1,7 @@
 # Embedded_Interview_T7
 
 <details>
-<summary> C programming </summary>
+<summary> <h1>C programming</h1> </summary>
 
 ##
  <details>
@@ -623,7 +623,7 @@ Các constant-expression là biểu thức mà các toán hạng trong đó đ�
 
 ##
 <details>
-<summary>C++ programming</summary>	
+<summary><h1>C++ programming</h1></summary>	
 
  ##
  <details>
@@ -718,58 +718,13 @@ person.firstName = "Khiem";
 person.lastName = "Le";
 person.fullname(); // sẽ in ra màn hình là "Khiem Le"
 ```
-## So sánh giữa Struct và Class
-
-### Giống nhau:
-
-Struct và Class đều có thể:
-
-* Định nghĩa, khai báo các thuộc tính và hàm.
-  
-* Khai báo subscripts.
-
-* Khai báo các initializers để khởi tạo.
-  
-* Có thể mở rộng bằng extension.
-  
-* Có thể implement các protocol để cung cấp các chức năng tiêu chuẩn.
-
-### Khác nhau:
-
-Initialize:
-
-Khi định nghĩa 1 class, bạn bắt buộc phải khởi tạo 1 hàm init cho các thuộc tính không phải optional hoặc chưa có giá trị default.
-
-```C
-class Car {
-    let id: Int = 1
-    var color: UIColor?
-    var price: Double
-    
-    init(price: Double) {
-        self.price = price
-    }
-}
-
-let car1 = Car(price: 5000)
-```
-Còn khi định nghĩa 1 struct, bạn không cần phải khởi tạo 1 hàm init bởi khi đó Struct đã tự định nghĩa 1 hàm init default cho bạn.
-```C
-struct Car {
-    let id: Int = 1
-    var color: UIColor
-    var price: Double
-}
-
-let car1 = Car(color: .red, price: 5000)
-```
-Class có thể kế thừa, còn struct thì không. Class hỗ trợ kế thừa, có thể tạo ra các class con kế thừa từ class cha để mang những thuộc tính, phương thức của class cha. Có thể thấy class hỗ trợ lập trình OOP tốt hơn struct.
 
 ### Khi nào nên sử dụng struct / class?
 
 ***Recommend sử dụng struct bởi:***
 
 Struct nhanh hơn class bởi struct sử dụng method dispatch là static dispatch, class sử dụng dynamic dispatch. Ngoài ra, struct lưu dữ liệu trong stack, còn class sử dụng stack + heap -> Xử lí trong class sẽ lâu hơn.
+
 Class là 1 reference type. Do đó, nếu không cẩn thận khi truyền biến sẽ dễ gây ra lỗi ngoài ý muốn ( Xem phần value type vs reference type ở trên). -> Sử dụng struct sẽ an toàn hơn.
 
 ***Nên sử dụng class khi:***
@@ -938,11 +893,71 @@ gạo có thể nấu thành cơm
 
 ### Polymorphism (Tính đa hình)
 
-Trong lập trình hướng đối tượng là một khả năng mà một phương thức trong class có thể đưa ra các kết quả hoàn toàn khác nhau, tùy thuộc vào dữ liệu được xử lý.Ví dụ đơn giản, cùng là một class quản lý dữ liệu là các con vật, thì hành động sủa hay kêu của chúng được định nghĩa trong class sẽ cho ra kết quả khác nhau, ví dụ nếu là con mèo thì kêu meo meo, còn con chó thì sủa gâu gâu chẳng hạn.
+Trong lập trình hướng đối tượng là một khả năng mà một phương thức trong class có thể đưa ra các kết quả hoàn toàn khác nhau, tùy thuộc vào dữ liệu được xử lý.
+
+trong lập trình thuật ngữ này dùng để ám chỉ đến việc một biến, một hàm hoặc một phương thức có thể tồn tại ở nhiều dạng khác nhau. Tức là **nhiều hàm** hoặc **phương thức** có thể **cùng một tên** nhưng chức năng thực sự của chúng lại **khác nhau**.
+
+```C++
+#include <iostream>
+using namespace std;
+ 
+class inDuLieu 
+{
+   public:
+      void hamIn(int i) {
+        cout << "In so nguyen: " << i << endl;
+      }
+
+      void hamIn(double  f) {
+        cout << "In so thuc: " << f << endl;
+      }
+
+      void hamIn(string s) {
+        cout << "In chuoi: " << s << endl;
+      }
+};
+
+int main(void)
+{
+   inDuLieu idl;
+ 
+   // Goi ham hamIn de in so nguyen
+   idl.hamIn(1235);
+   // Goi ham hamIn de in so thuc
+   idl.hamIn(67.02);
+   // Goi ham hamIn de in chuoi
+   idl.hamIn("Codelearn.io");
+ 
+   return 0;
+}
+```
 
 ### Encapsulation (Tính đóng gói) 
 
-Trong lập trình hướng đối tượng có ý nghĩa không cho phép người sử dụng các đối tượng thay đổi trạng thái nội tại của một đối tượng, mà chỉ có phương thức nội tại của đối tượng có thể thay đổi chính nó.Điều đó có nghĩa, dữ liệu và thông tin sẽ được đóng gói lại, giúp các tác động bên ngoài một đối tượng không thể làm thay đổi đối tượng đó, nên sẽ đảm bảo tính toàn vẹn của đối tượng, cũng như giúp dấu đi các dữ liệu thông tin cần được che giấu.Ví dụ đơn giản, khi bạn dùng một cái iphone, bạn không thể thay đổi các cấu trúc bên trong của hệ điều hành iOS, mà chỉ có Apple mới có thể làm được điều này thôi
+Có thể nói tính đóng gói (Encapsulation) là cơ chế của che giấu dữ liệu (Data Hiding) bởi chúng được lớp (class) che giấu đi (ở dạng private) một số dữ liệu, hàm và phương thức để đảm bảo rằng các dữ liệu đó sẽ được truy cập và sử dụng đúng mục đích, đúng cách thông qua các hàm và phương thức ở dạng public mà class cung cấp. Đó là lý do bạn không thể truy cập đến các thuộc tính private hoặc gọi đến phương thức private của class từ bên ngoài class đó.
+
+Tính đóng gói được thể hiện khi mỗi đối tượng mang trạng thái là *private* ở bên trong một class và những đối tượng khác không thể truy cập trực tiếp vào phạm vi này. Thay vào đó họ chỉ có thể gọi các hàm mang phạm vi public được gọi là phương thức.
+
+**Ví dụ**
+```C++
+class Box
+{
+   public:
+      double tinhTheTich(void)
+      {
+         return chieudai * chieurong * chieucao;
+      }
+   private:
+      double chieudai;      // Chieu dai cua mot box
+      double chieurong;     // Chieu rong cua mot box
+      double chieucao;      // Chieu cao cua mot box
+};
+```
+Các biến chieudai, chieurong, và chieucao là private. Nghĩa là chúng chỉ có thể được truy cập bởi các thành viên khác của lớp Box, và không thể bởi bất kỳ phần khác trong chương trình của bạn. Đây là một cách thực hiện tính đóng gói trong C++.
+
+
+
+
 
 
 </details>
@@ -1008,7 +1023,7 @@ Khi dùng tham chiếu thì x ở hàm changeValue và ở main 2 biến là m�
 ##
 
 <details>
-	<summary>Template,namespace,vitural function </summary>
+	<summary>Template, namespace, virtual function, linked list </summary>
 
 ##
 
@@ -1060,14 +1075,127 @@ int main(){
 
 Namespace trong C++ giống như một hộp lưu trữ cho các biến và hàm. Có thể đặt tất cả các biến và hàm có liên quan vào trong hộp lưu trữ này, và có thể có nhiều hộp lưu trữ khác nhau cho các phần khác nhau của chương trình của mình. Như vậy, không phải lo lắng về việc xung đột tên giữa các phần khác nhau của chương trình.
 
+**Cú pháp**
+```C
+namespace ten_namespace{
+    //code
+}
+```
+Khi đang lập trình trong một file A bạn include 2 file B và C, nhưng 2 file này có cùng định nghĩa một hàm function() giống nhau về tên và tham số truyền vào, nhưng xử lý của mỗi hàm ở mỗi file là khác nhau, vấn đề đặt ra là code làm sao để trình biên dịch hiểu được khi nào bạn muốn gọi function của file B, khi nào bạn muốn gọi function của file C. Khi gọi hàm function() ở file A, trình biên dịch sẽ không biết được hàm function() bạn muốn gọi là hàm được định nghĩa ở file B hay file C. Vì vậy trình biên dịch chương trình sẽ báo lỗi.
+
+***fileB***
+
+```C++
+#include <iostream>
+
+using namespace std;
+
+void function() { cout << “function in fileB running.” << endl; }
+```
+***fileC***
+```C++
+#include <iostream>
+
+using namespace std;
+
+void function(() { cout << “function in fileC running.” << endl; }
+```
+***FileA***
+```C++
+#include <iostream>
+#incldue “fileB.hpp”
+#include “fileC.hpp”
+
+using namespace std;
+
+int main() {
+    fileB::function();
+    fileC::function();
+    
+    return 0;
+}
+```
+### VIRTUAL FUNCTION  ( HÀM ẢO )
+
+Hàm ảo (virtual function) là một hàm thành viên trong lớp cơ sở mà lớp dẫn xuất khi kế thừa cần phải định nghĩa lại.
+
+Hàm ảo được sử dụng trong lớp cơ sở khi cần đảm bảo hàm ảo đó sẽ được định nghĩa lại trong lớp dẫn xuất. Việc này rất cần thiết trong trường hợp con trỏ có kiểu là lớp cơ sở trỏ đến đối tượng của lớp dẫn xuất.
+
+**Vi du**
+
+```C++
+#include<iostream>
+#include"test.cpp"
+
+class DoiTuong{
+    public:
+    virtual char *cmd(){
+        return (char*)"DoiTuong\n";
+    }
+    void display(){
+        printf("%s",cmd());
+    }
+};
+class SinhVien:public DoiTuong{
+    char *cmd(){        //load lai : overload
+        return (char*)"SinhVien\n";
+    }
+};
+
+int main(){
+    DoiTuong dt;
+    dt.display();
+    SinhVien sv;
+    sv.display();
+
+    return 0;
+}
+```
+Trong trường hợp này ,*nếu không thêm virtual* phía trước **cmd**  thì khi gọi sv.display() output sẽ hiển thị *DoiTuong* vì nó đang kế thừa lớp DoiTuong. *Khi thêm virtual* vào trước **cmd** , khi nó chạy cmd nó sẽ là overload thì nó sẽ load cái mới nhất (cmd định nghĩa sau cùng). 
+
 ##
 
+### LINKED LIST
 
+Một Danh sách liên kết (Linked List) là 1 dãy các cấu trúc dữ liệu được kết nối với nhau thông qua các liên kết (link). Hiểu một cách đơn thuần thì Danh sách liên kết là một cấu trúc dữ liệu bao gồm 1 nhóm những nút (node) tạo thành 1 chuỗi. Mỗi nút gồm dữ liệu ở nút ấy và tham chiếu đến nút kế tiếp trong chuỗi.
 
+<img src="https://techacademy.edu.vn/wp-content/uploads/2021/10/Linked-List-C-La-Gi.png">
 
+Do danh sách liên kết đơn là một cấu trúc dữ liệu động, được tạo nên nhờ việc cấp phát động nên nó mang một số đặc điểm sau đây:
 
+* Được cấp phát bộ nhớ khi chạy chương trình
+* Có thể đổi thay kích thước qua việc thêm, xóa phần tử
+* Kích thước tối đa phụ thuộc vào bộ nhớ khả dụng của RAM
+* Các phần tử được lưu trữ tự nhiên (không liên tiếp) trong RAM
+
+### Sự khác nhau giữa LinkedList và ArrayList
+
+Sự khác nhau lớn nhất giữa ArrayList và LinkedList nằm ở chỗ có cấu trúc dữ liệu khác, nếu bạn hiểu được cấu trúc của 2 ArrayList và LinkedList thì những khác biệt dưới đây sẽ rất dễ hiểu:
+
+* Array là cấu trúc dữ liệu có chỉ mục(index) nên tìm kiếm trên Array nhanh hơn, độ phức tạp khi tìm kiếm một phần tử trong Array là O(1). Trái lại, với LinkedList chúng ta không thể truy cập phần tử theo chỉ mục hoặc ngẫu nhiên mà phải duyệt qua các phần tử nên độ phức tạp là O(n)
+
+* Chèn phần tử mới vào LinkedList dễ dàng và nhanh hơn so với ArrayList vì LinkedList không có rủi ro về thay đổi kích thước và sao chép dữ liệu sang mảng mới nếu mảng đầy chỉ với độ phức tạo O(1), nhưng với ArrayList thì rất hạn chế để thực hiện thêm mới và sao chép dữ liệu khi đầy thì độ phức tạp là O(n). Bên cạnh đó, ArrayList cần cập nhật lại chỉ mục nếu thêm một phần tử vào giữa mảng.
+
+* Xóa phần tử trong mảng giống như thêm mới thì LinkdedList có hiệu suất tốt hơn ArrayList.
+
+* LinkedList chiếm nhiều bộ nhớ hơn ArrayList vì trong ArrayList mỗi phần tử chỉ chứa một đối tượng dữ liệu còn LinkedList thì mỗi phần tử(node) lại chứa dữ liệu và địa chỉ của phần tử trước và phần tử sau.
+
+### Khi nào dùng LinkedList và ArrayList
+
+* LinkedList không được dùng nhiều như ArrayList nhưng có một số trường hợp LinkedList là sự lựa chọn hợp lí hơn ArrayList. Chúng ta nên dùng LinkedList nếu:
+
+* Ứng dụng không cần truy cập ngẫu nhiên trong mảng. Vì nếu cần chúng ta sẽ phải duyệt qua mảng để tìm kiếm phần tử phù hợp, độ phức tạp là O(n)
+2)Ứng dụng thao tác thêm mới, xóa nhiều hơn truy cập dữ liệu. Khi đó thêm mới và xóa không phải thay đổi kích thước mảng nên nhanh hơn ArrayList.
 
  
+</details>
+
+##
+
+<details>
+	<summary> LIST, MAP ,LAMDA </summary>
+
+
 </details>
 
 
