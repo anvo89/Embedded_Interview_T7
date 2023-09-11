@@ -1195,6 +1195,23 @@ Sự khác nhau lớn nhất giữa ArrayList và LinkedList nằm ở chỗ có
 <details>
 	<summary> LIST, MAP ,LAMDA </summary>
 
+##
+### MAP
+
+Map là một tập hợp các phần tử được sắp xếp theo thứ tự cụ thể, mà mỗi phần tử trong đó được hình thành bởi sự kết hợp của một cặp khóa và giá trị (key & value) với mỗi khóa là duy nhất trong map. 
+```C++
+int main(){
+    map<int, ThongTin> SinhVien;
+    SinhVien[101]={"Hoang",20};  //101 là key, hoàng 20 là value
+    SinhVien[102]={"Tuan",18};
+```
+
+Trong map, các khóa (key) được sử dụng để sắp xếp và xác định giá trị (value) tương ứng được liên kết với nó. Mỗi khóa trong map là duy nhất và không được phép trùng lặp. Các giá trị trong map thì có thể trùng lặp, chúng có thể thay đổi giá trị, cũng như là được chèn hoặc xóa khỏi map.
+
+```C++
+ for(auto item:SinhVien){
+        cout<<"ID= "item.first<<"",Ten:"<<item.second.ten"<<",Tuoi:"<<item.second.tuoi<<endl;
+```
 
 </details>
 
