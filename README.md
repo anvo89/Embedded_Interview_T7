@@ -1212,6 +1212,53 @@ Trong map, các khóa (key) được sử dụng để sắp xếp và xác đ�
  for(auto item:SinhVien){
         cout<<"ID= "item.first<<"",Ten:"<<item.second.ten"<<",Tuoi:"<<item.second.tuoi<<endl;
 ```
+##
+### LAMBDA
+
+Lambda là function nhưng được viết ở cục bộ (viết ở hàm main) thay vì khai báo ở toàn cục. Lambda hay còn gọi là hàm nặc danh, nó có thể dùng để truyền vào 1 hàm khác và sử dụng 1 lần.
+```C++
+[ capture_clause ] ( parameter_list ) -> return_type {
+    // lambda body
+}
+```
+* capture_clause: Đây là phần mô tả cách biến từ phạm vi xung quanh sẽ được truyền vào lambda. Có hai kiểu capture:
+
+[=]: Capture tất cả các biến từ phạm vi xung quanh theo giá trị (by value).
+
+[&]: Capture tất cả các biến từ phạm vi xung quanh theo tham chiếu (by reference).
+
+[x, y]: Chọn cụ thể các biến x và y để capture.
+
+* parameter_list: Danh sách các tham số cho hàm lambda, tương tự như danh sách tham số cho một hàm thông thường.
+
+* return_type: Kiểu dữ liệu của giá trị trả về của lambda (không bắt buộc). Lambda có thể trả về một giá trị bằng cách sử dụng return hoặc tự động suy luận kiểu dữ liệu nếu có lệnh return.
+
+* lambda body: Phần này chứa mã nguồn của hàm lambda, thực hiện các công việc cụ thể.
+
+```C++
+#include<iostream>
+
+
+int main(){
+
+ /* auto func=[](){
+        printf("hello\n");
+        }
+    func();
+    */
+int x=20;
+double z=12.4;
+
+auto tong=[=](int a,int b){
+    printf("tong %d va %d\n,a,b,a+b");
+    printf("x=%d\n",x);
+    printf("x=%f\n",z);
+};
+tong(7,9);
+    return 0;
+}
+```
+
 
 </details>
 
