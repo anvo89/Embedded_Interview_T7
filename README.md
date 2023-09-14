@@ -1326,6 +1326,17 @@ Nếu muốn master giao tiếp với slave 2, thì SS1 (master) kéo lên mức
 
 * Nếu cần phản hồi, slave sẽ trả lại dữ liệu từng bit một cho master dọc theo đường MISO. Master đọc các bit khi nó nhận được.
 
+### Các chế độ hoạt động:
+
+CPOL dùng để chỉ trạng thái của chân SCK ở trạng thái nghỉ. Chân SCK giữ ở mức cao khi CPOL=1 hoặc mức thấp khi CPOL=0.
+
+CPHA dùng để chỉ các mà dữ liệu được lấy mẫu theo xung. Dữ liệu sẽ được lấy ở cạnh lên của SCK khi CPHA = 0 hoặc cạnh xuống khi CPHA = 1.
+
+- CPHA = 1: đầu tiên cho 1 xung clock trước, sau đó đưa dữ liệu vào, xung clock tiếp theo sẽ đẩy dữ liệu đi.
+
+- CPHA = 0: đưa data vào trước, sau đó dùng xung clock để đẩy data đi.
+- <img src="https://user-images.githubusercontent.com/133474779/257699085-5e3edd15-bbdc-40c8-8d42-8bb46b62b65e.png">
+
 ### Ưu và nhược điểm của giao thức SPI
 
 ### Ưu điểm
@@ -1345,7 +1356,6 @@ Nếu muốn master giao tiếp với slave 2, thì SS1 (master) kéo lên mức
 - Độ dài cáp giới hạn: Tín hiệu SPI có độ tương phản cao và tốc độ truyền thông nhanh, do đó, độ dài cáp kết nối giữa các thiết bị cần được giới hạn để tránh sự mất mát dữ liệu và nhiễu.
 
 - Không hỗ trợ chia sẻ đường truyền: SPI không cung cấp cơ chế chia sẻ đường truyền giữa các thiết bị slave. Điều này có nghĩa là chỉ một slave được truyền dữ liệu tại một thời điểm. Điều này có thể tạo ra hạn chế trong việc giao tiếp
-
 
 
 
