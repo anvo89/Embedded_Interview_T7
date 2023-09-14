@@ -1269,9 +1269,7 @@ tong(7,9);
 <details>
 <summary><h1>Embedded</h1></summary>
 
-##
-
-<details>Giao thức</details>
+<details> Giao thức </details>
 
 ## GIAO THỨC SPI
 
@@ -1281,13 +1279,16 @@ Lợi ích duy nhất của SPI là dữ liệu có thể được truyền mà 
 
 Các thiết bị giao tiếp qua SPI có quan hệ master - slave. Master là thiết bị điều khiển (thường là vi điều khiển), còn slave (thường là cảm biến, màn hình hoặc chip nhớ) nhận lệnh từ master. Cấu hình đơn giản nhất của SPI là hệ thống một slave, một master duy nhất, nhưng một master có thể điều khiển nhiều hơn một slave.
 
+<scr img="https://arduinokit.vn/wp-content/uploads/2023/05/chuan-giao-tiep-spi-voi-nhieu-slaves.png">
+
+
 Giao tiếp 1 Master với 1 Slave
 
 Bus SPI gồm có 4 đường tín hiệu:
-•	SCLK: Serial Clock ( chân xung clock)
-•	MOSI: Master Out, Slave In ( truyền data đi cho slave)
-•	MISO: Master In, Slave Out (nhận data từ slave)
-•	SS: Slave Select( điều khiển để cho phép master điều khiển với slave nào)
+* SCLK: Serial Clock ( chân xung clock)
+* MOSI: Master Out, Slave In ( truyền data đi cho slave)
+* MISO: Master In, Slave Out (nhận data từ slave)
+* SS: Slave Select( điều khiển để cho phép master điều khiển với slave nào)
 
 *Tại một thời điểm 1 master chỉ được phép điều khiển 1 slave*
 
