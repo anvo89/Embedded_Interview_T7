@@ -1269,6 +1269,43 @@ tong(7,9);
 <details>
 <summary><h1>Embedded</h1></summary>
 
+##
+
+<details>Giao thức</details>
+
+## GIAO THỨC SPI
+
+
+
+Lợi ích duy nhất của SPI là dữ liệu có thể được truyền mà không bị gián đoạn. Bất kỳ số lượng bit nào cũng có thể được gửi hoặc nhận trong một luồng liên tục
+
+Các thiết bị giao tiếp qua SPI có quan hệ master - slave. Master là thiết bị điều khiển (thường là vi điều khiển), còn slave (thường là cảm biến, màn hình hoặc chip nhớ) nhận lệnh từ master. Cấu hình đơn giản nhất của SPI là hệ thống một slave, một master duy nhất, nhưng một master có thể điều khiển nhiều hơn một slave.
+
+Giao tiếp 1 Master với 1 Slave
+
+Bus SPI gồm có 4 đường tín hiệu:
+•	SCLK: Serial Clock ( chân xung clock)
+•	MOSI: Master Out, Slave In ( truyền data đi cho slave)
+•	MISO: Master In, Slave Out (nhận data từ slave)
+•	SS: Slave Select( điều khiển để cho phép master điều khiển với slave nào)
+
+*Tại một thời điểm 1 master chỉ được phép điều khiển 1 slave*
+
+#### Chân SS hoạt động như nào?
+
+Thường Slave1,2,3 là những con sensor do nhà sản xuất đã nạp chương trình SPI. Có những case ngoại lệ. 
+
+Nếu SS kéo xuống mức 0 (truyền bit 0) thì nó cho phép SS1 master giao tiếp với slave 1. Nếu SS mức 1 thì không đc giao tiếp với slave 1.
+
+Nếu muốn master giao tiếp với slave 2, thì SS1 (master) kéo lên mức 1, SS2(slave) kéo xuống mức 0, SS3 (slave 3) kéo lên mức 1.
+
+
+
+
+
+
+
+
 
 
 
