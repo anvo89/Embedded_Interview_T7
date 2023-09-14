@@ -1266,20 +1266,32 @@ tong(7,9);
 </details>
 
 ##
+
 <details>
+##
 <summary><h1>Embedded</h1></summary>
 
 <details> Giao thức </details>
 
 ## GIAO THỨC SPI
 
+SPI (Serial Peripheral Interface) là một chuẩn truyền thông nối tiếp tốc độ cao do Motorola đề xuất.
 
+• Các bit dữ liệu được truyền nối tiếp nhau và có xung clock đồng bộ.
 
-Lợi ích duy nhất của SPI là dữ liệu có thể được truyền mà không bị gián đoạn. Bất kỳ số lượng bit nào cũng có thể được gửi hoặc nhận trong một luồng liên tục
+• Giao tiếp song công, có thể truyền và nhận cùng một thời điểm.
+
+• Khoảng cách truyền ngắn, được sử dụng để trao đổi dữ liệu với nhau giữa các chip trên cùng một bo mạch.
+
+• Tốc độ truyền khoảng vài Mb/s.
+
+• Các dòng vi điều khiển thường được tích hợp module giao tiếp SPI dùng để giao tiếp truyền dữ liệu với các vi điều khiển khác, hoặc giao tiếp với các ngoại vi bên ngoài như cảm biến, EEPROM, ADC, LCD, SD Card,…
+
 
 Các thiết bị giao tiếp qua SPI có quan hệ master - slave. Master là thiết bị điều khiển (thường là vi điều khiển), còn slave (thường là cảm biến, màn hình hoặc chip nhớ) nhận lệnh từ master. Cấu hình đơn giản nhất của SPI là hệ thống một slave, một master duy nhất, nhưng một master có thể điều khiển nhiều hơn một slave.
 
-<scr img="https://arduinokit.vn/wp-content/uploads/2023/05/chuan-giao-tiep-spi-voi-nhieu-slaves.png">
+<img src="https://arduinokit.vn/wp-content/uploads/2023/05/chuan-giao-tiep-spi-voi-nhieu-slaves-768x590.png">
+
 
 
 Giao tiếp 1 Master với 1 Slave
@@ -1290,7 +1302,6 @@ Bus SPI gồm có 4 đường tín hiệu:
 * MISO: Master In, Slave Out (nhận data từ slave)
 * SS: Slave Select( điều khiển để cho phép master điều khiển với slave nào)
 
-*Tại một thời điểm 1 master chỉ được phép điều khiển 1 slave*
 
 #### Chân SS hoạt động như nào?
 
@@ -1300,13 +1311,40 @@ Nếu SS kéo xuống mức 0 (truyền bit 0) thì nó cho phép SS1 master gia
 
 Nếu muốn master giao tiếp với slave 2, thì SS1 (master) kéo lên mức 1, SS2(slave) kéo xuống mức 0, SS3 (slave 3) kéo lên mức 1.
 
+### Các bước truyền dữ liệu SPI
 
+<img src="https://arduinokit.vn/wp-content/uploads/2023/05/nguyen-ly-hoat-dong-chuan-giao-tiep-spi.webp">
 
+* Master ra tín hiệu xung nhịp.
+ 
 
+* Master chuyển chân SS / CS sang trạng thái điện áp thấp, điều này sẽ kích hoạt slave.
+ 
 
+* Master gửi dữ liệu từng bit một tới slave dọc theo đường MOSI. Slave đọc các bit khi nó nhận được.
+ 
 
+* Nếu cần phản hồi, slave sẽ trả lại dữ liệu từng bit một cho master dọc theo đường MISO. Master đọc các bit khi nó nhận được.
 
+### Ưu và nhược điểm của giao thức SPI
 
+### Ưu điểm
+
+- Tốc độ truyền thông cao: SPI cho phép truyền dữ liệu với tốc độ rất nhanh, thường đạt được tốc độ Mbps hoặc thậm chí hàng chục Mbps. Điều này rất hữu ích khi cần truyền dữ liệu nhanh và đáng tin cậy trong các ứng dụng như truyền thông không dây, điều khiển từ xa và truyền dữ liệu đa phương tiện.
+
+- Giao tiếp đồng bộ: SPI sử dụng tín hiệu xung đồng hồ (SCLK) để đồng bộ hoá việc truyền dữ liệu giữa master và slave. Điều này đảm bảo tính tin cậy của dữ liệu truyền, và master có thể điều khiển quá trình truyền thông theo ý muốn.
+
+- Khả năng truyền thông hai chiều: SPI cho phép truyền dữ liệu theo hai chiều, từ master tới slave và từ slave về master. Điều này rất hữu ích trong các ứng dụng yêu cầu truyền thông hai chiều như truyền thông với các cảm biến hoặc thiết bị ngoại vi.
+
+- Hỗ trợ nhiều thiết bị slave: SPI cho phép kết nối nhiều thiết bị slave với một master duy nhất. Master có thể chọn từng slave để truyền dữ liệu, giúp mở rộng khả năng kết nối và giao tiếp với nhiều thiết bị.
+
+### Nhược điểm
+
+- Số lượng chân kết nối: SPI yêu cầu nhiều chân kết nối hơn so với các giao thức truyền thông khác như I2C. Điều này có thể tạo ra sự rắc rối và giới hạn trong việc thiết kế mạch và kết nối với các thành phần.
+
+- Độ dài cáp giới hạn: Tín hiệu SPI có độ tương phản cao và tốc độ truyền thông nhanh, do đó, độ dài cáp kết nối giữa các thiết bị cần được giới hạn để tránh sự mất mát dữ liệu và nhiễu.
+
+- Không hỗ trợ chia sẻ đường truyền: SPI không cung cấp cơ chế chia sẻ đường truyền giữa các thiết bị slave. Điều này có nghĩa là chỉ một slave được truyền dữ liệu tại một thời điểm. Điều này có thể tạo ra hạn chế trong việc giao tiếp
 
 
 
