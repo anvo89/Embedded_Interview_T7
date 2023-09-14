@@ -1261,7 +1261,13 @@ tong(7,9);
 
 
 </details>
+</details>
+	
+</details>
 
+##
+<details>
+<summary><h1>Embedded</h1></summary>
 
 
 
