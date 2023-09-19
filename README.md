@@ -1195,11 +1195,167 @@ Sự khác nhau lớn nhất giữa ArrayList và LinkedList nằm ở chỗ có
 <details>
 	<summary> LIST, MAP ,LAMDA </summary>
 
+##
+### MAP
+
+Map là một tập hợp các phần tử được sắp xếp theo thứ tự cụ thể, mà mỗi phần tử trong đó được hình thành bởi sự kết hợp của một cặp khóa và giá trị (key & value) với mỗi khóa là duy nhất trong map. 
+```C++
+int main(){
+    map<int, ThongTin> SinhVien;
+    SinhVien[101]={"Hoang",20};  //101 là key, hoàng 20 là value
+    SinhVien[102]={"Tuan",18};
+```
+
+Trong map, các khóa (key) được sử dụng để sắp xếp và xác định giá trị (value) tương ứng được liên kết với nó. Mỗi khóa trong map là duy nhất và không được phép trùng lặp. Các giá trị trong map thì có thể trùng lặp, chúng có thể thay đổi giá trị, cũng như là được chèn hoặc xóa khỏi map.
+
+```C++
+ for(auto item:SinhVien){
+        cout<<"ID= "item.first<<"",Ten:"<<item.second.ten"<<",Tuoi:"<<item.second.tuoi<<endl;
+```
+##
+### LAMBDA
+
+Lambda là function nhưng được viết ở cục bộ (viết ở hàm main) thay vì khai báo ở toàn cục. Lambda hay còn gọi là hàm nặc danh, nó có thể dùng để truyền vào 1 hàm khác và sử dụng 1 lần.
+```C++
+[ capture_clause ] ( parameter_list ) -> return_type {
+    // lambda body
+}
+```
+* capture_clause: Đây là phần mô tả cách biến từ phạm vi xung quanh sẽ được truyền vào lambda. Có hai kiểu capture:
+
+[=]: Capture tất cả các biến từ phạm vi xung quanh theo giá trị (by value).
+
+[&]: Capture tất cả các biến từ phạm vi xung quanh theo tham chiếu (by reference).
+
+[x, y]: Chọn cụ thể các biến x và y để capture.
+
+* parameter_list: Danh sách các tham số cho hàm lambda, tương tự như danh sách tham số cho một hàm thông thường.
+
+* return_type: Kiểu dữ liệu của giá trị trả về của lambda (không bắt buộc). Lambda có thể trả về một giá trị bằng cách sử dụng return hoặc tự động suy luận kiểu dữ liệu nếu có lệnh return.
+
+* lambda body: Phần này chứa mã nguồn của hàm lambda, thực hiện các công việc cụ thể.
+
+```C++
+#include<iostream>
+
+
+int main(){
+
+ /* auto func=[](){
+        printf("hello\n");
+        }
+    func();
+    */
+int x=20;
+double z=12.4;
+
+auto tong=[=](int a,int b){
+    printf("tong %d va %d\n,a,b,a+b");
+    printf("x=%d\n",x);
+    printf("x=%f\n",z);
+};
+tong(7,9);
+    return 0;
+}
+```
+
 
 </details>
+</details>
+	
+</details>
+
+##
+
+<details>
+##
+<summary><h1>Embedded</h1></summary>
+
+<details> Giao thức </details>
+
+## GIAO THỨC SPI
+
+SPI (Serial Peripheral Interface) là một chuẩn truyền thông nối tiếp tốc độ cao do Motorola đề xuất.
+
+• Các bit dữ liệu được truyền nối tiếp nhau và có xung clock đồng bộ.
+
+• Giao tiếp song công, có thể truyền và nhận cùng một thời điểm.
+
+• Khoảng cách truyền ngắn, được sử dụng để trao đổi dữ liệu với nhau giữa các chip trên cùng một bo mạch.
+
+• Tốc độ truyền khoảng vài Mb/s.
+
+• Các dòng vi điều khiển thường được tích hợp module giao tiếp SPI dùng để giao tiếp truyền dữ liệu với các vi điều khiển khác, hoặc giao tiếp với các ngoại vi bên ngoài như cảm biến, EEPROM, ADC, LCD, SD Card,…
+
+
+Các thiết bị giao tiếp qua SPI có quan hệ master - slave. Master là thiết bị điều khiển (thường là vi điều khiển), còn slave (thường là cảm biến, màn hình hoặc chip nhớ) nhận lệnh từ master. Cấu hình đơn giản nhất của SPI là hệ thống một slave, một master duy nhất, nhưng một master có thể điều khiển nhiều hơn một slave.
+
+<img src="https://arduinokit.vn/wp-content/uploads/2023/05/chuan-giao-tiep-spi-voi-nhieu-slaves-768x590.png">
 
 
 
+Giao tiếp 1 Master với 1 Slave
+
+Bus SPI gồm có 4 đường tín hiệu:
+* SCLK: Serial Clock ( chân xung clock)
+* MOSI: Master Out, Slave In ( truyền data đi cho slave)
+* MISO: Master In, Slave Out (nhận data từ slave)
+* SS: Slave Select( điều khiển để cho phép master điều khiển với slave nào)
+
+
+#### Chân SS hoạt động như nào?
+
+Thường Slave1,2,3 là những con sensor do nhà sản xuất đã nạp chương trình SPI. Có những case ngoại lệ. 
+
+Nếu SS kéo xuống mức 0 (truyền bit 0) thì nó cho phép SS1 master giao tiếp với slave 1. Nếu SS mức 1 thì không đc giao tiếp với slave 1.
+
+Nếu muốn master giao tiếp với slave 2, thì SS1 (master) kéo lên mức 1, SS2(slave) kéo xuống mức 0, SS3 (slave 3) kéo lên mức 1.
+
+### Các bước truyền dữ liệu SPI
+
+<img src="https://arduinokit.vn/wp-content/uploads/2023/05/nguyen-ly-hoat-dong-chuan-giao-tiep-spi.webp">
+
+* Master ra tín hiệu xung nhịp.
+ 
+
+* Master chuyển chân SS / CS sang trạng thái điện áp thấp, điều này sẽ kích hoạt slave.
+ 
+
+* Master gửi dữ liệu từng bit một tới slave dọc theo đường MOSI. Slave đọc các bit khi nó nhận được.
+ 
+
+* Nếu cần phản hồi, slave sẽ trả lại dữ liệu từng bit một cho master dọc theo đường MISO. Master đọc các bit khi nó nhận được.
+
+### Các chế độ hoạt động:
+
+CPOL dùng để chỉ trạng thái của chân SCK ở trạng thái nghỉ. Chân SCK giữ ở mức cao khi CPOL=1 hoặc mức thấp khi CPOL=0.
+
+CPHA dùng để chỉ các mà dữ liệu được lấy mẫu theo xung. Dữ liệu sẽ được lấy ở cạnh lên của SCK khi CPHA = 0 hoặc cạnh xuống khi CPHA = 1.
+
+- CPHA = 1: đầu tiên cho 1 xung clock trước, sau đó đưa dữ liệu vào, xung clock tiếp theo sẽ đẩy dữ liệu đi.
+
+- CPHA = 0: đưa data vào trước, sau đó dùng xung clock để đẩy data đi.
+- <img src="https://user-images.githubusercontent.com/133474779/257699085-5e3edd15-bbdc-40c8-8d42-8bb46b62b65e.png">
+
+### Ưu và nhược điểm của giao thức SPI
+
+### Ưu điểm
+
+- Tốc độ truyền thông cao: SPI cho phép truyền dữ liệu với tốc độ rất nhanh, thường đạt được tốc độ Mbps hoặc thậm chí hàng chục Mbps. Điều này rất hữu ích khi cần truyền dữ liệu nhanh và đáng tin cậy trong các ứng dụng như truyền thông không dây, điều khiển từ xa và truyền dữ liệu đa phương tiện.
+
+- Giao tiếp đồng bộ: SPI sử dụng tín hiệu xung đồng hồ (SCLK) để đồng bộ hoá việc truyền dữ liệu giữa master và slave. Điều này đảm bảo tính tin cậy của dữ liệu truyền, và master có thể điều khiển quá trình truyền thông theo ý muốn.
+
+- Khả năng truyền thông hai chiều: SPI cho phép truyền dữ liệu theo hai chiều, từ master tới slave và từ slave về master. Điều này rất hữu ích trong các ứng dụng yêu cầu truyền thông hai chiều như truyền thông với các cảm biến hoặc thiết bị ngoại vi.
+
+- Hỗ trợ nhiều thiết bị slave: SPI cho phép kết nối nhiều thiết bị slave với một master duy nhất. Master có thể chọn từng slave để truyền dữ liệu, giúp mở rộng khả năng kết nối và giao tiếp với nhiều thiết bị.
+
+### Nhược điểm
+
+- Số lượng chân kết nối: SPI yêu cầu nhiều chân kết nối hơn so với các giao thức truyền thông khác như I2C. Điều này có thể tạo ra sự rắc rối và giới hạn trong việc thiết kế mạch và kết nối với các thành phần.
+
+- Độ dài cáp giới hạn: Tín hiệu SPI có độ tương phản cao và tốc độ truyền thông nhanh, do đó, độ dài cáp kết nối giữa các thiết bị cần được giới hạn để tránh sự mất mát dữ liệu và nhiễu.
+
+- Không hỗ trợ chia sẻ đường truyền: SPI không cung cấp cơ chế chia sẻ đường truyền giữa các thiết bị slave. Điều này có nghĩa là chỉ một slave được truyền dữ liệu tại một thời điểm. Điều này có thể tạo ra hạn chế trong việc giao tiếp
 
 
 
