@@ -1355,11 +1355,36 @@ CPHA dùng để chỉ các mà dữ liệu được lấy mẫu theo xung. Dữ
 
 - Độ dài cáp giới hạn: Tín hiệu SPI có độ tương phản cao và tốc độ truyền thông nhanh, do đó, độ dài cáp kết nối giữa các thiết bị cần được giới hạn để tránh sự mất mát dữ liệu và nhiễu.
 
-- Không hỗ trợ chia sẻ đường truyền: SPI không cung cấp cơ chế chia sẻ đường truyền giữa các thiết bị slave. Điều này có nghĩa là chỉ một slave được truyền dữ liệu tại một thời điểm. Điều này có thể tạo ra hạn chế trong việc giao tiếp
+- Không hỗ trợ chia sẻ đường truyền: SPI không cung cấp cơ chế chia sẻ đường truyền giữa các thiết bị slave. Điều này có nghĩa là chỉ một slave được truyền dữ liệu tại một thời điểm. Điều này có thể tạo ra hạn chế trong việc giao tiếp.
+</details>
 
+## UART
 
+<img src="https://user-images.githubusercontent.com/133474779/257703514-b43f2639-f3c1-48ec-a909-dad3fc10eeed.png">
 
+UART là giao thức không đồng bộ, do đó không có đường clock nào điều chỉnh tốc độ truyền dữ liệu. Người dùng phải đặt cả hai thiết bị để giao tiếp ở cùng tốc độ. Tốc độ này được gọi là tốc độ truyền, được biểu thị bằng bit trên giây hoặc bps.
 
+Các UART giao tiếp giữa hai nút riêng biệt bằng cách sử dụng một cặp dẫn và một nối đất chung.
+
+- TX: truyền dữ liệu
+  
+- RX: nhận dữ liệu
+
+Tại 1 thời điểm, UART có thể cùng truyền và nhận dữ liệu
+
+Ở trạng thái không giao tiếp, chân TX luôn ở mức cao (có điện trở kéo lên).
+
+UART là một giao thức một master, một slave, trong đó một thiết bị được thiết lập để giao tiếp với duy nhất một thiết bị khác.
+
+<img src="https://user-images.githubusercontent.com/133474779/257703023-5572383e-070d-4c24-9837-b5189a6cf680.png">
+
+**Start bit**: Để bắt đầu truyền dữ liệu, UART truyền sẽ kéo đường truyền từ mức cao xuống mức thấp trong một chu kỳ clock. Khi UART nhận phát hiện sự chuyển đổi điện áp cao xuống thấp, nó bắt đầu đọc các bit trong khung dữ liệu ở tần số của tốc độ truyền.
+
+Khung dữ liệu chứa dữ liệu thực tế được chuyển. Nó có thể dài từ 5 bit đến 8 bit nếu sử dụng bit chẵn lẻ. Nếu không sử dụng bit chẵn lẻ, khung dữ liệu có thể dài 9 bit. Trong hầu hết các trường hợp, dữ liệu được gửi với bit ít quan trọng nhất trước tiên.
+
+**Bit chẵn lẻ**: là một cách để UART nhận cho biết liệu có bất kỳ dữ liệu nào đã thay đổi trong quá trình truyền hay không (bức xạ điện từ, tốc độ truyền không khớp hoặc truyền dữ liệu khoảng cách xa). Sau khi UART nhận đọc khung dữ liệu, nó sẽ đếm số bit có giá trị là 1 và kiểm tra xem tổng số là số chẵn hay lẻ. Nếu bit chẵn lẻ là 0 (tính chẵn), thì tổng các bit 1 trong khung dữ liệu phải là một số chẵn. Nếu bit chẵn lẻ là 1 (tính lẻ), các bit 1 trong khung dữ liệu sẽ tổng thành một số lẻ. Khi bit chẵn lẻ khớp với dữ liệu, UART sẽ biết rằng quá trình truyền không có lỗi. Nhưng nếu bit chẵn lẻ là 0 và tổng là số lẻ; hoặc bit chẵn lẻ là 1 và tổng số là chẵn, UART sẽ biết rằng các bit trong khung dữ liệu đã thay đổi.
+
+**Bit dừng**: để báo hiệu sự kết thúc của gói dữ liệu, UART gửi sẽ điều khiển đường truyền dữ liệu từ điện áp thấp đến điện áp cao trong ít nhất khoảng 2 bit.
 
 
 
