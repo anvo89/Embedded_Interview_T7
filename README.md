@@ -1356,7 +1356,6 @@ CPHA dùng để chỉ các mà dữ liệu được lấy mẫu theo xung. Dữ
 - Độ dài cáp giới hạn: Tín hiệu SPI có độ tương phản cao và tốc độ truyền thông nhanh, do đó, độ dài cáp kết nối giữa các thiết bị cần được giới hạn để tránh sự mất mát dữ liệu và nhiễu.
 
 - Không hỗ trợ chia sẻ đường truyền: SPI không cung cấp cơ chế chia sẻ đường truyền giữa các thiết bị slave. Điều này có nghĩa là chỉ một slave được truyền dữ liệu tại một thời điểm. Điều này có thể tạo ra hạn chế trong việc giao tiếp.
-</details>
 
 ## UART
 
@@ -1376,7 +1375,10 @@ Tại 1 thời điểm, UART có thể cùng truyền và nhận dữ liệu
 
 UART là một giao thức một master, một slave, trong đó một thiết bị được thiết lập để giao tiếp với duy nhất một thiết bị khác.
 
-<img src="https://user-images.githubusercontent.com/133474779/257703023-5572383e-070d-4c24-9837-b5189a6cf680.png">
+<img src="https://tapit.vn/wp-content/uploads/2018/06/1-2.png">
+
+<img src="https://developer.electricimp.com/sites/default/files/attachments/images/uart/uart3.png">
+
 
 **Start bit**: Để bắt đầu truyền dữ liệu, UART truyền sẽ kéo đường truyền từ mức cao xuống mức thấp trong một chu kỳ clock. Khi UART nhận phát hiện sự chuyển đổi điện áp cao xuống thấp, nó bắt đầu đọc các bit trong khung dữ liệu ở tần số của tốc độ truyền.
 
