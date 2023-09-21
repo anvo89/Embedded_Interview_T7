@@ -1260,19 +1260,19 @@ tong(7,9);
 }
 ```
 
-
 </details>
 </details>
 	
 </details>
 
 ##
-
 <details>
-##
-<summary><h1>Embedded</h1></summary>
+<summary><h1>Embedded</h1></summary>	
 
-<details> Giao thức </details>
+ ##
+ <details>
+	<Summary><h2>Giao Thức SPI,UART,I2C</h2>  </Summary>
+
 
 ## GIAO THỨC SPI
 
@@ -1388,6 +1388,50 @@ Khung dữ liệu chứa dữ liệu thực tế được chuyển. Nó có th�
 **Bit chẵn lẻ**: là một cách để UART nhận cho biết liệu có bất kỳ dữ liệu nào đã thay đổi trong quá trình truyền hay không (bức xạ điện từ, tốc độ truyền không khớp hoặc truyền dữ liệu khoảng cách xa). Sau khi UART nhận đọc khung dữ liệu, nó sẽ đếm số bit có giá trị là 1 và kiểm tra xem tổng số là số chẵn hay lẻ. Nếu bit chẵn lẻ là 0 (tính chẵn), thì tổng các bit 1 trong khung dữ liệu phải là một số chẵn. Nếu bit chẵn lẻ là 1 (tính lẻ), các bit 1 trong khung dữ liệu sẽ tổng thành một số lẻ. Khi bit chẵn lẻ khớp với dữ liệu, UART sẽ biết rằng quá trình truyền không có lỗi. Nhưng nếu bit chẵn lẻ là 0 và tổng là số lẻ; hoặc bit chẵn lẻ là 1 và tổng số là chẵn, UART sẽ biết rằng các bit trong khung dữ liệu đã thay đổi.
 
 **Bit dừng**: để báo hiệu sự kết thúc của gói dữ liệu, UART gửi sẽ điều khiển đường truyền dữ liệu từ điện áp thấp đến điện áp cao trong ít nhất khoảng 2 bit.
+
+##
+
+## I2C
+
+I2C kết hợp các tính năng tốt nhất của SPI và UART. Với I2C, bạn có thể kết nối nhiều slave với một master duy nhất (như SPI) và bạn có thể có nhiều master điều khiển một hoặc nhiều slave. Điều này thực sự hữu ích khi bạn muốn có nhiều hơn một vi điều khiển ghi dữ liệu vào một thẻ nhớ duy nhất hoặc hiển thị văn bản trên một màn hình LCD.
+
+I2C chỉ sử dụng hai dây để truyền dữ liệu giữa các thiết bị:
+ 
+
+* SDA (Serial Data) - đường truyền cho master và slave để gửi và nhận dữ liệu.
+ 
+
+* SCL (Serial Clock) - đường mang tín hiệu xung nhịp.
+ 
+
+I2C là một giao thức truyền thông nối tiếp, vì vậy dữ liệu được truyền từng bit dọc theo một đường duy nhất (đường SDA).
+
+
+*Giống như SPI, I2C là đồng bộ, do đó đầu ra của các bit được đồng bộ hóa với việc lấy mẫu các bit bởi một tín hiệu xung nhịp được chia sẻ giữa master và slave. Tín hiệu xung nhịp luôn được điều khiển bởi master.*
+
+### Cách hoạt động của I2C
+
+<img src="https://dientutuonglai.com/uploads/media/vi-dieu-khien/tin-nhan-i2c.png?1615623356957">
+
+* Master gửi điều kiện khởi động đến mọi slave được kết nối bằng cách chuyển đường SDA từ mức điện áp cao sang mức điện áp thấp trước khi chuyển đường SCL từ mức cao xuống mức thấp.
+
+* Master gửi cho mỗi slave địa chỉ 7 hoặc 10 bit của slave mà nó muốn giao tiếp, cùng với bit đọc / ghi.
+
+* Bit đọc/ghi cho slave biết master muốn ghi dữ liệu vào nó hay nhận dữ liệu từ nó. Nếu master muốn gửi dữ liệu đến slave, bit đọc / ghi ở mức điện áp thấp. Nếu master đang yêu cầu dữ liệu từ slave, thì bit ở mức điện áp cao.
+Mỗi slave sẽ so sánh địa chỉ được gửi từ master với địa chỉ của chính nó. Nếu địa chỉ phù hợp, nó sẽ gửi lại một bit ACK điện áp thấp cho master. Nếu địa chỉ không khớp, slave không làm gì cả và đường SDA vẫn ở mức cao
+
+* Master gửi hoặc nhận khung dữ liệu.
+
+* Sau khi mỗi khung dữ liệu được chuyển, thiết bị nhận trả về một bit ACK khác cho thiết bị gửi để xác nhận đã nhận thành công khung.
+
+* Để dừng truyền dữ liệu, master gửi điều kiện dừng đến slave bằng cách chuyển đổi mức cao SCL trước khi chuyển mức cao SDA.
+
+ [Chi tiết ](https://dientutuonglai.com/chuan-giao-tiep-i2c-la-gi.html)
+
+ ### SO SÁNH SPI UART I2C 
+
+ <img src ="https://scontent.fsgn5-15.fna.fbcdn.net/v/t1.6435-9/144962711_249915713337702_340587713684986630_n.png?_nc_cat=108&ccb=1-7&_nc_sid=730e14&_nc_ohc=HgA9E9WGASgAX-DdE3l&_nc_ht=scontent.fsgn5-15.fna&oh=00_AfDCesQaEIHuysN6gZ3bEKW1Tytr2PYFgzmvrt8myfOcyw&oe=65337A97">
+ 
 
 
 
