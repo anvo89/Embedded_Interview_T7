@@ -1431,7 +1431,30 @@ Mỗi slave sẽ so sánh địa chỉ được gửi từ master với địa c
  ### SO SÁNH SPI UART I2C 
 
  <img src ="https://scontent.fsgn5-15.fna.fbcdn.net/v/t1.6435-9/144962711_249915713337702_340587713684986630_n.png?_nc_cat=108&ccb=1-7&_nc_sid=730e14&_nc_ohc=HgA9E9WGASgAX-DdE3l&_nc_ht=scontent.fsgn5-15.fna&oh=00_AfDCesQaEIHuysN6gZ3bEKW1Tytr2PYFgzmvrt8myfOcyw&oe=65337A97">
+
+ Giao thức I2C, SPI và UART là các giao thức truyền thông thông dụng trong việc kết nối các thiết bị điện tử với nhau. Dưới đây là sự khác nhau giữa chúng:
  
+1. Giao thức I2C (Inter-Integrated Circuit):
+
+- I2C là giao thức truyền thông hai dây, bao gồm một dây dữ liệu (SDA) và một dây xung đồng hồ (SCL).
+  
+- I2C được sử dụng để kết nối nhiều thiết bị với nhau thông qua cùng một bus giao tiếp.
+  
+- Giao thức I2C sử dụng địa chỉ để truyền dữ liệu giữa các thiết bị, giúp phân biệt được địa chỉ của từng thiết bị.
+  
+2. Giao thức SPI (Serial Peripheral Interface):
+   
+- SPI là giao thức truyền thông đồng bộ, dựa trên việc truyền dữ liệu đồng thời trên các dây MOSI (Master-Out Slave-In) và MISO (Master-In Slave-Out), cùng với dây xung đồng hồ (SCLK) và dây chọn (SS).
+  
+- Giao thức SPI thường sử dụng chế độ master-slave, trong đó một thiết bị được gọi là master điều khiển quá trình truyền thông, trong khi các thiết bị khác được gọi là slave.
+  
+3. Giao thức UART (Universal Asynchronous Receiver-Transmitter):
+   
+- UART là giao thức truyền thông không đồng bộ, dựa trên việc truyền dữ liệu qua hai dây TX (Transmit) và RX (Receive).
+  
+- Giao thức UART thực hiện việc chuyển đổi dữ liệu từ dạng thông điệp thành dạng dòng liên tiếp và ngược lại.
+  
+- UART thường được sử dụng để kết nối máy tính với các cổng nối tiếp truyền thống (RS-232) hoặc các thiết bị nhúng như vi điều khiển.
 
 
 
