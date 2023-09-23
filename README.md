@@ -1271,7 +1271,7 @@ tong(7,9);
 
  ##
  <details>
-	<Summary><h2>Giao Thức SPI,UART,I2C</h2>  </Summary>
+	<Summary>Giao Thức SPI,UART,I2C  </Summary>
 
 
 ## GIAO THỨC SPI
@@ -1456,6 +1456,34 @@ Mỗi slave sẽ so sánh địa chỉ được gửi từ master với địa c
   
 - UART thường được sử dụng để kết nối máy tính với các cổng nối tiếp truyền thống (RS-232) hoặc các thiết bị nhúng như vi điều khiển.
 
+</details>
+
+##
+
+<details>
+	<summary>TIMER</summary>
+
+Bộ đếm/Bộ định thời: Đây là các ngoại vi được thiết kế để thực hiện một nhiệm vụ đơn giản: đếm các xung nhịp. Mỗi khi có thêm một xung nhịp tại đầu vào đếm thì giá trị của bộ đếm sẽ được tăng lên 01 đơn vị (trong chế độ đếm tiến/đếm lên) hay giảm đi 01 đơn vị (trong chế độ đếm lùi/đếm xuống).
+```C++
+  / Time base configuration /
+  TIM4_TimeBaseInit(TIM4_PRESCALER_128, 16); //bộ chia, giới hạn bộ đếm
+
+  / Clear TIM4 update flag /
+  TIM4_ClearFlag(TIM4_FLAG_UPDATE); //khi đếm đến giới hạn bộ đếm thì sẽ có cờ tràn(khi tràn -> xảy ra ngắt). Xóa cờ này đi để chắc chắn không tràn
+
+  / Enable update interrupt /
+  TIM4_ITConfig(TIM4_IT_UPDATE, ENABLE); //đăng kí ngắt vào bảng vector ngắt
+  
+  / enable interrupts /
+  enableInterrupts(); //bật các ngắt trong bảng vector
+
+  / Enable TIM4 /
+  TIM4_Cmd(ENABLE); //timer sẽ bắt đầu đếm
+
+```
+
+
+</details>
 
 
 
