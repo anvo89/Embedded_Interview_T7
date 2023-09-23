@@ -1463,6 +1463,8 @@ Mỗi slave sẽ so sánh địa chỉ được gửi từ master với địa c
 <details>
 	<summary>TIMER</summary>
 
+##
+
 Bộ đếm/Bộ định thời: Đây là các ngoại vi được thiết kế để thực hiện một nhiệm vụ đơn giản: đếm các xung nhịp. Mỗi khi có thêm một xung nhịp tại đầu vào đếm thì giá trị của bộ đếm sẽ được tăng lên 01 đơn vị (trong chế độ đếm tiến/đếm lên) hay giảm đi 01 đơn vị (trong chế độ đếm lùi/đếm xuống).
 ```C++
   / Time base configuration /
@@ -1472,7 +1474,7 @@ Bộ đếm/Bộ định thời: Đây là các ngoại vi được thiết kế
   TIM4_ClearFlag(TIM4_FLAG_UPDATE); //khi đếm đến giới hạn bộ đếm thì sẽ có cờ tràn(khi tràn -> xảy ra ngắt). Xóa cờ này đi để chắc chắn không tràn
 
   / Enable update interrupt /
-  TIM4_ITConfig(TIM4_IT_UPDATE, ENABLE); //đăng kí ngắt vào bảng vector ngắt
+  TIM4_ITConfig(TIM4_IT_UPDATE, ENABLE); //đăng kí ngắt vào bảng vector ngắt, bảng vector ngắt chứa nhiều địa chỉ 
   
   / enable interrupts /
   enableInterrupts(); //bật các ngắt trong bảng vector
@@ -1481,6 +1483,62 @@ Bộ đếm/Bộ định thời: Đây là các ngoại vi được thiết kế
   TIM4_Cmd(ENABLE); //timer sẽ bắt đầu đếm
 
 ```
+### Lựa chọn Clock cho TIMER
+
+Counter clock là nguồn gốc của hoạt động tăng/ giảm giá trị CNT, clock này có thể được cấu hình lựa chọn từ các nguồn sau:
+
+– Internal clock (CK_INT): Chọn nguồn clock từ clock của hệ thống, có thể là từ thạch anh dao động tần số cao bên ngoài (HSE) hay bộ giao động RC tần số cao được tích hợp sẵn bên trong STM(HSI), từ đấy qua các bộ chia tần của hệ thống clock để cấp cho ngoại vi timer (TIM2 đến TIM5 có clock CK_PSC đầu vào bằng clock của bus APB1, TIM9 đến TIM11 có clock Ck_PSC bằng clock bus APB2). CK_PSC là clock chưa qua bộ Prescaler của khối timer.
+
+<img scr="https://tapit.vn/wp-content/uploads/2019/07/timer_stm32f411_clockselection_tapit.png">
+
+– External clock mode1: Nếu chọn mode này thì counter có thể đếm mỗi khi chân external input pin (TIx) xuất hiện sườn lên hoặc sườn xuống, người dùng cấu hình chọn sườn.
+
+– External clock mode2: Nếu chọn mode này thì counter có thể đếm mỗi khi chân external trigger input (ETR) xuất hiện sườn lên hoặc sườn xuống. (Mode này chỉ có ở các bộ TIM2, TIM3, TIM4).
+
+– Internal trigger inputs (ITRx): Mode này cho phép sử dụng một timer làm bộ prescaler cho một bộ timer khác.
+
+
+
+### TIMER 0
+
+*  0 là 1 bộ timer/ counter 8 bit
+* Có bộ chia trước, dùng chung với watchdog timer
+* Có thể lựa chọn nguồn xung clock nội hay ngoại (nối với chân T0CKI) tùy theo cách cấu hình
+* Có phát hiện ngắt khi tràn bộ đếm từ 0xFF về 0x00
+* Cho phép chọn cạnh của xung đếm
+* Không có bit cho phép chạy hay ngừng ( free run timer)
+
+<img src="https://deviot.vn/storage/deviot/timer0_block.png">
+
+Để cấu hình cho timer 0 thì ta cần phải tác động lên thanh ghi OPTION_REG:
+
+<img src="https://deviot.vn/storage/deviot/option_reg.png">
+
+Chức năng của các bit:
+
+Bit 7: bit điều khiển điện trở treo port B (RBPU) 
+
+Bit 6: bit chọn cạnh ngắt (INTEDG)
+
+Bit 5: bit chọn nguồn xung cho timer 0 ( T0CS)
+
+T0CS = 1: nguồn xung ngoại lấy từ chân T0CKI
+
+T0CS = 0: nguồn xung clock nội (Fosc/4)
+
+Bit 4: Bit chọn cạnh ngắt tích cực (T0SE)
+
+Bit 3: bit gán bộ chia trước (PSA)
+
+PSA = 1: gán cho watchdog timer (WDT)
+
+PSA = 0: gán cho timer 0
+
+Bit 2-0 : các bit chọn tỷ lệ bộ chia trước PS<2:0>
+
+[Link tham khảo](https://deviot.vn/tutorials/pic.22296474/timer-0-va-ung-dung-ngat.54491851)
+
+
 
 
 </details>
