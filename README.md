@@ -1,5 +1,6 @@
 # Embedded_Interview_T7
 
+
 <details>
 <summary> <h1>C programming</h1> </summary>
 
@@ -1259,19 +1260,19 @@ tong(7,9);
 }
 ```
 
-
 </details>
 </details>
 	
 </details>
 
 ##
-
 <details>
-##
-<summary><h1>Embedded</h1></summary>
+<summary><h1>Embedded</h1></summary>	
 
-<details> Giao thức </details>
+ ##
+ <details>
+	<Summary>Giao Thức SPI,UART,I2C  </Summary>
+
 
 ## GIAO THỨC SPI
 
@@ -1355,13 +1356,211 @@ CPHA dùng để chỉ các mà dữ liệu được lấy mẫu theo xung. Dữ
 
 - Độ dài cáp giới hạn: Tín hiệu SPI có độ tương phản cao và tốc độ truyền thông nhanh, do đó, độ dài cáp kết nối giữa các thiết bị cần được giới hạn để tránh sự mất mát dữ liệu và nhiễu.
 
-- Không hỗ trợ chia sẻ đường truyền: SPI không cung cấp cơ chế chia sẻ đường truyền giữa các thiết bị slave. Điều này có nghĩa là chỉ một slave được truyền dữ liệu tại một thời điểm. Điều này có thể tạo ra hạn chế trong việc giao tiếp
+- Không hỗ trợ chia sẻ đường truyền: SPI không cung cấp cơ chế chia sẻ đường truyền giữa các thiết bị slave. Điều này có nghĩa là chỉ một slave được truyền dữ liệu tại một thời điểm. Điều này có thể tạo ra hạn chế trong việc giao tiếp.
+
+## UART
+
+<img src="https://user-images.githubusercontent.com/133474779/257703514-b43f2639-f3c1-48ec-a909-dad3fc10eeed.png">
+
+UART là giao thức không đồng bộ, do đó không có đường clock nào điều chỉnh tốc độ truyền dữ liệu. Người dùng phải đặt cả hai thiết bị để giao tiếp ở cùng tốc độ. Tốc độ này được gọi là tốc độ truyền, được biểu thị bằng bit trên giây hoặc bps.
+
+Các UART giao tiếp giữa hai nút riêng biệt bằng cách sử dụng một cặp dẫn và một nối đất chung.
+
+- TX: truyền dữ liệu
+  
+- RX: nhận dữ liệu
+
+Tại 1 thời điểm, UART có thể cùng truyền và nhận dữ liệu
+
+Ở trạng thái không giao tiếp, chân TX luôn ở mức cao (có điện trở kéo lên).
+
+UART là một giao thức một master, một slave, trong đó một thiết bị được thiết lập để giao tiếp với duy nhất một thiết bị khác.
+
+<img src="https://tapit.vn/wp-content/uploads/2018/06/1-2.png">
+
+<img src="https://developer.electricimp.com/sites/default/files/attachments/images/uart/uart3.png">
+
+
+**Start bit**: Để bắt đầu truyền dữ liệu, UART truyền sẽ kéo đường truyền từ mức cao xuống mức thấp trong một chu kỳ clock. Khi UART nhận phát hiện sự chuyển đổi điện áp cao xuống thấp, nó bắt đầu đọc các bit trong khung dữ liệu ở tần số của tốc độ truyền.
+
+Khung dữ liệu chứa dữ liệu thực tế được chuyển. Nó có thể dài từ 5 bit đến 8 bit nếu sử dụng bit chẵn lẻ. Nếu không sử dụng bit chẵn lẻ, khung dữ liệu có thể dài 9 bit. Trong hầu hết các trường hợp, dữ liệu được gửi với bit ít quan trọng nhất trước tiên.
+
+**Bit chẵn lẻ**: là một cách để UART nhận cho biết liệu có bất kỳ dữ liệu nào đã thay đổi trong quá trình truyền hay không (bức xạ điện từ, tốc độ truyền không khớp hoặc truyền dữ liệu khoảng cách xa). Sau khi UART nhận đọc khung dữ liệu, nó sẽ đếm số bit có giá trị là 1 và kiểm tra xem tổng số là số chẵn hay lẻ. Nếu bit chẵn lẻ là 0 (tính chẵn), thì tổng các bit 1 trong khung dữ liệu phải là một số chẵn. Nếu bit chẵn lẻ là 1 (tính lẻ), các bit 1 trong khung dữ liệu sẽ tổng thành một số lẻ. Khi bit chẵn lẻ khớp với dữ liệu, UART sẽ biết rằng quá trình truyền không có lỗi. Nhưng nếu bit chẵn lẻ là 0 và tổng là số lẻ; hoặc bit chẵn lẻ là 1 và tổng số là chẵn, UART sẽ biết rằng các bit trong khung dữ liệu đã thay đổi.
+
+**Bit dừng**: để báo hiệu sự kết thúc của gói dữ liệu, UART gửi sẽ điều khiển đường truyền dữ liệu từ điện áp thấp đến điện áp cao trong ít nhất khoảng 2 bit.
+
+##
+
+## I2C
+
+I2C kết hợp các tính năng tốt nhất của SPI và UART. Với I2C, bạn có thể kết nối nhiều slave với một master duy nhất (như SPI) và bạn có thể có nhiều master điều khiển một hoặc nhiều slave. Điều này thực sự hữu ích khi bạn muốn có nhiều hơn một vi điều khiển ghi dữ liệu vào một thẻ nhớ duy nhất hoặc hiển thị văn bản trên một màn hình LCD.
+
+I2C chỉ sử dụng hai dây để truyền dữ liệu giữa các thiết bị:
+ 
+
+* SDA (Serial Data) - đường truyền cho master và slave để gửi và nhận dữ liệu.
+ 
+
+* SCL (Serial Clock) - đường mang tín hiệu xung nhịp.
+ 
+
+I2C là một giao thức truyền thông nối tiếp, vì vậy dữ liệu được truyền từng bit dọc theo một đường duy nhất (đường SDA).
+
+
+*Giống như SPI, I2C là đồng bộ, do đó đầu ra của các bit được đồng bộ hóa với việc lấy mẫu các bit bởi một tín hiệu xung nhịp được chia sẻ giữa master và slave. Tín hiệu xung nhịp luôn được điều khiển bởi master.*
+
+### Cách hoạt động của I2C
+
+<img src="https://dientutuonglai.com/uploads/media/vi-dieu-khien/tin-nhan-i2c.png?1615623356957">
+
+* Master gửi điều kiện khởi động đến mọi slave được kết nối bằng cách chuyển đường SDA từ mức điện áp cao sang mức điện áp thấp trước khi chuyển đường SCL từ mức cao xuống mức thấp.
+
+* Master gửi cho mỗi slave địa chỉ 7 hoặc 10 bit của slave mà nó muốn giao tiếp, cùng với bit đọc / ghi.
+
+* Bit đọc/ghi cho slave biết master muốn ghi dữ liệu vào nó hay nhận dữ liệu từ nó. Nếu master muốn gửi dữ liệu đến slave, bit đọc / ghi ở mức điện áp thấp. Nếu master đang yêu cầu dữ liệu từ slave, thì bit ở mức điện áp cao.
+Mỗi slave sẽ so sánh địa chỉ được gửi từ master với địa chỉ của chính nó. Nếu địa chỉ phù hợp, nó sẽ gửi lại một bit ACK điện áp thấp cho master. Nếu địa chỉ không khớp, slave không làm gì cả và đường SDA vẫn ở mức cao
+
+* Master gửi hoặc nhận khung dữ liệu.
+
+* Sau khi mỗi khung dữ liệu được chuyển, thiết bị nhận trả về một bit ACK khác cho thiết bị gửi để xác nhận đã nhận thành công khung.
+
+* Để dừng truyền dữ liệu, master gửi điều kiện dừng đến slave bằng cách chuyển đổi mức cao SCL trước khi chuyển mức cao SDA.
+
+ [Chi tiết ](https://dientutuonglai.com/chuan-giao-tiep-i2c-la-gi.html)
+
+ ### SO SÁNH SPI UART I2C 
+
+ <img src ="https://scontent.fsgn5-15.fna.fbcdn.net/v/t1.6435-9/144962711_249915713337702_340587713684986630_n.png?_nc_cat=108&ccb=1-7&_nc_sid=730e14&_nc_ohc=HgA9E9WGASgAX-DdE3l&_nc_ht=scontent.fsgn5-15.fna&oh=00_AfDCesQaEIHuysN6gZ3bEKW1Tytr2PYFgzmvrt8myfOcyw&oe=65337A97">
+
+ Giao thức I2C, SPI và UART là các giao thức truyền thông thông dụng trong việc kết nối các thiết bị điện tử với nhau. Dưới đây là sự khác nhau giữa chúng:
+ 
+1. Giao thức I2C (Inter-Integrated Circuit):
+
+- I2C là giao thức truyền thông hai dây, bao gồm một dây dữ liệu (SDA) và một dây xung đồng hồ (SCL).
+  
+- I2C được sử dụng để kết nối nhiều thiết bị với nhau thông qua cùng một bus giao tiếp.
+  
+- Giao thức I2C sử dụng địa chỉ để truyền dữ liệu giữa các thiết bị, giúp phân biệt được địa chỉ của từng thiết bị.
+  
+2. Giao thức SPI (Serial Peripheral Interface):
+   
+- SPI là giao thức truyền thông đồng bộ, dựa trên việc truyền dữ liệu đồng thời trên các dây MOSI (Master-Out Slave-In) và MISO (Master-In Slave-Out), cùng với dây xung đồng hồ (SCLK) và dây chọn (SS).
+  
+- Giao thức SPI thường sử dụng chế độ master-slave, trong đó một thiết bị được gọi là master điều khiển quá trình truyền thông, trong khi các thiết bị khác được gọi là slave.
+  
+3. Giao thức UART (Universal Asynchronous Receiver-Transmitter):
+   
+- UART là giao thức truyền thông không đồng bộ, dựa trên việc truyền dữ liệu qua hai dây TX (Transmit) và RX (Receive).
+  
+- Giao thức UART thực hiện việc chuyển đổi dữ liệu từ dạng thông điệp thành dạng dòng liên tiếp và ngược lại.
+  
+- UART thường được sử dụng để kết nối máy tính với các cổng nối tiếp truyền thống (RS-232) hoặc các thiết bị nhúng như vi điều khiển.
+
+</details>
+
+##
+
+<details>
+	<summary>TIMER</summary>
+
+##
+
+Bộ đếm/Bộ định thời: Đây là các ngoại vi được thiết kế để thực hiện một nhiệm vụ đơn giản: đếm các xung nhịp. Mỗi khi có thêm một xung nhịp tại đầu vào đếm thì giá trị của bộ đếm sẽ được tăng lên 01 đơn vị (trong chế độ đếm tiến/đếm lên) hay giảm đi 01 đơn vị (trong chế độ đếm lùi/đếm xuống).
+```C++
+  / Time base configuration /
+  TIM4_TimeBaseInit(TIM4_PRESCALER_128, 16); //bộ chia, giới hạn bộ đếm
+
+  / Clear TIM4 update flag /
+  TIM4_ClearFlag(TIM4_FLAG_UPDATE); //khi đếm đến giới hạn bộ đếm thì sẽ có cờ tràn(khi tràn -> xảy ra ngắt). Xóa cờ này đi để chắc chắn không tràn
+
+  / Enable update interrupt /
+  TIM4_ITConfig(TIM4_IT_UPDATE, ENABLE); //đăng kí ngắt vào bảng vector ngắt, bảng vector ngắt chứa nhiều địa chỉ 
+  
+  / enable interrupts /
+  enableInterrupts(); //bật các ngắt trong bảng vector
+
+  / Enable TIM4 /
+  TIM4_Cmd(ENABLE); //timer sẽ bắt đầu đếm
+
+```
+Prescaler : bộ chia trước ( tối đa 16 bit)
+
+**Counter setting**
+
+Prescaler : fAPB2 là 8MHz. Khi tầng số này đưa vào khối TIMER thì sẽ qua bộ chia trước. Sau khi chia thì ra được tần số hoạt động của TIMER đó.
+
+Counter mode: Up ( đếm lên)
+
+STM32F103 có 2 nguồn cấp dao động chính:
+
+* HSE(High Speed External) : bộ dao động ngoại tốc độcao(4-16MHz), cấp cho CPU hoạt động.
+* HIS(High Speed Internal): bộ dao động nội tốc độ 8Mhz, cấp cho CPU trong TH ko có HSE.
+
+### Nguyên lí hoạt động
+
+  Timer là một bộ đếm độc lập với CPU. Cứ sau mỗi khoảng thời gian t( do người dùng cài đặt) thì giá trị của thanh counter CNT sẽ tăng lên 1 đơn vị. Khi giá trị này bằng với giá trị thanh ghi tự động nạp lại ARR thì bộ đếm sẽ trở về 0 và đông thời sinh ra một ngắt cập nhật.
+
+  
+
+### Lựa chọn Clock cho TIMER
+
+Counter clock là nguồn gốc của hoạt động tăng/ giảm giá trị CNT, clock này có thể được cấu hình lựa chọn từ các nguồn sau:
+
+– Internal clock (CK_INT): Chọn nguồn clock từ clock của hệ thống, có thể là từ thạch anh dao động tần số cao bên ngoài (HSE) hay bộ giao động RC tần số cao được tích hợp sẵn bên trong STM(HSI), từ đấy qua các bộ chia tần của hệ thống clock để cấp cho ngoại vi timer (TIM2 đến TIM5 có clock CK_PSC đầu vào bằng clock của bus APB1, TIM9 đến TIM11 có clock Ck_PSC bằng clock bus APB2). CK_PSC là clock chưa qua bộ Prescaler của khối timer.
+
+<img scr="https://tapit.vn/wp-content/uploads/2019/07/timer_stm32f411_clockselection_tapit.png">
+
+– External clock mode1: Nếu chọn mode này thì counter có thể đếm mỗi khi chân external input pin (TIx) xuất hiện sườn lên hoặc sườn xuống, người dùng cấu hình chọn sườn.
+
+– External clock mode2: Nếu chọn mode này thì counter có thể đếm mỗi khi chân external trigger input (ETR) xuất hiện sườn lên hoặc sườn xuống. (Mode này chỉ có ở các bộ TIM2, TIM3, TIM4).
+
+– Internal trigger inputs (ITRx): Mode này cho phép sử dụng một timer làm bộ prescaler cho một bộ timer khác.
+
+
+
+### TIMER 0
+
+*  0 là 1 bộ timer/ counter 8 bit
+* Có bộ chia trước, dùng chung với watchdog timer
+* Có thể lựa chọn nguồn xung clock nội hay ngoại (nối với chân T0CKI) tùy theo cách cấu hình
+* Có phát hiện ngắt khi tràn bộ đếm từ 0xFF về 0x00
+* Cho phép chọn cạnh của xung đếm
+* Không có bit cho phép chạy hay ngừng ( free run timer)
+
+<img src="https://deviot.vn/storage/deviot/timer0_block.png">
+
+Để cấu hình cho timer 0 thì ta cần phải tác động lên thanh ghi OPTION_REG:
+
+<img src="https://deviot.vn/storage/deviot/option_reg.png">
+
+Chức năng của các bit:
+
+Bit 7: bit điều khiển điện trở treo port B (RBPU) 
+
+Bit 6: bit chọn cạnh ngắt (INTEDG)
+
+Bit 5: bit chọn nguồn xung cho timer 0 ( T0CS)
+
+T0CS = 1: nguồn xung ngoại lấy từ chân T0CKI
+
+T0CS = 0: nguồn xung clock nội (Fosc/4)
+
+Bit 4: Bit chọn cạnh ngắt tích cực (T0SE)
+
+Bit 3: bit gán bộ chia trước (PSA)
+
+PSA = 1: gán cho watchdog timer (WDT)
+
+PSA = 0: gán cho timer 0
+
+Bit 2-0 : các bit chọn tỷ lệ bộ chia trước PS<2:0>
+
+[Link tham khảo](https://deviot.vn/tutorials/pic.22296474/timer-0-va-ung-dung-ngat.54491851)
 
 
 
 
-
-
+</details>
 
 
 
