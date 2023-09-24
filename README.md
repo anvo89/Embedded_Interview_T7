@@ -1483,6 +1483,25 @@ Bộ đếm/Bộ định thời: Đây là các ngoại vi được thiết kế
   TIM4_Cmd(ENABLE); //timer sẽ bắt đầu đếm
 
 ```
+Prescaler : bộ chia trước ( tối đa 16 bit)
+
+**Counter setting**
+
+Prescaler : fAPB2 là 8MHz. Khi tầng số này đưa vào khối TIMER thì sẽ qua bộ chia trước. Sau khi chia thì ra được tần số hoạt động của TIMER đó.
+
+Counter mode: Up ( đếm lên)
+
+STM32F103 có 2 nguồn cấp dao động chính:
+
+* HSE(High Speed External) : bộ dao động ngoại tốc độcao(4-16MHz), cấp cho CPU hoạt động.
+* HIS(High Speed Internal): bộ dao động nội tốc độ 8Mhz, cấp cho CPU trong TH ko có HSE.
+
+### Nguyên lí hoạt động
+
+  Timer là một bộ đếm độc lập với CPU. Cứ sau mỗi khoảng thời gian t( do người dùng cài đặt) thì giá trị của thanh counter CNT sẽ tăng lên 1 đơn vị. Khi giá trị này bằng với giá trị thanh ghi tự động nạp lại ARR thì bộ đếm sẽ trở về 0 và đông thời sinh ra một ngắt cập nhật.
+
+  
+
 ### Lựa chọn Clock cho TIMER
 
 Counter clock là nguồn gốc của hoạt động tăng/ giảm giá trị CNT, clock này có thể được cấu hình lựa chọn từ các nguồn sau:
