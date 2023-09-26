@@ -1562,5 +1562,23 @@ Bit 2-0 : các bit chọn tỷ lệ bộ chia trước PS<2:0>
 
 </details>
 
+##
+
+<details>
+	<summary>NGẮT</summary>
+
+ 1. Khái niệm
+
+* Ngắt là đoạn chương trình độc chạy độc lập với chương trình chính, có độ ưu tiên cao, khi xảy ra ngắt nó sẽ chạy hết chương trình ngắt sau đó mới tiếp tục chạy chương trình chính.
+
+* Ngắt là một số sự kiện khẩn cấp bên trong hoặc bên ngoài bộ vi điều khiển xảy ra, buộc vi điều khiển tạm dừng thực hiện chương trình hiện tại, phục vụ ngay lập tức nhiệm vụ mà ngắt yêu cầu – nhiệm vụ này gọi là trình phục vụ ngắt.
+
+* Khi xảy ra ngắt, con trỏ PC sẽ trỏ đến địa chỉ ngắt.
+
+* Mỗi vi điều khiển có 1 trình phục vụ ngắt riêng (độ ưu tiên ngắt, địa chỉ phục vụ ngắt, cờ ngắt)
+
+  
+</details>
+
 
 
