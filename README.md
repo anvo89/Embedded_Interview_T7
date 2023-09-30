@@ -1392,6 +1392,12 @@ Khung dữ liệu chứa dữ liệu thực tế được chuyển. Nó có th�
 
 **Bit dừng**: để báo hiệu sự kết thúc của gói dữ liệu, UART gửi sẽ điều khiển đường truyền dữ liệu từ điện áp thấp đến điện áp cao trong ít nhất khoảng 2 bit.
 
+### CheckSUM
+
+Ví dụ truyền 4byte OxC5 + OxA3+OxA2+ OxD4 = Ox2DE 
+
+Thay vì truyền 4 byte thì MCUA sẽ truyền 5byte và MCUB nhận 5 byte , sau đó lấy 4 byte đầu tiên cộng lại với nhau rồi `and` với 0xFF rồi so sánh với byte thứ 5, nếu bằng thì nó bảo toàn, còn sai thì nó sai số. Các chuẩn giao tiếp đều có checksum.
+
 ##
 
 ## I2C
