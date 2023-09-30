@@ -8,7 +8,8 @@
  <details>
 	<Summary>Con trỏ </Summary>
 		
-	
+
+ 
 ### **1. Con trỏ là gì?** 
 
 Là những biến lưu trữ địa chỉ bộ nhớ của những biến khác.
