@@ -1376,6 +1376,9 @@ Tại 1 thời điểm, UART có thể cùng truyền và nhận dữ liệu
 
 UART là một giao thức một master, một slave, trong đó một thiết bị được thiết lập để giao tiếp với duy nhất một thiết bị khác.
 
+*Khi UART nhận phát hiện một bit start, nó bắt đầu đọc các bit đến ở một tần số cụ thể được gọi là tốc độ truyền (baud rate). Tốc độ truyền là thước đo tốc độ truyền dữ liệu, được biểu thị bằng bit trên giây (bps – bit per second), có nhiều tốc độ truyền khã nhau từ 9600 bps -> 115200 bps. Cả hai UART đều phải hoạt động ở cùng một tốc độ truyền. Tốc độ truyền giữa UART truyền và nhận chỉ có thể chênh lệch khoảng 10% trước khi thời gian của các bit bị lệch quá xa.*
+
+
 <img src="https://tapit.vn/wp-content/uploads/2018/06/1-2.png">
 
 <img src="https://developer.electricimp.com/sites/default/files/attachments/images/uart/uart3.png">
