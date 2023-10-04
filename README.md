@@ -1641,6 +1641,7 @@ Bit 2-0 : các bit chọn tỷ lệ bộ chia trước PS<2:0>
 
 <img src="https://3.bp.blogspot.com/-csPsEHR4cDQ/UAhdR3qKMUI/AAAAAAAABas/qb982xtnIkc/s1600/hinh1.jpg">
 
+
 ### Các loại Ngắt 
 
 Một số ngắt phổ biến trên vi điều khiển phổ biến mà chúng ta thường sử dụng: 
