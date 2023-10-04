@@ -1639,7 +1639,7 @@ Bit 2-0 : các bit chọn tỷ lệ bộ chia trước PS<2:0>
 
 Đối với mỗi ngắt thì phải có một trình phục vụ ngắt (ISR) hay trình quản lý ngắt để đưa ra nhiệm vụ cho bộ vi điều khiển khi được gọi ngắt. Khi một ngắt được gọi thì bộ vi điều khiển sẽ chạy trình phục vụ ngắt. Đối với mỗi ngắt thì có một vị trí cố định trong bộ nhớ để giữ địa chỉ ISR của nó. Nhóm vị trí bộ nhớ được dành riêng để lưu giữ địa chỉ của các ISR được gọi là bảng vector ngắt.
 
-<img scr="https://3.bp.blogspot.com/-csPsEHR4cDQ/UAhdR3qKMUI/AAAAAAAABas/qb982xtnIkc/s1600/hinh1.jpg">
+<img src="https://3.bp.blogspot.com/-csPsEHR4cDQ/UAhdR3qKMUI/AAAAAAAABas/qb982xtnIkc/s1600/hinh1.jpg">
 
 ### Các loại Ngắt 
 
