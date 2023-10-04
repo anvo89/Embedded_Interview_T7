@@ -7,7 +7,8 @@
 ##
  <details>
 	<Summary>Con trỏ </Summary>
-		
+
+  
 
  
 ### **1. Con trỏ là gì?** 
