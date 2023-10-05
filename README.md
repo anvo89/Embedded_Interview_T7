@@ -1650,7 +1650,19 @@ Một số ngắt phổ biến trên vi điều khiển phổ biến mà chúng 
 
 – Ngắt UART: Thường sử dụng ngắt nhận, sự kiện là khi buffer nhận đủ 1 byte dữ liệu
 
+ Ngắt truyên thông:
+
+  ![image](https://github.com/hunggiao/Embedded-Interview/assets/133474779/2b4f4abd-10de-4d1c-9546-ac5563160e6f)
+
+:arrow_right: UART A và UART B có 2 thời điểm truyền, nhận khác nhau. Do khi truyền nhận data có thể bị thiếu hoặc sai.
+
+:arrow_right: Do đó người ta sử dụng ngắt truyền thông ở UART B: khi chân RX có data thì nó sẽ vào chương trình ngắt để đọc data, đọc xong thì quay lại chương trình chính.
+
+
 – Ngắt ADC: Thường sử dụng khi hoàn thành việc chuyển đổi ADC
+
+
+– Ngắt Timer: Thường sử dụng khi tràn thanh ghi đếm, khi cờ tràn =1 thì sẽ dừng chương trình chính lại và trỏ con trỏ PC đến timer chạy ngắt timer. Muốn thoát chương trình thì phải có reset thanh ghi timer , reset cờ tràn. 
 
 ### Qúa trình Ngắt trong VDK
 
@@ -1666,7 +1678,8 @@ khi xảy ra Interrupt, vi điều khiển sẽ thực hiện qua các bước s
 
 5. Khi thực hiện xong chương trình phục vụ ngắt, vi điều khiển sẽ thực hiện quá trình unstacking: nạp lại giá trị thanh ghi PC đã lưu, bật lại bit cho phép ngắt toàn cục, quay về trạng thái năng lượng ban đầu.
 
-– Ngắt Timer: Thường sử dụng khi tràn thanh ghi đếm, hoặc khi giá trị đếm bằng với thanh ghi so sánh
+
+
 
   
 
