@@ -1680,7 +1680,6 @@ khi xảy ra Interrupt, vi điều khiển sẽ thực hiện qua các bước s
   
 </details>
 
-</details>
 
 <details>
   <summary><h2>CAN</h2></summary>
