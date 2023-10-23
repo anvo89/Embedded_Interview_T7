@@ -7,8 +7,10 @@
 ##
  <details>
 	<Summary>Con trỏ </Summary>
-		
-	
+
+  
+
+ 
 ### **1. Con trỏ là gì?** 
 
 Là những biến lưu trữ địa chỉ bộ nhớ của những biến khác.
@@ -408,6 +410,53 @@ Làm tăng hiệu năng(performance) của chương trình.
 
 <img src="https://khuenguyencreator.com/wp-content/uploads/2021/09/register-.jpg">
 
+
+</details>
+
+<details>
+  <summary><h2>Thao tác BIT</h2></summary>
+
+**1. AND: x=y & z**
+
+![image](https://github.com/hunggiao/Embedded-Interview/assets/133474779/4792bda0-11e7-42ab-be91-24f3913a14cb)
+![image](https://github.com/hunggiao/Embedded-Interview/assets/133474779/d3561b69-3f42-43be-882b-4521d221ab60)
+
+**2. NOT: x=~y**
+
+![image](https://github.com/hunggiao/Embedded-Interview/assets/133474779/171570a9-e47e-426f-b767-936f07b3da5c)
+![image](https://github.com/hunggiao/Embedded-Interview/assets/133474779/bb83e7dd-62e9-42b4-88a4-eacea3ede919)
+
+**3. OR: x=y | z**
+
+![image](https://github.com/hunggiao/Embedded-Interview/assets/133474779/38cba77d-f2be-4fc5-b936-8c19f6652cd0)
+![image](https://github.com/hunggiao/Embedded-Interview/assets/133474779/2bba2c0c-d39c-4349-94a0-59f17229c219)
+
+**4. XOR: x = y ^ z**
+
+![image](https://github.com/hunggiao/Embedded-Interview/assets/133474779/328b53db-f44c-4519-b35b-65275ce82205)
+![image](https://github.com/hunggiao/Embedded-Interview/assets/133474779/62261a3f-24f3-452b-b13d-4322da32269b)
+  
+**5. Dịch Bit: >> (Dịch phải) và << ( Dịch trái )**
+ 
+![image](https://github.com/hunggiao/Embedded-Interview/assets/133474779/2e1f97a1-a4d2-4422-923c-546b76e0d9f7)
+***
+**:blue_square: Ví dụ: Giả sử có 1 vi điều khiển 8bit (1 lần quét điều khiển được 8 chân)**
+
+![image](https://github.com/hunggiao/Embedded-Interview/assets/133474779/e7d842d4-46ba-405e-885c-79b5e9e6ab99)
+* Xây dựng thuật toán set mức cao thấp tại các chân pin:
+
+> Thuật toán set mức cao: PORTA=0b00000000
+```
+    PORTA = PORTA |(0b10000000 >> pin);
+```
+
+=> Giả sử set chân PIN4 về mức cao thì pin=5, 0b10000000 dịch sang phải 5 bit là: 0b00001000 rồi thực hiện phép OR với PORTA thì cho kết quả là: 0b00001000 (chân PIN4 đã set về mức cao).
+> Thuật toán set mức thấp: PORTA=0b11111111
+```
+    PORTA = PORTA & ~(0b10000000 >> pin); 
+```
+
+=> Giả sử set chân PIN3 về mức thấp thì pin=4, 0b10000000 dịch sang phải 4 bit là: 0b00010000, NOT của 0b00010000 là 0b11101111 rồi thực hiện phép AND với PORTA thì cho kết quả là: 0b11101111 (chân PIN3 đã set về mức thấp).
 
 
 </details>
@@ -1376,6 +1425,9 @@ Tại 1 thời điểm, UART có thể cùng truyền và nhận dữ liệu
 
 UART là một giao thức một master, một slave, trong đó một thiết bị được thiết lập để giao tiếp với duy nhất một thiết bị khác.
 
+*Khi UART nhận phát hiện một bit start, nó bắt đầu đọc các bit đến ở một tần số cụ thể được gọi là tốc độ truyền (baud rate). Tốc độ truyền là thước đo tốc độ truyền dữ liệu, được biểu thị bằng bit trên giây (bps – bit per second), có nhiều tốc độ truyền khã nhau từ 9600 bps -> 115200 bps. Cả hai UART đều phải hoạt động ở cùng một tốc độ truyền. Tốc độ truyền giữa UART truyền và nhận chỉ có thể chênh lệch khoảng 10% trước khi thời gian của các bit bị lệch quá xa.*
+
+
 <img src="https://tapit.vn/wp-content/uploads/2018/06/1-2.png">
 
 <img src="https://developer.electricimp.com/sites/default/files/attachments/images/uart/uart3.png">
@@ -1388,6 +1440,12 @@ Khung dữ liệu chứa dữ liệu thực tế được chuyển. Nó có th�
 **Bit chẵn lẻ**: là một cách để UART nhận cho biết liệu có bất kỳ dữ liệu nào đã thay đổi trong quá trình truyền hay không (bức xạ điện từ, tốc độ truyền không khớp hoặc truyền dữ liệu khoảng cách xa). Sau khi UART nhận đọc khung dữ liệu, nó sẽ đếm số bit có giá trị là 1 và kiểm tra xem tổng số là số chẵn hay lẻ. Nếu bit chẵn lẻ là 0 (tính chẵn), thì tổng các bit 1 trong khung dữ liệu phải là một số chẵn. Nếu bit chẵn lẻ là 1 (tính lẻ), các bit 1 trong khung dữ liệu sẽ tổng thành một số lẻ. Khi bit chẵn lẻ khớp với dữ liệu, UART sẽ biết rằng quá trình truyền không có lỗi. Nhưng nếu bit chẵn lẻ là 0 và tổng là số lẻ; hoặc bit chẵn lẻ là 1 và tổng số là chẵn, UART sẽ biết rằng các bit trong khung dữ liệu đã thay đổi.
 
 **Bit dừng**: để báo hiệu sự kết thúc của gói dữ liệu, UART gửi sẽ điều khiển đường truyền dữ liệu từ điện áp thấp đến điện áp cao trong ít nhất khoảng 2 bit.
+
+### CheckSUM
+
+Ví dụ truyền 4byte OxC5 + OxA3+OxA2+ OxD4 = Ox2DE 
+
+Thay vì truyền 4 byte thì MCUA sẽ truyền 5byte và MCUB nhận 5 byte , sau đó lấy 4 byte đầu tiên cộng lại với nhau rồi `and` với 0xFF rồi so sánh với byte thứ 5, nếu bằng thì nó bảo toàn, còn sai thì nó sai số. Các chuẩn giao tiếp đều có checksum.
 
 ##
 
@@ -1577,7 +1635,165 @@ Bit 2-0 : các bit chọn tỷ lệ bộ chia trước PS<2:0>
 
 * Mỗi vi điều khiển có 1 trình phục vụ ngắt riêng (độ ưu tiên ngắt, địa chỉ phục vụ ngắt, cờ ngắt)
 
+### Trình phục vụ ngắt
+
+Đối với mỗi ngắt thì phải có một trình phục vụ ngắt (ISR) hay trình quản lý ngắt để đưa ra nhiệm vụ cho bộ vi điều khiển khi được gọi ngắt. Khi một ngắt được gọi thì bộ vi điều khiển sẽ chạy trình phục vụ ngắt. Đối với mỗi ngắt thì có một vị trí cố định trong bộ nhớ để giữ địa chỉ ISR của nó. Nhóm vị trí bộ nhớ được dành riêng để lưu giữ địa chỉ của các ISR được gọi là bảng vector ngắt.
+
+<img src="https://3.bp.blogspot.com/-csPsEHR4cDQ/UAhdR3qKMUI/AAAAAAAABas/qb982xtnIkc/s1600/hinh1.jpg">
+
+
+### Các loại Ngắt 
+
+Một số ngắt phổ biến trên vi điều khiển phổ biến mà chúng ta thường sử dụng: 
+
+– Ngắt ngoài: Sự kiện là khi sự thay đổi sườn tín hiệu (edge) sườn lên, sườn xuống, hoặc cả 2. 
+
+– Ngắt UART: Thường sử dụng ngắt nhận, sự kiện là khi buffer nhận đủ 1 byte dữ liệu
+
+ Ngắt truyên thông:
+
+  ![image](https://github.com/hunggiao/Embedded-Interview/assets/133474779/2b4f4abd-10de-4d1c-9546-ac5563160e6f)
+
+:arrow_right: UART A và UART B có 2 thời điểm truyền, nhận khác nhau. Do khi truyền nhận data có thể bị thiếu hoặc sai.
+
+:arrow_right: Do đó người ta sử dụng ngắt truyền thông ở UART B: khi chân RX có data thì nó sẽ vào chương trình ngắt để đọc data, đọc xong thì quay lại chương trình chính.
+
+
+– Ngắt ADC: Thường sử dụng khi hoàn thành việc chuyển đổi ADC
+
+
+– Ngắt Timer: Thường sử dụng khi tràn thanh ghi đếm, khi cờ tràn =1 thì sẽ dừng chương trình chính lại và trỏ con trỏ PC đến timer chạy ngắt timer. Muốn thoát chương trình thì phải có reset thanh ghi timer , reset cờ tràn. 
+
+### Qúa trình Ngắt trong VDK
+
+khi xảy ra Interrupt, vi điều khiển sẽ thực hiện qua các bước sau: 
+
+1. Thực hiện xong câu lệnh đang thực hiện (câu lệnh ở mã máy sau quá trình compiler, asembler từ ngôn ngữ bật cao do người dùng viết. Để thực hiện 1 câu lệnh ở mã máy, vi điều khiển thường thực hiện các bước sau: lấy lệnh từ bộ nhớ; giải mã lệnh; thực thi lệnh). 
+
+2. Lưu ngữ cảnh gồm lưu địa chỉ câu lệnh tiếp theo sẽ thực hiện (giá trị thanh ghi Program Counter), lưu trạng thái năng lượng đang hoạt động (trong thanh ghi Status) vào vùng nhớ Stack, gọi là quá trình Stacking.(Vùng nhớ Stack là vùng nhớ First In Last Out.)
+
+3. Xóa bit cho phép ngắt toàn cục trong thanh ghi Status, đưa vi điều khiển về chế độ hoạt động bình thường (active mode) nếu nó đang ở chế độ tiết kiệm năng lượng. Bit cho phép ngắt cũng có thể được bật lên lại để cho phép ngắt chồng ngắt (Nested Interrupt)
+
+4. Vi điều khiển thực thi chương trình phục vụ ngắt (ISR) bằng cách nạp địa chỉ câu lệnh đầu tiên của chương trình phục vụ ngắt vào thanh ghi PC. (Địa chỉ này cũng là địa chỉ của vecter ngắt trong interrupt vector table)
+
+5. Khi thực hiện xong chương trình phục vụ ngắt, vi điều khiển sẽ thực hiện quá trình unstacking: nạp lại giá trị thanh ghi PC đã lưu, bật lại bit cho phép ngắt toàn cục, quay về trạng thái năng lượng ban đầu.
   
+</details>
+
+
+<details>
+  <summary><h2>CAN</h2></summary>
+	
+**1. Khái niệm:**
+
+![image](https://github.com/hunggiao/Embedded-Interview/assets/133474779/263dd880-f0be-44ab-ba28-f9d581501a57)
+
+- Giao thức CAN có nhiều node, 1 node gồm:
+  	- CAN Controller: truyền và nhận dữ liệu qua 2 dây Tx, Rx.
+  	- CAN Tranceiver: xuất ra 2 mức điện áp CAN_H và CAN_L.
+- 2 đầu dây có 2 điện trở 120Ω -> tiêu chuẩn CAN 2.0
+- 1 node có thể vừa truyền và nhận data.
+- CAN -> chống nhiễu (bắt chéo 2 dây CAN_H, CAN_L -> khoảng cách tiếp xúc 2 dây với nguồn phát ra từ trường là như nhau -> độ nhiễu như nhau)
+- MCU sẽ gửi tín hiệu (bit 1, 0) xuống CAN Controller -> điều khiển CAN Tranceiver xuất 2 điện áp CAN_H, CAN_L
+
+**2. Trạng thái "dominant" và "recessive":**
+
+- Có 2 dạng truyền: CAN low speed, CAN high speed
+  
+| Thông số | CAN low speed | CAN high speed |
+|---|:---:|:---:|
+|Tốc độ|125 kb/s|125 kb/s tới 1 Mb/s|
+|Số nút trên bus|2 tới 20|2 tới 30|
+|Trạng thái dominant|CAN_H = 4V; CAN_L = 1V|CAN_H = 3.25V; CAN_L = 1.5V|
+|Trạng thái recessive|CAN_H = 1.75V; CAN_L = 3.25V|CAN_H = 2.5V; CAN_L = 2.5V|
+|Tính chất của cap|30pF giữa cáp và dây|2*120 ohm|
+|Mức điện áp cung cấp|5V|5V|
+
+- Giả sử CAN tuân theo dạng truyền CAN low speed -> CAN controller sẽ nhận giá trị |CAN_H - CAN_L|
+  	- Nếu >= 3V -> CAN ở trạng thái dominant (bit 0)
+  	- Nếu <= 1.5V -> CAN ở trạng thái recessive (bit 1)
+- Tại 1 thời điểm, chỉ có 1 node truyền, các node còn lại nhận. Để nhận biết node truyền, node nhận thì ta dựa vào bit ID, bit ID càng nhỏ độ ưu tiên càng cao.
+- Giả sử 1 node xuất ra CAN_H = 4V, CAN_L = 1V thì nó cũng có thể nhận lại mức điện áp đó. Tại thời điểm đó, nó hiểu là chỉ có 1 mình nó truyền dữ liệu.
+  
+***Ví dụ:*** Có 3 MCU truyền CAN low speed
+MCU A: 0000 0010
+MCU B: 0000 1000
+MCU C: 0001 0000
+
+:arrow_right: Giả sử MCU A truyền bit 0, MCU B và C truyền bit 1 thì khi nhận lại các MCU A, B, C không nhận lại các mức điện áp CAN_H, CAN_L ban đầu. Khi đó, MCU A hiểu là ngoài nó còn có các MCU khác cũng đang truyền dữ liệu. Mà MCU A có địa chỉ nhỏ hơn MCU B, C nên lúc đó MCU A sẽ vào chế độ truyền, MCU B và C sẽ vào chế độ nhận.
+
+- Trong khoảng delay, CAN_H và CAN_L đều bằng 0 -> CAN controller nhận về giá trị hiệu bằng 0 -> dấu hiệu để chuyển sang bit tiếp theo.
+
+**3. Data frame:**
+
+![image](https://github.com/hunggiao/Embedded-Interview/assets/133474779/069d6ba6-89f4-4767-9d80-119be72854af)
+
+Data Frame CAN (Phiên bản 2.0A) tiêu chuẩn bao gồm bảy trường bit khác nhau:
+
+**3.1. Trường bắt đầu khung (Start Of Frame Field – SOF)**
+
+- Với cả 2 định dạng của chuẩn CAN 2.0 thì trường bắt đầu là vị trí của bit đầu tiên trong khung. Trường này chiếm 1 bit dữ liệu. Bit đầu tiên này là một Dominant Bit (mức logic 0) đánh dấu sự bắt đầu của một Data Frame.
+
+**3.2. Trường xác định quyền ưu tiên (Arbitration Field)**
+
+- Định dạng vùng xác định quyền ưu tiên là khác nhau đối với dạng khung chuẩn và khung mở rộng.
+  
+	- Định dạng chuẩn: vùng xác định quyền ưu tiên có độ dài 12 bit, bao gồm 11 bit ID và 1 bit RTR.
+
+	- Định dạng mở rộng: trường xác định quyền ưu tiên có độ dài 32 bit, bao gồm có 29 bit ID, 1 bit SRR, 1 bit IDE và 1 bit RTR
+
+- Trong đó:
+	- Bit RTR (Remote Transmission Request)
+		- Là bit dùng để phân biệt khung là Data Frame hay Remote Frame.
+		- Nếu là Data Frame, bit này luôn bằng 0 (Dominant Bit).
+		- Nếu là Remote Frame, bit này luôn bằng 1 (Recessive Bit).
+	  	- Vị trí bit này luôn nằm sau bit ID.
+	- Trường hợp nếu Data Frame và Remote Frame có cùng ID được gửi đi đồng thời thì Data Frame sẽ được ưu tiên hơn.
+   
+	- Bit SRR (Substitute Remote Request)
+		- Bit này chỉ có ở khung mở rộng.
+		- Bit này có giá trị là 1 (Recessive Bit).
+		- So với vị trí tương ứng trong khung chuẩn thì bit này trùng với vị trí của bit RTR nên còn được gọi là bit thay thế (Substitute).
+	- Giả sử có hai Node cùng truyền, một Node truyền Data Frame chuẩn, một Node truyền Data Frame mở rộng có ID giống nhau thì Node truyền khung chuẩn sẽ thắng phân xử quyền ưu tiên vì đến vị trí sau ID, khung chuẩn là bit RTR = 0, còn khung mở rộng là bit SRR = 1. Như vậy, khung chuẩn chiếm ưu thế hơn so với khung mở rộng khi có ID như nhau.
+	- Bit IDE (Identifier Extension)
+		- Đây là bit phân biệt giữa loại khung chuẩn và khung mở rộng: IDE = 0 quy định khung chuẩn, IDE = 1 quy định khung mở rộng.
+		- Bit này nằm ở trường xác định quyền ưu tiên với khung mở rộng và ở trường điều khiển với khung chuẩn.
+    
+**3.3. Trường điều khiển (Control Field)**
+- Khung chuẩn và khung mở rộng có định dạng khác nhau ở trường này:
+	- Khung chuẩn gồm IDE, r0 và DLC (Data Length Code).
+	- Khung mở rộng gồm r1, r0 và DLC.
+- Trong đó:
+	- Bit IDE
+		- Dùng phân biệt loại khung (đã được trình bày ở trên).
+		- Bit r0, r1 (hai bit dự trữ)
+	- Tuy hai bit này phải được truyền là Recessive Bit bởi bộ truyền nhưng bộ nhận không quan tâm đến giá trị 2 bit này. Bộ nhận có thể nhận được các tổ hợp 00, 01, 10 hoặc 11 của r1 và r0 nhưng không coi đó là lỗi mà bỏ qua và nhận thông điệp bình thường.
+	- DLC (Data Length Code)
+		- Có độ dài 4 bit quy định số byte của trường dữ liệu của Data Frame
+		- Chỉ được mang giá trị từ 0 đến 8 tương ứng với trường dữ liệu có từ 0 đến 8 byte dữ liệu. Data Frame có thể không có byte dữ liệu nào khi DLC = 0.
+		- Giá trị lớn hơn 8 không được phép sử dụng. Hình dưới mô tả các loại mã bit mà DLC có thể chứa để quy định số byte của trường dữ liệu.
+    
+**3.4. Trường dữ liệu (Data Field)**
+
+- Trường này có độ dài từ 0 đến 8 byte tùy vào giá trị của DLC ở trường điều khiển.
+  
+**3.5. Trường kiểm tra (Cyclic Redundancy Check Field – CRC)**
+
+- Trường kiểm tra hay trường CRC gồm 16 bit và được chia làm hai phần là:
+	- CRC Sequence: gồm 15 bit CRC tuần tự
+	- CRC Delimiter: là một Recessive Bit làm nhiệm vụ phân cách trường CRC với trường ACK
+	- Mã kiểm tra CRC phù hợp nhất cho các khung mà chuỗi bit được kiểm tra có chiều dài dưới 127 bit, mã này thích hợp cho việc phát hiện các trường hợp sai nhóm (Bus Error). Ở đây, tổng bit từ trường bắt đầu (SOF) đến trường dữ liệu (Data Field) tối đa là 83 bit (khung định dạng chuẩn) và 103 bit (khung định dạng mở rộng).=> Trường CRC bảo vệ thông tin trong Data Frame và Remote Frame bằng cách thêm các bit kiểm tra dự phòng ở đầu khung truyền. Ở đầu khung nhận, cũng sẽ tính toán CRC như bộ truyền khi đã nhận dữ liệu và so sánh kết quả đó với CRC Sequence mà nó đã nhận được, nếu khác nhau tức là đã có lỗi, nếu giống nhau tức là đã nhận đúng từ trường SOF đến trường dữ liệu.
+   
+**3.6. Trường báo nhận (Acknowledge Field – ACK)**
+
+- Trường báo nhận hay trường ACK có độ dài 2 bit và bao gồm hai phần là ACK Slot và ACK Delimiter.
+	- ACK Slot: có độ dài 1 bit, một Node truyền dữ liệu sẽ thiết lập bit này là Recessive. Khi một hoặc nhiều Node nhận chính xác giá trị thông điệp (không có lỗi và đã so sánh CRC Sequence trùng khớp) thì nó sẽ báo lại cho bộ truyền bằng cách truyền ra một Dominant Bit ngay vị trí ACK Slot để ghi đè lên Recessive Bit của bộ truyền.
+	- ACK Delimiter: có độ dài 1 bit, nó luôn là một Recessive Bit. Như vậy, ta thấy rằng ACK Slot luôn được đặt giữa hai Recessive Bit là CRC Delimiter và ACK Delimiter.
+   
+**3.7. Trường kết thúc (End Of Frame Field – EOF)**
+
+- Trường EOF là trường thông báo kết thúc một Data Frame hay Remote Frame.
+- Trường này gồm 7 Recessive Bit.
 </details>
 
 
